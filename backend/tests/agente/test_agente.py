@@ -371,3 +371,30 @@ async def test_varias_chamadas_usa_so_a_primeira():
     llm = LLMRoteirizado([resposta, _escrita()])
     r = await rodar_agente("algo", None, None, _pratos(), llm)
     assert r.criterios.tempo_max_min == 20
+
+
+async def test_alvo_do_texto_vence_o_do_llm_e_llm_preenche_o_resto():
+    llm = LLMRoteirizado(
+        [
+            _busca(alvos={"peso": 60, "temperatura": 80}),
+            _escrita(principal_id="p1"),
+        ]
+    )
+    r = await rodar_agente("algo não muito pesado", None, None, _pratos(), llm)
+    assert r.criterios.alvos[Eixo.peso] == 25  # texto vence
+    assert r.criterios.alvos[Eixo.temperatura] == 80  # texto não tocou: LLM preenche
+
+
+async def test_ingrediente_que_e_palavra_de_restricao_e_descartado():
+    llm = LLMRoteirizado(
+        [
+            _busca(
+                restricoes=["sem_lactose"],
+                ingredientes_excluidos=["lactose", "glúten", "cebola"],
+            ),
+            _escrita(principal_id="p1"),
+        ]
+    )
+    r = await rodar_agente("sem lactose", None, None, _pratos(), llm)
+    assert r.criterios.ingredientes_excluidos == {"cebola"}
+    assert SL in r.criterios.restricoes

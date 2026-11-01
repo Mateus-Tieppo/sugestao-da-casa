@@ -18,6 +18,8 @@ from app.llm.cliente import ClienteLLM
 LIMITE_EXPLICACAO_GUARDA = 200
 LIMITE_DIFERENCA_GUARDA = 60
 NOME_FERRAMENTA = "buscar_pratos"
+# Já cobertas por restrições: como ingrediente excluído viram etiqueta duplicada.
+_PALAVRAS_DE_RESTRICAO = {"lactose", "gluten"}
 
 
 class AgenteFalhou(Exception):
@@ -95,11 +97,15 @@ def _mesclar(
     base = atuais or Criterios()
     return Criterios(
         restricoes=base.restricoes | args.restricoes | palavras.restricoes,
-        ingredientes_excluidos=(
-            base.ingredientes_excluidos
-            | args.ingredientes_excluidos
-            | palavras.ingredientes_excluidos
-        ),
+        ingredientes_excluidos={
+            i
+            for i in (
+                base.ingredientes_excluidos
+                | args.ingredientes_excluidos
+                | palavras.ingredientes_excluidos
+            )
+            if normalizar(i) not in _PALAVRAS_DE_RESTRICAO
+        },
         orcamento_max_centavos=_limite(
             palavras.orcamento_max_centavos,
             args.orcamento_max_centavos,
@@ -108,7 +114,7 @@ def _mesclar(
         tempo_max_min=_limite(
             palavras.tempo_max_min, args.tempo_max_min, base.tempo_max_min
         ),
-        alvos={**base.alvos, **palavras.alvos, **args.alvos},
+        alvos={**base.alvos, **args.alvos, **palavras.alvos},  # texto atual vence
         barato=args.barato or palavras.barato or base.barato,
         rapido=args.rapido or palavras.rapido or base.rapido,
     )
