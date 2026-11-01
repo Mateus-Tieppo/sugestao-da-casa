@@ -1,5 +1,10 @@
 import type { ReactNode } from "react";
 
+/** O h1 de cada tela recebe o foco quando a tela muda (teclado e leitor de tela). */
+export const ID_TITULO = "titulo-tela";
+/** O campo principal do pedido, focado ao voltar para o início. */
+export const ID_CAMPO_PEDIDO = "campo-pedido";
+
 interface Props {
   /** O h1 e o que vem logo abaixo dele, dentro do bloco quente. */
   topo: ReactNode;

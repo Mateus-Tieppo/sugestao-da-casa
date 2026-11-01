@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from "react";
 import type { PratoSugerido, RespostaSugestao } from "@/lib/tipos";
 import { Alternativas } from "./Alternativas";
-import { Cozinha } from "./Cozinha";
+import { Cozinha, ID_TITULO } from "./Cozinha";
 import { FotoPrato } from "./FotoPrato";
 import { PratoPrincipal } from "./PratoPrincipal";
 import { SeloDemonstracao } from "./SeloDemonstracao";
@@ -69,7 +69,9 @@ export function Decisao({ resposta, aoQuerer, aoTrocar, pensando = false, childr
       topo={
         <div className={esmaecido}>
           <h1
-            className={`font-titulo font-normal leading-[1.04] tracking-[-0.025em] text-balance ${tamanhoDoTitulo(frase)}`}
+            id={ID_TITULO}
+            tabIndex={-1}
+            className={`font-titulo font-normal outline-none leading-[1.04] tracking-[-0.025em] text-balance ${tamanhoDoTitulo(frase)}`}
           >
             {trocou ? (
               <>

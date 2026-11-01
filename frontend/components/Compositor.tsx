@@ -2,6 +2,7 @@
 
 import { useId, useState, type FormEvent, type KeyboardEvent } from "react";
 import { LIMITES } from "@/lib/tipos";
+import { ID_CAMPO_PEDIDO } from "./Cozinha";
 import { Pensando } from "./Pensando";
 
 export const EXEMPLOS = [
@@ -21,7 +22,7 @@ interface Props {
 /** Quadro do pedido: o campo grande, o botão e os exemplos. Vira o "pensando" no mesmo lugar. */
 export function Compositor({ aoEnviar, pensando, frasePensando }: Props) {
   const [texto, setTexto] = useState("");
-  const campoId = useId();
+  const campoId = ID_CAMPO_PEDIDO;
   const contadorId = useId();
   const vazio = texto.trim().length === 0;
 
@@ -44,7 +45,7 @@ export function Compositor({ aoEnviar, pensando, frasePensando }: Props) {
 
   return (
     <div>
-      <div className="relative min-h-[13.5rem] rounded-2xl bg-cartao transition-shadow duration-200 has-[textarea:focus]:ring-2 has-[textarea:focus]:ring-tomate/45 shadow-[0_18px_40px_-12px_rgb(90_30_10/0.28),0_2px_6px_rgb(90_30_10/0.08)]">
+      <div className="relative min-h-[13.5rem] rounded-2xl bg-cartao transition-shadow duration-200 has-[textarea:focus-visible]:ring-[3px] has-[textarea:focus-visible]:ring-tomate shadow-[0_18px_40px_-12px_rgb(90_30_10/0.28),0_2px_6px_rgb(90_30_10/0.08)]">
         {pensando ? (
           <div className="absolute inset-0 px-5 py-5 sm:px-7">
             <Pensando frase={frasePensando} />

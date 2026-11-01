@@ -1,3 +1,4 @@
+import { useId } from "react";
 import type { Etiqueta } from "@/lib/tipos";
 
 interface Props {
@@ -8,13 +9,14 @@ interface Props {
 
 /** O que a casa entendeu do pedido, com um botão para tirar cada item. */
 export function Entendido({ etiquetas, aoRemover, desabilitado = false }: Props) {
+  const tituloId = useId();
   if (etiquetas.length === 0) return null;
   return (
     <div>
-      <p id="entendido-titulo" className="text-[0.8125rem] font-medium text-texto-suave">
+      <p id={tituloId} className="text-[0.8125rem] font-medium text-texto-suave">
         O que eu entendi
       </p>
-      <ul aria-labelledby="entendido-titulo" className="mt-2 flex flex-wrap gap-2">
+      <ul aria-labelledby={tituloId} className="mt-2 flex flex-wrap gap-2">
         {etiquetas.map((e) => (
           <li
             key={e.chave}

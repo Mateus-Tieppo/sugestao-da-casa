@@ -53,7 +53,8 @@ interface Props {
 /** Prato visto de cima: foto real num prato creme, ou o desenho quando não há foto. */
 export function FotoPrato({ nome, fotoUrl, tamanho, sizes, className = "", preload = false }: Props) {
   const base = `prato ${CLASSE_TAMANHO[tamanho]} ${className}`;
-  if (!fotoUrl) {
+  // Só fotos do Unsplash passam pelo next/image (é o único host liberado no next.config).
+  if (!fotoUrl || !fotoUrl.startsWith("https://images.unsplash.com/")) {
     return <div aria-hidden="true" className={`${base} prato-${receitaDoPrato(nome)}`} />;
   }
   return (

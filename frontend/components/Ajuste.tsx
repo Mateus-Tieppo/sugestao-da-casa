@@ -29,7 +29,7 @@ export function Ajuste({ etiquetas, aoRemover, aoEnviar, pensando, frasePensando
   return (
     <section className="border-t border-borda pt-8">
       <h2 className="font-titulo text-[1.375rem] font-semibold tracking-[-0.01em] text-tinta">
-        <label htmlFor={campoId}>Quer ajustar?</label>
+        {pensando ? "Quer ajustar?" : <label htmlFor={campoId}>Quer ajustar?</label>}
       </h2>
       <div className="mt-4">
         <Entendido etiquetas={etiquetas} aoRemover={aoRemover} desabilitado={pensando} />
@@ -42,7 +42,7 @@ export function Ajuste({ etiquetas, aoRemover, aoEnviar, pensando, frasePensando
         ) : (
           <form
             onSubmit={aoSubmeter}
-            className="flex min-h-[3.5rem] items-center gap-2 rounded-xl border border-borda bg-cartao py-1.5 pl-4 pr-1.5 transition-shadow duration-200 has-[input:focus]:border-tomate/50 has-[input:focus]:ring-2 has-[input:focus]:ring-tomate/25"
+            className="flex min-h-[3.5rem] items-center gap-2 rounded-xl border border-borda bg-cartao py-1.5 pl-4 pr-1.5 transition-shadow duration-200 has-[input:focus-visible]:border-tomate has-[input:focus-visible]:ring-2 has-[input:focus-visible]:ring-tomate"
           >
             <input
               id={campoId}

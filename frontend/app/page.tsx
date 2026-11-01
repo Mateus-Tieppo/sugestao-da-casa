@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Ajuste } from "@/components/Ajuste";
 import { Compositor } from "@/components/Compositor";
-import { Cozinha } from "@/components/Cozinha";
+import { Cozinha, ID_CAMPO_PEDIDO, ID_TITULO } from "@/components/Cozinha";
 import { Decisao } from "@/components/Decisao";
 import { aquecer } from "@/lib/api";
 import { formatarReais } from "@/lib/formato";
 import { useSessao, type EstadoSessao } from "@/lib/sessao";
-import type { PratoSugerido } from "@/lib/tipos";
+import type { PratoSugerido, RespostaSugestao } from "@/lib/tipos";
 
 // O carrinho chega na próxima etapa; por enquanto "Quero esse" não leva a lugar nenhum.
 function aoQuerer(prato: PratoSugerido) {
@@ -22,7 +22,7 @@ function anuncio(estado: EstadoSessao): string {
     const p = resposta.principal;
     return `${resposta.frase_decisao ?? p.nome} ${formatarReais(p.total_centavos)} com entrega.`;
   }
-  if (fase === "sem_resultado") return "Não encontrei um prato com tudo isso.";
+  if (fase === "sem_resultado" || fase === "resultado") return "Não encontrei um prato com tudo isso.";
   if (fase === "falha") return "A cozinha não respondeu.";
   return "";
 }
@@ -38,7 +38,11 @@ const PRATOS_DA_ABERTURA = (
 function TituloSimples({ titulo, texto }: { titulo: ReactNode; texto: string }) {
   return (
     <>
-      <h1 className="font-titulo text-[2.125rem] font-normal leading-[1.04] tracking-[-0.025em] text-balance sm:text-[2.75rem] md:text-[4rem]">
+      <h1
+        id={ID_TITULO}
+        tabIndex={-1}
+        className="font-titulo text-[2.125rem] outline-none font-normal leading-[1.04] tracking-[-0.025em] text-balance sm:text-[2.75rem] md:text-[4rem]"
+      >
         {titulo}
       </h1>
       <p className="mt-3 max-w-[38ch] text-[0.9375rem] leading-snug text-creme-rosado md:mt-5 md:text-[1.0625rem]">
@@ -53,16 +57,38 @@ export default function Home() {
   const { fase, resposta } = estado;
   const pensando = fase === "pensando";
   const frasePensando = estado.ultimoPedido?.texto ?? null;
+  // Troca de alternativa feita na tela, anunciada enquanto a resposta for a mesma.
+  const [troca, setTroca] = useState<{ de: RespostaSugestao; nome: string } | null>(null);
+  const faseAnterior = useRef(fase);
 
   useEffect(() => {
     aquecer();
   }, []);
 
+  // Quando a tela muda, o foco vai junto: para o título da tela nova, ou para o campo ao voltar ao início.
+  useEffect(() => {
+    const antes = faseAnterior.current;
+    faseAnterior.current = fase;
+    if (fase === "resultado" || fase === "sem_resultado" || fase === "falha") {
+      document.getElementById(ID_TITULO)?.focus();
+    } else if (fase === "inicio" && antes !== "inicio") {
+      document.getElementById(ID_CAMPO_PEDIDO)?.focus();
+    }
+  }, [fase, resposta]);
+
+  function aoTrocar(prato: PratoSugerido) {
+    escolherPrato(prato.id);
+    if (resposta) setTroca({ de: resposta, nome: prato.nome });
+  }
+
+  const aviso =
+    fase === "resultado" && troca && troca.de === resposta ? `Agora a sugestão é ${troca.nome}.` : anuncio(estado);
+
   let tela: ReactNode;
 
-  if (resposta && resposta.status === "ok" && (fase === "resultado" || pensando)) {
+  if (resposta?.principal && resposta.status === "ok" && (fase === "resultado" || pensando)) {
     tela = (
-      <Decisao resposta={resposta} aoQuerer={aoQuerer} aoTrocar={(p) => escolherPrato(p.id)} pensando={pensando}>
+      <Decisao resposta={resposta} aoQuerer={aoQuerer} aoTrocar={aoTrocar} pensando={pensando}>
         <Ajuste
           etiquetas={resposta.entendido}
           aoRemover={removerEtiqueta}
@@ -72,7 +98,7 @@ export default function Home() {
         />
       </Decisao>
     );
-  } else if (resposta && (fase === "sem_resultado" || pensando)) {
+  } else if (resposta && (fase === "sem_resultado" || fase === "resultado" || pensando)) {
     // Provisório: a tela caprichada de "sem resultado" vem na próxima etapa.
     tela = (
       <Cozinha
@@ -146,7 +172,7 @@ export default function Home() {
     <main className="flex flex-1 flex-col">
       {tela}
       <p aria-live="polite" className="sr-only">
-        {anuncio(estado)}
+        {aviso}
       </p>
     </main>
   );

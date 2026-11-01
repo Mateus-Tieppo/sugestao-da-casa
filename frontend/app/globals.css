@@ -42,13 +42,16 @@ body {
   color: var(--color-tinta);
 }
 
-:focus-visible {
-  outline: 3px solid var(--color-tomate);
-  outline-offset: 3px;
-}
+/* Na camada base, para utilitários como outline-none poderem trocar o anel por outro. */
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--color-tomate);
+    outline-offset: 3px;
+  }
 
-.cozinha :focus-visible {
-  outline-color: var(--color-acafrao);
+  .cozinha :focus-visible {
+    outline-color: var(--color-acafrao);
+  }
 }
 
 @layer components {
@@ -59,7 +62,7 @@ body {
 /* Bloco quente do topo: páprica que escurece em tomate. */
 .cozinha {
   background:
-    radial-gradient(120% 95% at 82% 8%, #f07a2a 0%, #c8331b 46%, #8e1f12 100%);
+    radial-gradient(115% 90% at 86% 2%, #f07a2a 0%, #c8331b 38%, #8e1f12 100%);
   color: var(--color-creme-quente);
   overflow-x: clip;
 }

@@ -1,8 +1,10 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import Home from "@/app/page";
 import { describe, expect, it, vi } from "vitest";
 import { Compositor } from "@/components/Compositor";
 import { Decisao } from "@/components/Decisao";
 import { Entendido } from "@/components/Entendido";
+import { FotoPrato } from "@/components/FotoPrato";
 import { SeloDemonstracao } from "@/components/SeloDemonstracao";
 import type { RespostaSugestao } from "@/lib/tipos";
 import { prato, respostaOk } from "./fixtures";
@@ -96,5 +98,53 @@ describe("Entendido", () => {
     );
     fireEvent.click(screen.getByRole("button", { name: "Remover sem lactose" }));
     expect(aoRemover).toHaveBeenCalledWith("restricao:sem_lactose");
+  });
+});
+
+function servirResposta(resposta: RespostaSugestao) {
+  const fetch = vi.fn((url: string) =>
+    Promise.resolve(
+      url.endsWith("/health")
+        ? new Response("{}", { status: 200 })
+        : new Response(JSON.stringify(resposta), { status: 200 }),
+    ),
+  );
+  vi.stubGlobal("fetch", fetch);
+  return fetch;
+}
+
+describe("Home", () => {
+  it("move o foco para o título quando o resultado chega e anuncia a troca", async () => {
+    servirResposta(respostaCompleta());
+    render(<Home />);
+    fireEvent.click(screen.getByRole("button", { name: /fresquinho e rápido/ }));
+    const titulo = await screen.findByRole("heading", { level: 1, name: "Hoje pede um Caldo verde." });
+    await waitFor(() => expect(titulo).toHaveFocus());
+    fireEvent.click(screen.getByRole("button", { name: /Lámen shoyu/ }));
+    expect(screen.getByText("Agora a sugestão é Lámen shoyu.")).toBeInTheDocument();
+    vi.unstubAllGlobals();
+  });
+
+  it("status ok sem prato principal cai na tela de sem resultado", async () => {
+    servirResposta({ ...respostaCompleta(), principal: null, alternativas: [] });
+    render(<Home />);
+    fireEvent.click(screen.getByRole("button", { name: /fresquinho e rápido/ }));
+    const titulo = await screen.findByRole("heading", { level: 1, name: "Com tudo isso junto, não achei." });
+    await waitFor(() => expect(titulo).toHaveFocus());
+    vi.unstubAllGlobals();
+  });
+});
+
+describe("FotoPrato", () => {
+  it("usa o prato ilustrado quando a foto não é do Unsplash", () => {
+    const { container, rerender } = render(
+      <FotoPrato nome="Caldo" fotoUrl="https://exemplo.com/caldo.jpg" tamanho="medio" sizes="56px" />,
+    );
+    expect(container.querySelector("img")).toBeNull();
+    expect(container.firstChild).toHaveClass("prato-caldo");
+    rerender(
+      <FotoPrato nome="Caldo" fotoUrl="https://images.unsplash.com/photo-1?w=800" tamanho="medio" sizes="56px" />,
+    );
+    expect(container.querySelector("img")).not.toBeNull();
   });
 });
