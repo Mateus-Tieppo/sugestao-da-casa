@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useReducer, useRef } from "react";
 import { ehCancelamento, FalhaApi, pedirSugestao, type TipoFalha } from "./api";
-import type { Criterios, PedidoSugestao, PropostaSugerida, RespostaSugestao } from "./tipos";
+import { LIMITES, type Criterios, type PedidoSugestao, type PropostaSugerida, type RespostaSugestao } from "./tipos";
 
 export type Fase = "inicio" | "pensando" | "resultado" | "sem_resultado" | "falha";
 
@@ -123,8 +123,10 @@ export function useSessao() {
   const enviar = useCallback(
     (texto: string) => {
       const r = respostaAtual.current;
+      const limpo = texto.trim().slice(0, LIMITES.texto).trim();
+      if (!limpo && !r) return;
       disparar({
-        texto,
+        texto: limpo || null,
         criterios: r?.criterios ?? null,
         prato_atual_id: r?.principal?.id ?? null,
       });

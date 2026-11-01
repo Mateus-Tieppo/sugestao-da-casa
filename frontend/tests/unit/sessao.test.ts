@@ -160,3 +160,23 @@ describe("reducerSessao", () => {
     expect(e).toMatchObject({ fase: "falha", erro: "rede", resposta: r });
   });
 });
+
+describe("useSessao: texto do envio", () => {
+  it("ignora texto vazio ou só espaços quando não há critérios", () => {
+    const pendentes = simularFetch();
+    const { result } = renderHook(() => useSessao());
+    act(() => result.current.enviar("   \n "));
+    act(() => result.current.enviar(""));
+    expect(pendentes).toHaveLength(0);
+    expect(result.current.estado.fase).toBe("inicio");
+  });
+
+  it("apara espaços e limita o texto a 300 caracteres", () => {
+    const pendentes = simularFetch();
+    const { result } = renderHook(() => useSessao());
+    act(() => result.current.enviar("  oi  "));
+    expect(pendentes[0].corpo.texto).toBe("oi");
+    act(() => result.current.enviar("a".repeat(500)));
+    expect(pendentes[1].corpo.texto).toHaveLength(300);
+  });
+});
