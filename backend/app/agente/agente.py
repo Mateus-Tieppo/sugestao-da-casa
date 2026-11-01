@@ -12,6 +12,7 @@ from app.domain.afrouxar import PropostaAfrouxar, propor_afrouxar
 from app.domain.ajustes import Ajuste, aplicar_ajuste
 from app.domain.decisao import MAX_ALTERNATIVAS, Escolha, escolher
 from app.domain.modelos import Criterios, Eixo, Prato, Restricao
+from app.domain.texto import normalizar
 from app.llm.cliente import ClienteLLM
 
 LIMITE_EXPLICACAO_GUARDA = 200
@@ -30,6 +31,15 @@ class ResultadoAgente(BaseModel):
     frase_decisao: str | None
     explicacoes: dict[str, str]
     diferencas: dict[str, str]
+
+
+_PADRAO_NULO: dict[str, Any] = {
+    "restricoes": [],
+    "ingredientes_excluidos": [],
+    "alvos": {},
+    "barato": False,
+    "rapido": False,
+}
 
 
 class _Argumentos(BaseModel):
@@ -54,7 +64,7 @@ class _Argumentos(BaseModel):
     def _nulo_vira_padrao(cls, valor: Any, info) -> Any:
         if valor is not None:
             return valor
-        return {"barato": False, "rapido": False}.get(info.field_name, [])
+        return _PADRAO_NULO[info.field_name]
 
     @field_validator("alvos")
     @classmethod
@@ -90,13 +100,13 @@ def _mesclar(
             | args.ingredientes_excluidos
             | palavras.ingredientes_excluidos
         ),
-        orcamento_max_centavos=_primeiro_nao_nulo(
-            args.orcamento_max_centavos,
+        orcamento_max_centavos=_limite(
             palavras.orcamento_max_centavos,
+            args.orcamento_max_centavos,
             base.orcamento_max_centavos,
         ),
-        tempo_max_min=_primeiro_nao_nulo(
-            args.tempo_max_min, palavras.tempo_max_min, base.tempo_max_min
+        tempo_max_min=_limite(
+            palavras.tempo_max_min, args.tempo_max_min, base.tempo_max_min
         ),
         alvos={**base.alvos, **palavras.alvos, **args.alvos},
         barato=args.barato or palavras.barato or base.barato,
@@ -104,8 +114,15 @@ def _mesclar(
     )
 
 
-def _primeiro_nao_nulo(*valores: int | None) -> int | None:
-    return next((v for v in valores if v is not None), None)
+def _limite(do_texto: int | None, do_llm: int | None, atual: int | None) -> int | None:
+    """Número dito no texto vence; o LLM só pode apertar um limite, nunca afrouxar."""
+    if do_texto is not None:
+        return do_texto
+    if do_llm is None:
+        return atual
+    if atual is None or do_llm <= atual:
+        return do_llm
+    return atual
 
 
 def _resumo_prato(p: Prato) -> str:
@@ -119,13 +136,35 @@ def _reais(centavos: int) -> str:
     return f"R$ {centavos / 100:.2f}".replace(".", ",")
 
 
+def _apelidos(escolha: Escolha) -> dict[str, Prato]:
+    """Ids curtos (p1..pN) mostrados ao modelo; ids reais nunca saem daqui."""
+    return {f"p{i}": p for i, p in enumerate(escolha.candidatos, start=1)}
+
+
+def _resolver(ref: Any, apelidos: dict[str, Prato]) -> Prato | None:
+    if not isinstance(ref, str):
+        return None
+    achado = apelidos.get(ref.strip().lower())
+    if achado is not None:
+        return achado
+    nome = normalizar(ref)
+    return next((p for p in apelidos.values() if normalizar(p.nome) == nome), None)
+
+
+def _tem_emoji(texto: str) -> bool:
+    return any(
+        ord(c) >= 0x1F000 or 0x2190 <= ord(c) <= 0x2BFF or ord(c) in (0xFE0F, 0x200D)
+        for c in texto
+    )
+
+
 def _resultado_ferramenta(escolha: Escolha, criterios: Criterios) -> str:
     return json.dumps(
         {
             "criterios": criterios.model_dump(mode="json"),
             "candidatos": [
                 {
-                    "id": p.id,
+                    "id": alias,
                     "nome": p.nome,
                     "restaurante": p.restaurante_nome,
                     "total_reais": round(p.total_centavos / 100, 2),
@@ -133,7 +172,7 @@ def _resultado_ferramenta(escolha: Escolha, criterios: Criterios) -> str:
                     "eixos": {e.value: v for e, v in p.eixos.items()},
                     "ingredientes": p.ingredientes,
                 }
-                for p in escolha.candidatos
+                for alias, p in _apelidos(escolha).items()
             ],
         },
         ensure_ascii=False,
@@ -142,7 +181,12 @@ def _resultado_ferramenta(escolha: Escolha, criterios: Criterios) -> str:
 
 
 def _texto_valido(valor: Any, limite: int) -> str | None:
-    if isinstance(valor, str) and valor.strip() and len(valor) <= limite:
+    if (
+        isinstance(valor, str)
+        and valor.strip()
+        and len(valor) <= limite
+        and not _tem_emoji(valor)
+    ):
         return valor
     return None
 
@@ -158,9 +202,8 @@ def _ler_escrita(conteudo: str | None) -> dict:
 
 def _guardar(escolha: Escolha, criterios: Criterios, dados: dict) -> ResultadoAgente:
     """Só prato de escolha.candidatos sai daqui; o que o modelo errar vira texto pronto."""
-    candidatos = {p.id: p for p in escolha.candidatos}
-    pedido = dados.get("principal_id")
-    principal = candidatos.get(pedido) if isinstance(pedido, str) else None
+    apelidos = _apelidos(escolha)
+    principal = _resolver(dados.get("principal_id"), apelidos)
     modelo_acertou = principal is not None
     if principal is None:
         principal = escolha.principal
@@ -174,12 +217,15 @@ def _guardar(escolha: Escolha, criterios: Criterios, dados: dict) -> ResultadoAg
             alt_id, dif = item.get("id"), item.get("diferenca")
         else:
             alt_id, dif = item, None
-        alt = candidatos.get(alt_id) if isinstance(alt_id, str) else None
+        alt = _resolver(alt_id, apelidos)
         if alt is None or alt.id == principal.id or alt in alternativas:
             continue
         alternativas.append(alt)
         diferencas_modelo[alt.id] = dif
-    for alt in escolha.alternativas:
+    reserva = [escolha.principal, *escolha.alternativas, *escolha.candidatos]
+    for alt in reserva:
+        if alt is None:
+            continue
         if len(alternativas) >= MAX_ALTERNATIVAS:
             break
         if alt.id != principal.id and alt not in alternativas:
@@ -187,7 +233,11 @@ def _guardar(escolha: Escolha, criterios: Criterios, dados: dict) -> ResultadoAg
     alternativas = alternativas[:MAX_ALTERNATIVAS]
 
     brutas_expl = dados.get("explicacoes", dados.get("explicações"))
-    explicacoes_modelo = brutas_expl if isinstance(brutas_expl, dict) else {}
+    explicacoes_modelo: dict[str, Any] = {}
+    for chave, texto in (brutas_expl if isinstance(brutas_expl, dict) else {}).items():
+        dono = _resolver(chave, apelidos)
+        if dono is not None:
+            explicacoes_modelo[dono.id] = texto
     explicacoes: dict[str, str] = {}
     for p in [principal, *alternativas]:
         texto = _texto_valido(explicacoes_modelo.get(p.id), LIMITE_EXPLICACAO_GUARDA)
@@ -200,6 +250,8 @@ def _guardar(escolha: Escolha, criterios: Criterios, dados: dict) -> ResultadoAg
         if modelo_acertou
         else None
     )
+    if frase and normalizar(principal.nome) not in normalizar(frase):
+        frase = None
     diferencas = {
         alt.id: _texto_valido(diferencas_modelo.get(alt.id), LIMITE_DIFERENCA_GUARDA)
         or diferenca(alt, principal)

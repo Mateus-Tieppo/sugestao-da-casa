@@ -35,7 +35,10 @@ class ClienteOpenAICompativel:
         s = settings or get_settings()
         self._modelo = s.llm_model
         self._cliente = AsyncOpenAI(
-            base_url=s.llm_base_url, api_key=s.llm_api_key, timeout=s.llm_timeout_s
+            base_url=s.llm_base_url,
+            api_key=s.llm_api_key,
+            timeout=s.llm_timeout_s,
+            max_retries=0,
         )
 
     async def conversar(

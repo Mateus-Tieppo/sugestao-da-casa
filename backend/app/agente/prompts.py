@@ -13,7 +13,7 @@ Passo 1: entender o pedido. Chame a ferramenta buscar_pratos UMA vez com os crit
 - Pedidos relativos ao prato atual ("mais barato", "mais leve") vão no campo ajuste.
 
 Passo 2: com os candidatos devolvidos, escolha o prato que melhor responde ao pedido.
-- Nunca invente prato fora dos candidatos; use apenas ids da lista.
+- Nunca invente prato fora dos candidatos; use apenas os ids da lista (p1, p2, ...).
 - Explicações de 1 a 2 frases, até 160 caracteres, ligando o prato às palavras da pessoa.
 - Escolha no máximo 2 alternativas, cada uma com uma diferença curta (até 40 caracteres) em relação ao principal."""
 
@@ -21,7 +21,7 @@ PEDIDO_ESCRITA = (
     "Agora escolha entre os candidatos acima e responda SOMENTE um objeto JSON no formato "
     '{"principal_id": "id", "alternativas": [{"id": "id", "diferenca": "frase curta"}], '
     '"frase_decisao": "Hoje pede ...", "explicacoes": {"id": "texto"}}. '
-    "Inclua explicações para o principal e para as alternativas. Use só ids dos candidatos."
+    "Inclua explicações para o principal e para as alternativas. Use só os ids (p1, p2, ...) dos candidatos."
 )
 
 _INTEIRO_OU_NULO = {"type": ["integer", "null"]}
