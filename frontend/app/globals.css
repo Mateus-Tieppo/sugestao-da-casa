@@ -2,24 +2,232 @@
 
 @theme {
   --color-papel: #fbf3e4;
+  --color-papel-funda: #f3e5cc;
   --color-tinta: #2b1c14;
   --color-tomate: #c8331b;
+  --color-tomate-escuro: #a82614;
   --color-paprica: #f07a2a;
   --color-paprica-escura: #8e1f12;
   --color-acafrao: #ffd08a;
+  --color-acafrao-claro: #fde7c8;
+  --color-acafrao-escuro: #9a4f0b;
   --color-manjericao: #3f7a2a;
   --color-manjericao-claro: #eef3de;
   --color-cartao: #fffaf2;
   --color-texto-suave: #6b5444;
+  --color-borda: #ead9bd;
+  --color-creme-quente: #fff4e2;
+  --color-creme-rosado: #ffe2c2;
 
   --font-titulo: var(--font-fraunces), Georgia, serif;
   --font-texto: var(--font-inter), system-ui, sans-serif;
+
+  --ease-saida: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   background: var(--color-papel);
   color: var(--color-tinta);
   font-family: var(--font-texto);
+  font-feature-settings: "kern", "liga";
+  caret-color: var(--color-tomate);
+}
+
+::selection {
+  background: var(--color-acafrao);
+  color: var(--color-tinta);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-tomate);
+  outline-offset: 3px;
+}
+
+.cozinha :focus-visible {
+  outline-color: var(--color-acafrao);
+}
+
+@layer components {
+.numeros {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Bloco quente do topo: páprica que escurece em tomate. */
+.cozinha {
+  background:
+    radial-gradient(120% 95% at 82% 8%, #f07a2a 0%, #c8331b 46%, #8e1f12 100%);
+  color: var(--color-creme-quente);
+  overflow-x: clip;
+}
+
+/* ---------- Pratos ilustrados, vistos de cima ---------- */
+
+.prato {
+  --aro: 6px;
+  border-radius: 9999px;
+  position: relative;
+  flex: none;
+  aspect-ratio: 1;
+  box-shadow:
+    inset 0 0 0 var(--aro) var(--color-cartao),
+    0 6px 14px rgb(80 30 10 / 0.25);
+}
+
+.prato-grande {
+  --aro: 9px;
+  box-shadow:
+    inset 0 0 0 var(--aro) var(--color-cartao),
+    0 22px 40px rgb(60 10 0 / 0.42),
+    0 4px 10px rgb(60 10 0 / 0.25);
+}
+
+.prato-pequeno {
+  --aro: 3px;
+  box-shadow:
+    inset 0 0 0 var(--aro) var(--color-cartao),
+    0 4px 8px rgb(80 30 10 / 0.2);
+}
+
+/* Aro por cima da foto, para a foto parecer servida no mesmo prato. */
+.prato-aro {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 var(--aro) var(--color-cartao);
+  pointer-events: none;
+}
+
+.prato-caldo {
+  background:
+    radial-gradient(circle at 38% 40%, #fff3c9 0 8%, transparent 9%),
+    radial-gradient(circle at 62% 58%, #e8541c 0 7%, transparent 8%),
+    radial-gradient(circle at 45% 65%, #4f8a2b 0 10%, transparent 11%),
+    radial-gradient(circle at 60% 35%, #6aa338 0 9%, transparent 10%),
+    radial-gradient(circle at 30% 55%, #6aa338 0 5%, transparent 6%),
+    radial-gradient(circle, #e9d79a 0 62%, #fffaf2 63%);
+}
+
+.prato-lamen {
+  background:
+    radial-gradient(circle at 60% 40%, #fff 0 9%, #f4b324 10% 15%, transparent 16%),
+    radial-gradient(circle at 38% 58%, #3f7a2a 0 7%, transparent 8%),
+    radial-gradient(circle at 42% 34%, #8e1f12 0 6%, transparent 7%),
+    radial-gradient(circle, transparent 0 62%, #fffaf2 63%),
+    repeating-radial-gradient(circle at 50% 50%, #f1c46b 0 3px, #d98c2b 3px 5px),
+    #c8771f;
+}
+
+.prato-curry {
+  background:
+    radial-gradient(circle at 40% 45%, #fff6e0 0 10%, transparent 11%),
+    radial-gradient(circle at 62% 60%, #c2361b 0 6%, transparent 7%),
+    radial-gradient(circle at 58% 34%, #3e8a33 0 6%, transparent 7%),
+    radial-gradient(circle at 34% 64%, #3e8a33 0 4%, transparent 5%),
+    radial-gradient(circle, #f0a020 0 62%, #fffaf2 63%);
+}
+
+.prato-salada {
+  background:
+    radial-gradient(circle at 36% 38%, #d8361f 0 7%, transparent 8%),
+    radial-gradient(circle at 63% 62%, #d8361f 0 6%, transparent 7%),
+    radial-gradient(circle at 60% 34%, #fff3c9 0 6%, transparent 7%),
+    radial-gradient(circle at 40% 64%, #2f6b22 0 11%, transparent 12%),
+    radial-gradient(circle at 64% 44%, #7fb24a 0 12%, transparent 13%),
+    radial-gradient(circle at 46% 48%, #a6cb5f 0 14%, transparent 15%),
+    radial-gradient(circle, #5f9a35 0 62%, #fffaf2 63%);
+}
+
+.prato-pizza {
+  background:
+    radial-gradient(circle at 38% 40%, #fff1d2 0 7%, transparent 8%),
+    radial-gradient(circle at 60% 58%, #fff1d2 0 8%, transparent 9%),
+    radial-gradient(circle at 62% 36%, #3f7a2a 0 5%, transparent 6%),
+    radial-gradient(circle at 40% 63%, #3f7a2a 0 4%, transparent 5%),
+    radial-gradient(circle, #c8331b 0 50%, #e2a85a 51% 61%, #fffaf2 62%);
+}
+
+.prato-massa {
+  background:
+    radial-gradient(circle at 50% 50%, #c8331b 0 16%, transparent 17%),
+    radial-gradient(circle at 58% 44%, #3f7a2a 0 5%, transparent 6%),
+    radial-gradient(circle, transparent 0 62%, #fffaf2 63%),
+    repeating-radial-gradient(circle at 46% 54%, #f6d98f 0 3px, #e6b65a 3px 5px),
+    #e6b65a;
+}
+
+.prato-doce {
+  background:
+    radial-gradient(circle at 58% 40%, #c8331b 0 7%, transparent 8%),
+    radial-gradient(circle at 44% 52%, #fff3e0 0 16%, transparent 17%),
+    radial-gradient(circle, #5b2f1d 0 44%, #7a4228 45% 61%, #fffaf2 62%);
+}
+
+.prato-sushi {
+  background:
+    radial-gradient(circle at 38% 38%, #f07a2a 0 5%, #fffaf2 6% 11%, #23302a 12% 14%, transparent 15%),
+    radial-gradient(circle at 62% 38%, #f07a2a 0 5%, #fffaf2 6% 11%, #23302a 12% 14%, transparent 15%),
+    radial-gradient(circle at 38% 62%, #3f7a2a 0 5%, #fffaf2 6% 11%, #23302a 12% 14%, transparent 15%),
+    radial-gradient(circle at 62% 62%, #f07a2a 0 5%, #fffaf2 6% 11%, #23302a 12% 14%, transparent 15%),
+    radial-gradient(circle, #3a2a22 0 62%, #fffaf2 63%);
+}
+
+.prato-burger {
+  background:
+    radial-gradient(circle at 40% 38%, #fff3d6 0 2%, transparent 3%),
+    radial-gradient(circle at 56% 34%, #fff3d6 0 2%, transparent 3%),
+    radial-gradient(circle at 62% 50%, #fff3d6 0 2%, transparent 3%),
+    radial-gradient(circle at 44% 56%, #fff3d6 0 2%, transparent 3%),
+    radial-gradient(circle at 52% 64%, #fff3d6 0 2%, transparent 3%),
+    radial-gradient(circle at 46% 42%, #e7a34a 0 30%, #c87523 42%, #3f7a2a 43% 47%, transparent 48%),
+    radial-gradient(circle, #f0a020 0 62%, #fffaf2 63%);
+}
+
+.prato-bowl {
+  background:
+    radial-gradient(circle at 50% 50%, #fff3c9 0 12%, transparent 13%),
+    radial-gradient(circle, transparent 0 62%, #fffaf2 63%),
+    conic-gradient(from 20deg, #6aa338 0 25%, #f0a020 0 47%, #e9d79a 0 72%, #c8331b 0 86%, #3f7a2a 0);
+}
+
+.prato-feijao {
+  background:
+    radial-gradient(circle at 38% 42%, #f07a2a 0 6%, transparent 7%),
+    radial-gradient(circle at 62% 58%, #4f8a2b 0 7%, transparent 8%),
+    radial-gradient(circle at 58% 36%, #e9d79a 0 7%, transparent 8%),
+    radial-gradient(circle at 42% 64%, #e9d79a 0 5%, transparent 6%),
+    radial-gradient(circle, #5a2e1c 0 62%, #fffaf2 63%);
+}
+
+/* Prato que gira devagar enquanto a cozinha pensa. */
+@keyframes girar {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.girando {
+  animation: girar 9s linear infinite;
+}
+
+@keyframes respirar {
+  0%,
+  100% {
+    opacity: 0.35;
+    scale: 0.8;
+  }
+  50% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.respirando {
+  animation: respirar 1.4s ease-in-out infinite;
+}
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -90,6 +90,8 @@ export function useSessao() {
   const sequencia = useRef(0);
   const respostaAtual = useRef<RespostaSugestao | null>(null);
   const pedidoAtual = useRef<PedidoSugestao | null>(null);
+  /** Prato na tela agora: a escolha da casa ou a alternativa que a pessoa promoveu. */
+  const pratoAtualId = useRef<string | null>(null);
 
   const disparar = useCallback((pedido: PedidoSugestao) => {
     controlador.current?.abort();
@@ -103,6 +105,7 @@ export function useSessao() {
       (resposta) => {
         if (minha !== sequencia.current || ctl.signal.aborted) return;
         respostaAtual.current = resposta;
+        pratoAtualId.current = resposta.principal?.id ?? null;
         dispatch({ tipo: "respondido", resposta });
       },
       (e: unknown) => {
@@ -128,7 +131,7 @@ export function useSessao() {
       disparar({
         texto: limpo || null,
         criterios: r?.criterios ?? null,
-        prato_atual_id: r?.principal?.id ?? null,
+        prato_atual_id: r ? pratoAtualId.current : null,
       });
     },
     [disparar],
@@ -141,7 +144,7 @@ export function useSessao() {
       disparar({
         texto: null,
         criterios: removerCriterio(r.criterios, chave),
-        prato_atual_id: r.principal?.id ?? null,
+        prato_atual_id: pratoAtualId.current,
       });
     },
     [disparar],
@@ -157,9 +160,14 @@ export function useSessao() {
     });
   }, [disparar]);
 
+  /** Promove uma alternativa sem nova chamada: só muda a referência dos próximos ajustes. */
+  const escolherPrato = useCallback((id: string) => {
+    pratoAtualId.current = id;
+  }, []);
+
   const tentarDeNovo = useCallback(() => {
     if (pedidoAtual.current) disparar(pedidoAtual.current);
   }, [disparar]);
 
-  return { estado, enviar, removerEtiqueta, aceitarProposta, tentarDeNovo };
+  return { estado, enviar, removerEtiqueta, aceitarProposta, tentarDeNovo, escolherPrato };
 }

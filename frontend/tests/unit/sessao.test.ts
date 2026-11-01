@@ -91,6 +91,19 @@ describe("useSessao", () => {
     expect(pendentes[1].corpo.prato_atual_id).toBe("p1");
   });
 
+  it("alternativa escolhida vira o prato atual do próximo refinamento", async () => {
+    const pendentes = simularFetch();
+    const { result } = renderHook(() => useSessao());
+    act(() => result.current.enviar("algo"));
+    await act(async () => pendentes[0].resolver(json({ ...respostaOk("p1"), alternativas: [prato("p2")] })));
+    act(() => result.current.escolherPrato("p2"));
+    act(() => result.current.enviar("mais barato"));
+    expect(pendentes[1].corpo.prato_atual_id).toBe("p2");
+    await act(async () => pendentes[1].resolver(json(respostaOk("p3"))));
+    act(() => result.current.removerEtiqueta("tempo"));
+    expect(pendentes[2].corpo.prato_atual_id).toBe("p3");
+  });
+
   it("aceitar proposta reenvia com todas as mudanças aplicadas, sem texto nem prato atual", async () => {
     const pendentes = simularFetch();
     const { result } = renderHook(() => useSessao());
