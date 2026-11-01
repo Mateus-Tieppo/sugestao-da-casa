@@ -1,5 +1,6 @@
 from functools import lru_cache
 
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -12,7 +13,7 @@ class Settings(BaseSettings):
     llm_timeout_s: float = 8.0
     supabase_url: str = ""
     supabase_anon_key: str = ""
-    cors_origens: list[str] = ["http://localhost:3000"]
+    cors_origens: list[str] = Field(default_factory=lambda: ["http://localhost:3000"])
 
 
 @lru_cache
