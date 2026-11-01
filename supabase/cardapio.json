@@ -86,7 +86,7 @@
           "peso": 20,
           "picancia": 25,
           "conforto": 80,
-          "foto_url": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=800&q=80"
+          "foto_url": null
         },
         {
           "id": "4360082d-aa40-46c2-8a02-3608a508076b",
@@ -227,7 +227,7 @@
           "peso": 35,
           "picancia": 20,
           "conforto": 80,
-          "foto_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+          "foto_url": null
         },
         {
           "id": "a7710d7f-58fc-40b7-946f-2beed5bbf118",
@@ -2005,7 +2005,7 @@
           "tempo_preparo_min": 15,
           "ingredientes": [
             "leite de coco",
-            "pasta de curry",
+            "pasta de curry vegetal",
             "grão-de-bico",
             "batata",
             "abóbora",

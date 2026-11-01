@@ -4,6 +4,7 @@
 import json
 from pathlib import Path
 
+# Regra das fotos: foto_url não pode mostrar nenhum ingrediente que contradiga o `atende` do prato.
 RAIZ = Path(__file__).resolve().parent
 
 
