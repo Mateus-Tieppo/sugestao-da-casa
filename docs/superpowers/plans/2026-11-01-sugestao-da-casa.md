@@ -76,7 +76,7 @@ README.md
 
 ---
 
-### Tarefa 1: Repositório e esqueleto do backend
+### Task 1: Repositório e esqueleto do backend
 
 **Files:**
 - Create: `.gitignore`, `backend/pyproject.toml`, `backend/app/__init__.py`, `backend/app/main.py`, `backend/app/config.py`, `backend/tests/test_health.py`
@@ -105,7 +105,7 @@ def test_health_responde_ok():
 
 ---
 
-### Tarefa 2: Modelos de domínio e filtro de restrições duras
+### Task 2: Modelos de domínio e filtro de restrições duras
 
 **Files:**
 - Create: `backend/app/domain/modelos.py`, `backend/app/domain/filtro.py`, `backend/tests/domain/test_filtro.py`, `backend/tests/fabricas.py`
@@ -151,7 +151,7 @@ def test_preferencias_nao_eliminam():
 
 ---
 
-### Tarefa 3: Ranking e decisão
+### Task 3: Ranking e decisão
 
 **Files:**
 - Create: `backend/app/domain/ranking.py`, `backend/app/domain/decisao.py`, `backend/tests/domain/test_ranking.py`, `backend/tests/domain/test_decisao.py`
@@ -208,7 +208,7 @@ def test_nenhum_passa_devolve_principal_vazio():
 
 ---
 
-### Tarefa 4: Afrouxar e ajustes relativos
+### Task 4: Afrouxar e ajustes relativos
 
 **Files:**
 - Create: `backend/app/domain/afrouxar.py`, `backend/app/domain/ajustes.py`, `backend/tests/domain/test_afrouxar.py`, `backend/tests/domain/test_ajustes.py`
@@ -268,7 +268,7 @@ def test_mais_leve_limita_em_zero():
 
 ---
 
-### Tarefa 5: Modo demonstração (interpretador por palavras-chave e textos prontos)
+### Task 5: Modo demonstração (interpretador por palavras-chave e textos prontos)
 
 **Files:**
 - Create: `backend/app/demo/interpretador.py`, `backend/app/demo/textos.py`, `backend/tests/demo/test_interpretador.py`, `backend/tests/demo/test_textos.py`
@@ -331,7 +331,7 @@ def test_textos_nao_ficam_vazios_e_cabem():
 
 ---
 
-### Tarefa 6: Banco, cardápio e repositório
+### Task 6: Banco, cardápio e repositório
 
 **Files:**
 - Create: `supabase/` (via `supabase init`), `supabase/migrations/<timestamp>_cardapio.sql`, `supabase/seed.sql`, `backend/app/cardapio/repositorio.py`, `backend/tests/cardapio/test_repositorio.py`, `backend/tests/cardapio/test_seed.py`
@@ -371,7 +371,7 @@ e `test_repositorio.py` com o cache (segunda chamada dentro de 10 min não consu
 
 ---
 
-### Tarefa 7: Cliente LLM e agente com ferramenta e guarda
+### Task 7: Cliente LLM e agente com ferramenta e guarda
 
 **Files:**
 - Create: `backend/app/llm/cliente.py`, `backend/app/agente/prompts.py`, `backend/app/agente/agente.py`, `backend/tests/agente/test_agente.py`, `backend/tests/agente/llm_falso.py`
@@ -409,7 +409,7 @@ Prompt de sistema (em `prompts.py`): português do Brasil; o agente é "o garço
 
 ---
 
-### Tarefa 8: Serviço e endpoint `POST /v1/sugestoes`
+### Task 8: Serviço e endpoint `POST /v1/sugestoes`
 
 **Files:**
 - Create: `backend/app/sugestoes/esquemas.py`, `backend/app/sugestoes/servico.py`, `backend/tests/sugestoes/test_servico.py`, `backend/tests/sugestoes/test_api.py`
@@ -463,7 +463,7 @@ Comportamento: carrega pratos do repositório; roda o agente com `asyncio.timeou
 
 ---
 
-### Tarefa 9: Avaliação de provedores e backend publicado
+### Task 9: Avaliação de provedores e backend publicado
 
 **Files:**
 - Create: `backend/evals/frases.jsonl`, `backend/evals/rodar.py`, a configuração de deploy que a documentação atual da Vercel pedir para FastAPI (por exemplo `backend/vercel.json`)
@@ -482,7 +482,7 @@ Comportamento: carrega pratos do repositório; roda o agente com `asyncio.timeou
 
 ---
 
-### Tarefa 10: Frontend base, tipos, API e sessão
+### Task 10: Frontend base, tipos, API e sessão
 
 **Files:**
 - Create: projeto `frontend/` (create-next-app com TypeScript, App Router, Tailwind, ESLint), `frontend/lib/tipos.ts`, `frontend/lib/api.ts`, `frontend/lib/sessao.ts`, `frontend/app/layout.tsx`, `frontend/app/globals.css`, `frontend/tests/unit/api.test.ts`, `frontend/tests/unit/sessao.test.ts`, `frontend/vitest.config.ts`
@@ -510,7 +510,7 @@ Comportamento: carrega pratos do repositório; roda o agente com `asyncio.timeou
 
 ---
 
-### Tarefa 11: Telas de início, pensando e resultado (A3)
+### Task 11: Telas de início, pensando e resultado (A3)
 
 **Files:**
 - Create: `frontend/components/Compositor.tsx`, `Pensando.tsx`, `Decisao.tsx`, `PratoPrincipal.tsx`, `Alternativas.tsx`, `Entendido.tsx`, `SeloDemonstracao.tsx`; `frontend/tests/unit/telas.test.tsx`
@@ -541,7 +541,7 @@ Antes de codar: carregar a skill impeccable e usar o mockup A3 como referência.
 
 ---
 
-### Tarefa 12: Sem resultado, falha amigável, carrinho e confirmação
+### Task 12: Sem resultado, falha amigável, carrinho e confirmação
 
 **Files:**
 - Create: `frontend/components/SemResultado.tsx`, `FalhaAmigavel.tsx`, `Carrinho.tsx`, `Confirmacao.tsx`, `frontend/lib/carrinho.ts`, `frontend/tests/unit/carrinho.test.ts`, `frontend/tests/unit/estados.test.tsx`
@@ -563,7 +563,7 @@ Antes de codar: carregar a skill impeccable e usar o mockup A3 como referência.
 
 ---
 
-### Tarefa 13: Movimento, polimento e acessibilidade
+### Task 13: Movimento, polimento e acessibilidade
 
 **Files:**
 - Create: `frontend/lib/movimento.ts`
@@ -580,7 +580,7 @@ Antes de codar: carregar a skill impeccable e usar o mockup A3 como referência.
 
 ---
 
-### Tarefa 14: Testes de ponta a ponta, screenshots e README
+### Task 14: Testes de ponta a ponta, screenshots e README
 
 **Files:**
 - Create: `frontend/playwright.config.ts`, `frontend/tests/e2e/fluxo.spec.ts`, `docs/screenshots/*.png`, `README.md`
