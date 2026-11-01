@@ -101,3 +101,37 @@ async def test_repositorio_quebrado_levanta_cardapio_indisponivel():
         await sugerir(
             PedidoSugestao(texto="algo"), RepositorioQuebrado(), LLMQueFalha(), 5
         )
+
+
+async def test_log_do_fallback_nao_vaza_o_texto_do_usuario(repo, caplog):
+    class LLMVazador:
+        async def conversar(self, mensagens, ferramentas=None, json=False):
+            raise ValueError("input inválido: segredo do usuario xyzzy")
+
+    with caplog.at_level("DEBUG", logger="sugestoes"):
+        await sugerir(PedidoSugestao(texto="xyzzy quentinho"), repo, LLMVazador(), 5)
+    assert "ValueError" in caplog.text
+    assert "xyzzy" not in caplog.text
+
+
+async def test_log_do_repositorio_nao_vaza_mensagem(caplog):
+    class RepoVazador:
+        async def pratos(self):
+            raise ConnectionError("senha=hunter2")
+
+    with (
+        caplog.at_level("DEBUG", logger="sugestoes"),
+        pytest.raises(CardapioIndisponivel),
+    ):
+        await sugerir(PedidoSugestao(texto="algo"), RepoVazador(), LLMQueFalha(), 5)
+    assert "ConnectionError" in caplog.text
+    assert "hunter2" not in caplog.text
+
+
+async def test_erro_nao_openai_do_agente_cai_em_demonstracao(repo, monkeypatch):
+    async def quebra(*a, **k):
+        raise ValueError("bug no agente")
+
+    monkeypatch.setattr("app.sugestoes.servico.rodar_agente", quebra)
+    r = await sugerir(PedidoSugestao(texto="algo leve"), repo, LLMQueFalha(), 5)
+    assert r.modo == "demonstracao" and r.status == "ok"

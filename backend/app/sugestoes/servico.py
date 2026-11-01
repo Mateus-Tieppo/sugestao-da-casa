@@ -29,6 +29,10 @@ class CardapioIndisponivel(Exception):
     """O repositório não conseguiu entregar o cardápio."""
 
 
+class SugestaoIndisponivel(Exception):
+    """Nem o modo demonstração conseguiu responder."""
+
+
 def _etiquetas(prato: Prato, criterios: Criterios) -> list[str]:
     atendidas = Criterios(restricoes=criterios.restricoes & prato.atende)
     return [rotulo for _, rotulo in rotulos(atendidas)] + [f"{prato.tempo_min} min"]
@@ -153,7 +157,8 @@ async def sugerir(
     try:
         pratos = await repo.pratos()
     except Exception as e:
-        log.warning("cardápio indisponível: %s: %s", type(e).__name__, e)
+        # só a classe: a mensagem pode carregar dados do pedido ou credenciais
+        log.warning("cardápio indisponível: %s", type(e).__name__)
         raise CardapioIndisponivel from e
 
     texto = (pedido.texto or "").strip() or None
@@ -166,7 +171,9 @@ async def sugerir(
             )
         return _resposta_do_agente(resultado)
     except Exception as e:  # noqa: BLE001 - qualquer falha do LLM cai na demonstração
-        log.warning(
-            "agente falhou, usando modo demonstração: %s: %s", type(e).__name__, e
-        )
+        log.warning("agente falhou, usando modo demonstração: %s", type(e).__name__)
+    try:
         return _demonstracao(texto, pedido.criterios, prato_atual, pratos)
+    except Exception as e:
+        log.error("modo demonstração falhou: %s", type(e).__name__)
+        raise SugestaoIndisponivel from e

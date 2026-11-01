@@ -13,7 +13,7 @@ from app.cardapio.repositorio import (
 from app.config import Settings, get_settings
 from app.llm.cliente import ClienteLLM, ClienteOpenAICompativel
 from app.sugestoes.esquemas import PedidoSugestao, RespostaSugestao
-from app.sugestoes.servico import CardapioIndisponivel, sugerir
+from app.sugestoes.servico import CardapioIndisponivel, SugestaoIndisponivel, sugerir
 
 app = FastAPI(title="Sugestão da Casa")
 
@@ -48,6 +48,11 @@ def obter_llm(settings: Annotated[Settings, Depends(obter_settings)]) -> Cliente
 @app.exception_handler(CardapioIndisponivel)
 async def _cardapio_indisponivel(request: Request, exc: CardapioIndisponivel):
     return JSONResponse(status_code=503, content={"detalhe": "cardapio_indisponivel"})
+
+
+@app.exception_handler(SugestaoIndisponivel)
+async def _sugestao_indisponivel(request: Request, exc: SugestaoIndisponivel):
+    return JSONResponse(status_code=503, content={"detalhe": "indisponivel"})
 
 
 @app.get("/health")
