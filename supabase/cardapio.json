@@ -1,0 +1,2924 @@
+{
+  "restaurantes": [
+    {
+      "id": "e4d5a108-9b13-4eb9-adbb-2d4819b6c076",
+      "nome": "Vó Lina Caldos",
+      "taxa_entrega_centavos": 600,
+      "tempo_entrega_min": 25,
+      "pratos": [
+        {
+          "id": "0c75265d-9c23-40a1-a08a-714dc09dab4d",
+          "nome": "Caldo verde da Vó Lina",
+          "descricao": "Couve fininha, batata cremosa e linguiça defumada, daquele jeito que abraça.",
+          "preco_centavos": 3200,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "couve",
+            "batata",
+            "linguiça",
+            "cebola",
+            "alho",
+            "azeite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 25,
+          "picancia": 10,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "02484c2c-0e2d-4909-b5b3-73d23231185f",
+          "nome": "Canja de galinha",
+          "descricao": "Arroz macio, frango desfiado e cenoura num caldo dourado e limpinho.",
+          "preco_centavos": 2800,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "frango",
+            "arroz",
+            "cenoura",
+            "cebola",
+            "salsinha",
+            "limão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 20,
+          "picancia": 5,
+          "conforto": 95,
+          "foto_url": null
+        },
+        {
+          "id": "e3910973-cdb2-400c-a9eb-c8590fa9d80c",
+          "nome": "Caldo de abóbora com gengibre",
+          "descricao": "Abóbora assada batida com leite de coco e um toque de gengibre fresco.",
+          "preco_centavos": 2600,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "abóbora",
+            "gengibre",
+            "cebola",
+            "alho",
+            "leite de coco"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 90,
+          "peso": 20,
+          "picancia": 25,
+          "conforto": 80,
+          "foto_url": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "4360082d-aa40-46c2-8a02-3608a508076b",
+          "nome": "Sopa de legumes da horta",
+          "descricao": "Abóbora, cenoura, chuchu e mandioquinha em caldo leve, sem nada de pesado.",
+          "preco_centavos": 2400,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "abóbora",
+            "cenoura",
+            "chuchu",
+            "mandioquinha",
+            "batata",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 15,
+          "picancia": 0,
+          "conforto": 75,
+          "foto_url": null
+        },
+        {
+          "id": "1db19294-79e1-4004-abbd-13ec0d6072d5",
+          "nome": "Caldo de feijão com bacon",
+          "descricao": "Feijão batido, bacon crocante e couve na hora. Caldo de boteco, de verdade.",
+          "preco_centavos": 2900,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "feijão",
+            "bacon",
+            "couve",
+            "alho",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 60,
+          "picancia": 15,
+          "conforto": 90,
+          "foto_url": null
+        },
+        {
+          "id": "0612c9ad-1038-4204-a9f6-ea2bee20ba1b",
+          "nome": "Sopa de ervilha com presunto",
+          "descricao": "Ervilha fresca cremosa com cubinhos de presunto e cenoura.",
+          "preco_centavos": 2700,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "ervilha",
+            "presunto",
+            "batata",
+            "cenoura",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 50,
+          "picancia": 0,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "416c8ee4-53cc-4d58-a385-5e354b8c4aa8",
+          "nome": "Caldo de mandioca com carne seca",
+          "descricao": "Mandioca derretida com carne seca desfiada e coentro por cima.",
+          "preco_centavos": 3400,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "mandioca",
+            "carne seca",
+            "cebola",
+            "alho",
+            "coentro"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 65,
+          "picancia": 10,
+          "conforto": 90,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "d1d1327f-dbfa-430d-a401-1fc159a796fa",
+      "nome": "Casa Shoyu",
+      "taxa_entrega_centavos": 800,
+      "tempo_entrega_min": 30,
+      "pratos": [
+        {
+          "id": "c88d3c06-529e-4950-ac7e-dad1ee0633ea",
+          "nome": "Lámen shoyu leve",
+          "descricao": "Caldo claro de shoyu e gengibre, macarrão artesanal, frango e ovo mollet.",
+          "preco_centavos": 3800,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "macarrão",
+            "shoyu",
+            "frango",
+            "cebolinha",
+            "ovo",
+            "nori",
+            "gengibre"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose"
+          ],
+          "temperatura": 95,
+          "peso": 35,
+          "picancia": 20,
+          "conforto": 80,
+          "foto_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "a7710d7f-58fc-40b7-946f-2beed5bbf118",
+          "nome": "Combinado de sushi (16 peças)",
+          "descricao": "Salmão, atum e uramaki de pepino, com gengibre e wasabi.",
+          "preco_centavos": 6200,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "arroz",
+            "salmão",
+            "atum",
+            "nori",
+            "pepino",
+            "gengibre",
+            "wasabi",
+            "shoyu"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 5,
+          "peso": 40,
+          "picancia": 30,
+          "conforto": 35,
+          "foto_url": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "799f6424-6964-43eb-914c-57183ce91a3b",
+          "nome": "Temaki de salmão",
+          "descricao": "Cone crocante de nori com salmão fresco, cream cheese e cebolinha.",
+          "preco_centavos": 2900,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "arroz",
+            "salmão",
+            "nori",
+            "cream cheese",
+            "cebolinha",
+            "shoyu"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 10,
+          "peso": 30,
+          "picancia": 5,
+          "conforto": 40,
+          "foto_url": null
+        },
+        {
+          "id": "3eea913d-969f-40fd-8367-ee0a175c0e70",
+          "nome": "Yakisoba de legumes",
+          "descricao": "Macarrão salteado no wok com repolho, brócolis e cenoura.",
+          "preco_centavos": 3600,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "macarrão",
+            "shoyu",
+            "repolho",
+            "cenoura",
+            "brócolis",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 80,
+          "peso": 55,
+          "picancia": 10,
+          "conforto": 60,
+          "foto_url": null
+        },
+        {
+          "id": "1c4e9c10-252f-47aa-a505-af3e55fccbf8",
+          "nome": "Poke de salmão",
+          "descricao": "Salmão em cubos, abacate, manga e pepino sobre arroz de sushi.",
+          "preco_centavos": 4600,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "arroz",
+            "salmão",
+            "abacate",
+            "pepino",
+            "manga",
+            "gergelim",
+            "shoyu"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 5,
+          "peso": 35,
+          "picancia": 15,
+          "conforto": 30,
+          "foto_url": null
+        },
+        {
+          "id": "f6784a50-04bb-4b29-b7b2-71147109f4ce",
+          "nome": "Gyoza de legumes (6 un)",
+          "descricao": "Pastelzinho japonês grelhado, recheado de repolho, cogumelo e gengibre.",
+          "preco_centavos": 2700,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "massa",
+            "repolho",
+            "cenoura",
+            "cogumelo",
+            "shoyu",
+            "gengibre"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 80,
+          "peso": 40,
+          "picancia": 5,
+          "conforto": 65,
+          "foto_url": null
+        },
+        {
+          "id": "6ae1001a-24be-4d24-819e-710bc15ac4c8",
+          "nome": "Tigela de frango teriyaki",
+          "descricao": "Frango laqueado no teriyaki, brócolis e gergelim sobre arroz.",
+          "preco_centavos": 3400,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "arroz",
+            "frango",
+            "shoyu",
+            "gergelim",
+            "brócolis",
+            "cebolinha"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 85,
+          "peso": 50,
+          "picancia": 5,
+          "conforto": 70,
+          "foto_url": null
+        },
+        {
+          "id": "9d5ab752-1d3a-48f5-9a98-028094f02155",
+          "nome": "Lámen picante de missô com tofu",
+          "descricao": "Caldo de missô com pimenta, tofu dourado e cogumelo.",
+          "preco_centavos": 4000,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "macarrão",
+            "missô",
+            "tofu",
+            "cogumelo",
+            "pimenta",
+            "cebolinha",
+            "gergelim"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 95,
+          "peso": 45,
+          "picancia": 85,
+          "conforto": 75,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "a3ed1cf4-de42-4f4e-b9b1-ad6ee4748d6d",
+      "nome": "Tahine & Cia",
+      "taxa_entrega_centavos": 700,
+      "tempo_entrega_min": 30,
+      "pratos": [
+        {
+          "id": "95de414a-3c69-439a-b337-6ce57d4c8c59",
+          "nome": "Esfiha de carne (4 un)",
+          "descricao": "Massa macia de forno com carne temperada, tomate e limão.",
+          "preco_centavos": 2600,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "farinha de trigo",
+            "carne",
+            "tomate",
+            "cebola",
+            "limão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 75,
+          "peso": 45,
+          "picancia": 10,
+          "conforto": 60,
+          "foto_url": null
+        },
+        {
+          "id": "59d68fe2-ba15-4a05-b3c0-66e65d8e8055",
+          "nome": "Kibe assado com coalhada",
+          "descricao": "Trigo, carne e hortelã assados, com coalhada seca temperada.",
+          "preco_centavos": 3100,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "triguilho",
+            "carne",
+            "cebola",
+            "hortelã",
+            "iogurte"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo"
+          ],
+          "temperatura": 70,
+          "peso": 55,
+          "picancia": 5,
+          "conforto": 65,
+          "foto_url": null
+        },
+        {
+          "id": "a11c4d57-397a-4349-9fd8-9f6de07c2f49",
+          "nome": "Falafel com homus",
+          "descricao": "Bolinhos crocantes de grão-de-bico, homus cremoso e salada de pepino.",
+          "preco_centavos": 3300,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "grão-de-bico",
+            "tahine",
+            "salsinha",
+            "alho",
+            "limão",
+            "cebola",
+            "azeite",
+            "tomate",
+            "pepino"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 60,
+          "peso": 45,
+          "picancia": 10,
+          "conforto": 50,
+          "foto_url": null
+        },
+        {
+          "id": "4e40cc3c-b219-4654-b9ae-2d4fc83b3ee3",
+          "nome": "Shawarma de frango",
+          "descricao": "Pão árabe quentinho com frango no espeto, picles e molho de alho.",
+          "preco_centavos": 3500,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "pão",
+            "frango",
+            "alho",
+            "picles",
+            "tomate",
+            "tahine"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 80,
+          "peso": 60,
+          "picancia": 25,
+          "conforto": 75,
+          "foto_url": null
+        },
+        {
+          "id": "f3b158fd-1e51-45ae-b2bd-b1c4b91fbcb2",
+          "nome": "Tabule fresco",
+          "descricao": "Triguilho, tomate, salsinha e hortelã picados bem miúdos, com limão.",
+          "preco_centavos": 2200,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "triguilho",
+            "tomate",
+            "salsinha",
+            "hortelã",
+            "cebola",
+            "limão",
+            "azeite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 5,
+          "peso": 10,
+          "picancia": 0,
+          "conforto": 10,
+          "foto_url": null
+        },
+        {
+          "id": "b4aa9f89-3205-43b8-860e-e5ded5c3addf",
+          "nome": "Homus com pão sírio",
+          "descricao": "Pasta de grão-de-bico com tahine e azeite, para raspar com pão quente.",
+          "preco_centavos": 2400,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "grão-de-bico",
+            "tahine",
+            "azeite",
+            "limão",
+            "alho",
+            "pão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 30,
+          "peso": 35,
+          "picancia": 0,
+          "conforto": 50,
+          "foto_url": null
+        },
+        {
+          "id": "3c805c9f-1f41-4bcc-9537-3395de9d065c",
+          "nome": "Berinjela recheada com carne",
+          "descricao": "Berinjela assada recheada de carne moída, tomate e especiarias.",
+          "preco_centavos": 3800,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "berinjela",
+            "carne",
+            "tomate",
+            "cebola",
+            "canela"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 85,
+          "peso": 60,
+          "picancia": 15,
+          "conforto": 75,
+          "foto_url": null
+        },
+        {
+          "id": "376726b1-01a7-4726-88cd-85bc835f653f",
+          "nome": "Arroz com lentilha e cebola dourada",
+          "descricao": "Mjadra: arroz e lentilha com cominho e cebola caramelizada.",
+          "preco_centavos": 2500,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "arroz",
+            "lentilha",
+            "cebola",
+            "azeite",
+            "cominho"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 80,
+          "peso": 40,
+          "picancia": 5,
+          "conforto": 85,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "655c09c1-ee9c-4708-956d-50a8f22ddcfc",
+      "nome": "Cozinha da Dona Zefa",
+      "taxa_entrega_centavos": 650,
+      "tempo_entrega_min": 35,
+      "pratos": [
+        {
+          "id": "f8b1f70a-6d3b-47ca-b7c5-d8e58f37edbc",
+          "nome": "Baião de dois com queijo coalho",
+          "descricao": "Arroz, feijão-de-corda, queijo coalho dourado e manteiga de garrafa.",
+          "preco_centavos": 3600,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "arroz",
+            "feijão-de-corda",
+            "queijo coalho",
+            "manteiga",
+            "coentro",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 90,
+          "peso": 80,
+          "picancia": 10,
+          "conforto": 95,
+          "foto_url": null
+        },
+        {
+          "id": "6aee8692-a0e7-4d09-8a51-33c32517e4a7",
+          "nome": "Carne de sol com macaxeira",
+          "descricao": "Carne de sol macia na manteiga de garrafa, com macaxeira cozida.",
+          "preco_centavos": 4900,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "carne de sol",
+            "macaxeira",
+            "manteiga",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 85,
+          "picancia": 10,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "be66592b-b89a-4602-b87f-e68d3a86346f",
+          "nome": "Cuscuz nordestino com ovo",
+          "descricao": "Flocão de milho fofinho com ovo mexido e queijo coalho.",
+          "preco_centavos": 1800,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "flocão de milho",
+            "ovo",
+            "queijo coalho",
+            "manteiga"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 50,
+          "picancia": 0,
+          "conforto": 80,
+          "foto_url": null
+        },
+        {
+          "id": "bceaedf8-aa0e-4423-8a99-0bacf1e06214",
+          "nome": "Tapioca de coco com queijo",
+          "descricao": "Tapioca na chapa, coco ralado e queijo coalho derretido.",
+          "preco_centavos": 1600,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "tapioca",
+            "coco",
+            "queijo coalho"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 70,
+          "peso": 20,
+          "picancia": 0,
+          "conforto": 55,
+          "foto_url": null
+        },
+        {
+          "id": "4126bffa-fdfa-4df3-aedb-f740e99ecd1e",
+          "nome": "Moqueca de banana-da-terra",
+          "descricao": "Banana-da-terra no leite de coco, dendê, pimentão e coentro. Vegana.",
+          "preco_centavos": 3900,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "banana-da-terra",
+            "leite de coco",
+            "tomate",
+            "pimentão",
+            "cebola",
+            "coentro",
+            "dendê"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 90,
+          "peso": 55,
+          "picancia": 35,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "7bb54785-ec14-4021-89a0-181cdf25ade0",
+          "nome": "Feijão tropeiro",
+          "descricao": "Feijão, linguiça, bacon, ovo e couve, com farinha de mandioca.",
+          "preco_centavos": 3400,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "feijão",
+            "farinha de mandioca",
+            "linguiça",
+            "bacon",
+            "ovo",
+            "couve"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose"
+          ],
+          "temperatura": 90,
+          "peso": 90,
+          "picancia": 15,
+          "conforto": 90,
+          "foto_url": null
+        },
+        {
+          "id": "7f702cdd-52d3-48d5-b288-640c19eb3fa9",
+          "nome": "Escondidinho de macaxeira com carne seca",
+          "descricao": "Purê de macaxeira, carne seca desfiada e queijo coalho gratinado.",
+          "preco_centavos": 4400,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "macaxeira",
+            "carne seca",
+            "queijo coalho",
+            "manteiga"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 90,
+          "picancia": 10,
+          "conforto": 95,
+          "foto_url": null
+        },
+        {
+          "id": "97797096-43ce-41e3-87f5-b882392b2aca",
+          "nome": "Acarajé com vatapá",
+          "descricao": "Bolinho de feijão-fradinho frito no dendê, vatapá, camarão e pimenta.",
+          "preco_centavos": 2700,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "feijão-fradinho",
+            "camarão",
+            "dendê",
+            "amendoim",
+            "pimenta",
+            "cebola"
+          ],
+          "atende": [
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 85,
+          "peso": 75,
+          "picancia": 70,
+          "conforto": 70,
+          "foto_url": null
+        },
+        {
+          "id": "2b10c92a-c03f-4fac-b58b-05388ccc1c9a",
+          "nome": "Pé de moleque caseiro",
+          "descricao": "Amendoim crocante na rapadura, no ponto certo de quebrar.",
+          "preco_centavos": 1200,
+          "tempo_preparo_min": 0,
+          "ingredientes": [
+            "amendoim",
+            "rapadura"
+          ],
+          "atende": [
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 20,
+          "peso": 40,
+          "picancia": 0,
+          "conforto": 50,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "1928b286-c7ac-4129-b014-dc7ca6c8c15f",
+      "nome": "Verde Folha",
+      "taxa_entrega_centavos": 500,
+      "tempo_entrega_min": 20,
+      "pratos": [
+        {
+          "id": "75f89436-8798-4c51-9abe-da932736d7ee",
+          "nome": "Salada de verdade com frango grelhado",
+          "descricao": "Alface, rúcula, quinoa, abacate e frango grelhado, com limão e azeite.",
+          "preco_centavos": 3400,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "alface",
+            "rúcula",
+            "tomate cereja",
+            "frango",
+            "quinoa",
+            "abacate",
+            "azeite",
+            "limão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 10,
+          "peso": 40,
+          "picancia": 0,
+          "conforto": 15,
+          "foto_url": null
+        },
+        {
+          "id": "ef673a4b-5f13-403d-82b8-6fa5794ae786",
+          "nome": "Salada caprese",
+          "descricao": "Tomate maduro, mussarela de búfala, manjericão e azeite.",
+          "preco_centavos": 3100,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "tomate",
+            "mussarela",
+            "manjericão",
+            "azeite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 5,
+          "peso": 25,
+          "picancia": 0,
+          "conforto": 20,
+          "foto_url": null
+        },
+        {
+          "id": "dff0cb2b-22d2-4c7d-bda4-267d6945441f",
+          "nome": "Salada de grão-de-bico e hortelã",
+          "descricao": "Grão-de-bico, pepino, cebola roxa e hortelã com limão. Fresca e vegana.",
+          "preco_centavos": 2600,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "grão-de-bico",
+            "pepino",
+            "tomate",
+            "cebola",
+            "hortelã",
+            "limão",
+            "azeite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 5,
+          "peso": 25,
+          "picancia": 5,
+          "conforto": 15,
+          "foto_url": null
+        },
+        {
+          "id": "d28a040e-9b6b-48e8-a433-13507634ce5b",
+          "nome": "Salada de lentilha com legumes assados",
+          "descricao": "Lentilha, abobrinha e pimentão assados sobre rúcula, vinagre balsâmico.",
+          "preco_centavos": 2800,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "lentilha",
+            "abobrinha",
+            "pimentão",
+            "cenoura",
+            "rúcula",
+            "azeite",
+            "vinagre"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 35,
+          "peso": 35,
+          "picancia": 0,
+          "conforto": 30,
+          "foto_url": null
+        },
+        {
+          "id": "c230fdb8-547b-4ecd-8bbd-9f5f4201281c",
+          "nome": "Salada Caesar de frango",
+          "descricao": "Alface-americana, frango grelhado, parmesão e crouton, molho caesar.",
+          "preco_centavos": 3600,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "alface",
+            "frango",
+            "parmesão",
+            "crouton",
+            "maionese"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar"
+          ],
+          "temperatura": 10,
+          "peso": 50,
+          "picancia": 5,
+          "conforto": 30,
+          "foto_url": null
+        },
+        {
+          "id": "7b7f8024-e7d9-43e8-a9c0-0d6719cd11ce",
+          "nome": "Salada tropical com salmão",
+          "descricao": "Folha verde, salmão grelhado, manga, abacate e castanha-de-caju.",
+          "preco_centavos": 4800,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "folha verde",
+            "salmão",
+            "manga",
+            "abacate",
+            "castanha-de-caju",
+            "mostarda"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 5,
+          "peso": 35,
+          "picancia": 5,
+          "conforto": 15,
+          "foto_url": null
+        },
+        {
+          "id": "35947d6f-fdd4-404d-b665-9c94d8146860",
+          "nome": "Wrap vegetal",
+          "descricao": "Tortilha de trigo com homus, cenoura, pepino e repolho roxo.",
+          "preco_centavos": 2700,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "tortilha de trigo",
+            "grão-de-bico",
+            "cenoura",
+            "pepino",
+            "repolho",
+            "alface"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 20,
+          "peso": 35,
+          "picancia": 5,
+          "conforto": 30,
+          "foto_url": null
+        },
+        {
+          "id": "c414d205-d209-468b-b4ff-52fde0c03653",
+          "nome": "Gaspacho gelado",
+          "descricao": "Tomate, pepino e pimentão batidos, gelados, com fio de azeite.",
+          "preco_centavos": 2200,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "tomate",
+            "pepino",
+            "pimentão",
+            "cebola",
+            "azeite",
+            "vinagre"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 0,
+          "peso": 10,
+          "picancia": 15,
+          "conforto": 5,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "89355746-1bd5-48ff-bff4-61567b62fb3e",
+      "nome": "Bowl Bom",
+      "taxa_entrega_centavos": 450,
+      "tempo_entrega_min": 20,
+      "pratos": [
+        {
+          "id": "e302f6eb-88a1-4438-b783-4e4d9cd444d9",
+          "nome": "Bowl vegano de quinoa",
+          "descricao": "Quinoa, grão-de-bico, abóbora assada, couve e molho de tahine.",
+          "preco_centavos": 1400,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "quinoa",
+            "grão-de-bico",
+            "abóbora",
+            "couve",
+            "cenoura",
+            "tahine"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 35,
+          "peso": 35,
+          "picancia": 5,
+          "conforto": 40,
+          "foto_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "f9bf9188-e8b0-4595-b36b-aca1b0ba611c",
+          "nome": "Bowl de frango e batata-doce",
+          "descricao": "Frango grelhado, batata-doce, arroz integral, brócolis e ovo cozido.",
+          "preco_centavos": 2900,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "frango",
+            "batata-doce",
+            "arroz integral",
+            "brócolis",
+            "ovo"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose"
+          ],
+          "temperatura": 60,
+          "peso": 50,
+          "picancia": 5,
+          "conforto": 55,
+          "foto_url": null
+        },
+        {
+          "id": "bea8fe04-b1a4-4032-aa79-388a12b272e7",
+          "nome": "Bowl de salmão com abacate",
+          "descricao": "Salmão, arroz, abacate, edamame e pepino com gergelim.",
+          "preco_centavos": 4200,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "salmão",
+            "arroz",
+            "abacate",
+            "edamame",
+            "pepino",
+            "gergelim"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 15,
+          "peso": 40,
+          "picancia": 5,
+          "conforto": 30,
+          "foto_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "24b44555-e038-4a26-96a6-16706e5849ff",
+          "nome": "Bowl de açaí com granola",
+          "descricao": "Açaí batido com banana, morango, granola crocante e mel.",
+          "preco_centavos": 2200,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "açaí",
+            "banana",
+            "morango",
+            "granola",
+            "mel"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 0,
+          "peso": 45,
+          "picancia": 0,
+          "conforto": 60,
+          "foto_url": null
+        },
+        {
+          "id": "5d69bd76-fbcd-4e06-b0c4-25aa976acf26",
+          "nome": "Bowl mexicano vegano",
+          "descricao": "Arroz, feijão-preto, milho, abacate, tomate e jalapeño.",
+          "preco_centavos": 2400,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "arroz",
+            "feijão preto",
+            "milho",
+            "abacate",
+            "tomate",
+            "jalapeño",
+            "limão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 45,
+          "peso": 50,
+          "picancia": 60,
+          "conforto": 45,
+          "foto_url": null
+        },
+        {
+          "id": "4b6fd71e-d8c0-4a7e-a1af-24c3cca383d4",
+          "nome": "Bowl de tofu com legumes salteados",
+          "descricao": "Tofu dourado, brócolis e cenoura salteados sobre arroz integral.",
+          "preco_centavos": 2700,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "tofu",
+            "arroz integral",
+            "brócolis",
+            "cenoura",
+            "shoyu",
+            "gergelim"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 65,
+          "peso": 40,
+          "picancia": 15,
+          "conforto": 45,
+          "foto_url": null
+        },
+        {
+          "id": "eb0a301c-81ab-415a-ae17-b38610d40a79",
+          "nome": "Bowl de carne com purê de mandioquinha",
+          "descricao": "Carne em tiras, purê cremoso de mandioquinha, couve e ovo.",
+          "preco_centavos": 3300,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "carne",
+            "mandioquinha",
+            "manteiga",
+            "couve",
+            "ovo"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten"
+          ],
+          "temperatura": 80,
+          "peso": 70,
+          "picancia": 5,
+          "conforto": 80,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "c3353ccd-3d5f-4f7a-8c32-7ec394993168",
+      "nome": "Massa Madre",
+      "taxa_entrega_centavos": 900,
+      "tempo_entrega_min": 35,
+      "pratos": [
+        {
+          "id": "87051020-a17f-4971-adcb-7baa23b0c1a6",
+          "nome": "Fettuccine ao molho branco",
+          "descricao": "Massa fresca com creme de leite, parmesão e noz-moscada.",
+          "preco_centavos": 4200,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "massa",
+            "creme de leite",
+            "parmesão",
+            "manteiga",
+            "noz-moscada",
+            "ovo"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "vegetariano"
+          ],
+          "temperatura": 90,
+          "peso": 90,
+          "picancia": 0,
+          "conforto": 95,
+          "foto_url": null
+        },
+        {
+          "id": "5f6b54fd-756e-4f4d-ad85-6a194136e3dc",
+          "nome": "Espaguete à carbonara",
+          "descricao": "Ovo, bacon crocante, parmesão e muita pimenta-do-reino.",
+          "preco_centavos": 4400,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "massa",
+            "ovo",
+            "bacon",
+            "parmesão",
+            "pimenta-do-reino"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar"
+          ],
+          "temperatura": 90,
+          "peso": 85,
+          "picancia": 5,
+          "conforto": 90,
+          "foto_url": null
+        },
+        {
+          "id": "304d4a2f-93cc-4405-b2ec-bf3aa71fad8d",
+          "nome": "Penne ao sugo",
+          "descricao": "Molho de tomate fresco, manjericão e alho. Simples e vegano.",
+          "preco_centavos": 3100,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "massa",
+            "tomate",
+            "manjericão",
+            "alho",
+            "azeite",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 55,
+          "picancia": 5,
+          "conforto": 70,
+          "foto_url": null
+        },
+        {
+          "id": "edd78aff-55be-47a1-bc60-fba6d1415a40",
+          "nome": "Lasanha à bolonhesa",
+          "descricao": "Camadas de massa, molho de carne, presunto e muita mussarela gratinada.",
+          "preco_centavos": 4600,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "massa",
+            "carne",
+            "tomate",
+            "mussarela",
+            "presunto",
+            "queijo"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 95,
+          "picancia": 5,
+          "conforto": 98,
+          "foto_url": null
+        },
+        {
+          "id": "6ffe6bd2-26ef-4ac2-91bf-1ecc6544ff46",
+          "nome": "Nhoque de batata ao pesto",
+          "descricao": "Nhoque macio com pesto de manjericão, castanha-de-caju e parmesão.",
+          "preco_centavos": 3900,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "nhoque",
+            "batata",
+            "manjericão",
+            "castanha-de-caju",
+            "parmesão",
+            "azeite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 80,
+          "peso": 70,
+          "picancia": 0,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "6ac47835-5c59-4974-8e81-597141970842",
+          "nome": "Risoto de cogumelos",
+          "descricao": "Arroz arbóreo cremoso com cogumelos e parmesão.",
+          "preco_centavos": 4700,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "arroz",
+            "cogumelo",
+            "caldo de legumes",
+            "parmesão",
+            "manteiga",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 90,
+          "peso": 75,
+          "picancia": 0,
+          "conforto": 90,
+          "foto_url": null
+        },
+        {
+          "id": "b7276793-8ac6-4fd9-b4dd-35f23e64d650",
+          "nome": "Macarrão ao alho e óleo",
+          "descricao": "Alho dourado, azeite e pimenta dedo-de-moça.",
+          "preco_centavos": 2700,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "massa",
+            "alho",
+            "azeite",
+            "pimenta dedo-de-moça",
+            "salsinha"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 50,
+          "picancia": 60,
+          "conforto": 60,
+          "foto_url": null
+        },
+        {
+          "id": "a2ff5baf-5c42-4ed0-98e8-a94f775ca253",
+          "nome": "Talharim de arroz com legumes",
+          "descricao": "Sem glúten: talharim de arroz, abobrinha, cenoura e manjericão.",
+          "preco_centavos": 3300,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "talharim de arroz",
+            "abobrinha",
+            "cenoura",
+            "tomate",
+            "manjericão",
+            "azeite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 80,
+          "peso": 40,
+          "picancia": 5,
+          "conforto": 55,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "34c46c76-dd01-4738-9978-2b218d634345",
+      "nome": "Burger do Zé",
+      "taxa_entrega_centavos": 750,
+      "tempo_entrega_min": 25,
+      "pratos": [
+        {
+          "id": "33bb6ebb-232d-489b-9d55-52e67933fa56",
+          "nome": "X-Burger artesanal",
+          "descricao": "Blend bovino na chapa, cheddar derretido, alface, tomate e maionese da casa.",
+          "preco_centavos": 3300,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "pão",
+            "carne",
+            "queijo cheddar",
+            "alface",
+            "tomate",
+            "maionese"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar"
+          ],
+          "temperatura": 90,
+          "peso": 85,
+          "picancia": 10,
+          "conforto": 80,
+          "foto_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "8ef622ed-9cc5-490e-a419-986bacb326fb",
+          "nome": "X-Bacon duplo",
+          "descricao": "Dois hambúrgueres, bacon em tiras, cheddar e maionese.",
+          "preco_centavos": 4200,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "pão",
+            "carne",
+            "bacon",
+            "queijo cheddar",
+            "maionese"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar"
+          ],
+          "temperatura": 95,
+          "peso": 98,
+          "picancia": 10,
+          "conforto": 90,
+          "foto_url": null
+        },
+        {
+          "id": "946b8cdd-50bc-4bc1-8a72-6f8b39bf41be",
+          "nome": "Hambúrguer de grão-de-bico",
+          "descricao": "Burger vegano de grão-de-bico com rúcula, tomate e molho de tahine.",
+          "preco_centavos": 3100,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "pão",
+            "grão-de-bico",
+            "rúcula",
+            "tomate",
+            "tahine",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 75,
+          "peso": 55,
+          "picancia": 10,
+          "conforto": 55,
+          "foto_url": null
+        },
+        {
+          "id": "1da1b5ab-4df8-4f10-893e-bf0fc3318bb2",
+          "nome": "Sanduíche de frango crocante",
+          "descricao": "Frango empanado bem crocante, alface, picles e maionese.",
+          "preco_centavos": 3000,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "pão",
+            "frango",
+            "farinha de rosca",
+            "alface",
+            "maionese",
+            "picles"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose"
+          ],
+          "temperatura": 85,
+          "peso": 65,
+          "picancia": 35,
+          "conforto": 70,
+          "foto_url": null
+        },
+        {
+          "id": "6ea2eaef-53b0-46d3-846b-54835180dd59",
+          "nome": "Cachorro-quente completo",
+          "descricao": "Salsicha, milho, ervilha, batata palha e molho.",
+          "preco_centavos": 2200,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "pão",
+            "salsicha",
+            "milho",
+            "ervilha",
+            "batata palha",
+            "tomate"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 85,
+          "peso": 60,
+          "picancia": 10,
+          "conforto": 65,
+          "foto_url": null
+        },
+        {
+          "id": "a0edfd07-e982-4972-9b69-77952f3c4b7e",
+          "nome": "Batata frita com cheddar e bacon",
+          "descricao": "Batata sequinha, cheddar cremoso e farofa de bacon.",
+          "preco_centavos": 2500,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "batata",
+            "queijo cheddar",
+            "bacon"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 95,
+          "picancia": 5,
+          "conforto": 92,
+          "foto_url": null
+        },
+        {
+          "id": "797db728-9d3e-4d09-9a2c-d28f5a0ea899",
+          "nome": "Sanduíche natural de frango",
+          "descricao": "Pão integral, frango desfiado, cenoura ralada e alface. Leve.",
+          "preco_centavos": 1900,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "pão",
+            "frango",
+            "cenoura",
+            "alface",
+            "requeijão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo"
+          ],
+          "temperatura": 10,
+          "peso": 25,
+          "picancia": 0,
+          "conforto": 20,
+          "foto_url": null
+        },
+        {
+          "id": "dd9e113b-0e17-4817-9fd7-8a860b027d01",
+          "nome": "Pão de queijo (10 un)",
+          "descricao": "Polvilho e queijo minas, crocante por fora e macio por dentro.",
+          "preco_centavos": 1600,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "polvilho",
+            "queijo minas",
+            "ovo",
+            "leite",
+            "óleo"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 45,
+          "picancia": 0,
+          "conforto": 70,
+          "foto_url": null
+        },
+        {
+          "id": "1ccad7e1-c59e-49c6-a804-89842543ea09",
+          "nome": "Hambúrguer picante de jalapeño",
+          "descricao": "Burger bovino, jalapeño, queijo pepper jack e maionese de pimenta.",
+          "preco_centavos": 3800,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "pão",
+            "carne",
+            "queijo",
+            "jalapeño",
+            "pimenta",
+            "maionese"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar"
+          ],
+          "temperatura": 90,
+          "peso": 85,
+          "picancia": 95,
+          "conforto": 80,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "8ef98cfc-b5c2-43d3-82c9-e355e30ee658",
+      "nome": "Doceria Açúcar & Afeto",
+      "taxa_entrega_centavos": 500,
+      "tempo_entrega_min": 15,
+      "pratos": [
+        {
+          "id": "97a5ef56-9e37-4fbc-ac29-31bb03b1a40e",
+          "nome": "Brigadeiro gourmet (caixa com 4)",
+          "descricao": "Chocolate belga com granulado crocante, enrolado na hora.",
+          "preco_centavos": 900,
+          "tempo_preparo_min": 0,
+          "ingredientes": [
+            "leite condensado",
+            "chocolate",
+            "manteiga"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 20,
+          "peso": 40,
+          "picancia": 0,
+          "conforto": 70,
+          "foto_url": null
+        },
+        {
+          "id": "43b0409d-6760-4e04-91d9-da900b31ddd3",
+          "nome": "Brownie de chocolate",
+          "descricao": "Casquinha crocante e miolo úmido, com pedaços de chocolate meio amargo.",
+          "preco_centavos": 1500,
+          "tempo_preparo_min": 5,
+          "ingredientes": [
+            "chocolate",
+            "farinha de trigo",
+            "ovo",
+            "manteiga",
+            "açúcar"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "vegetariano"
+          ],
+          "temperatura": 55,
+          "peso": 70,
+          "picancia": 0,
+          "conforto": 90,
+          "foto_url": null
+        },
+        {
+          "id": "b8c51747-f0f3-4c5d-9cb3-b16757ea0fca",
+          "nome": "Sorbet de manga",
+          "descricao": "Manga madura batida e congelada, sem leite e sem glúten.",
+          "preco_centavos": 1400,
+          "tempo_preparo_min": 0,
+          "ingredientes": [
+            "manga",
+            "açúcar",
+            "limão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 0,
+          "peso": 5,
+          "picancia": 0,
+          "conforto": 20,
+          "foto_url": null
+        },
+        {
+          "id": "9626097a-8d3c-4846-a9b5-0037ae899dea",
+          "nome": "Pudim de leite",
+          "descricao": "Calda de caramelo, textura de veludo e nenhuma bolhinha.",
+          "preco_centavos": 1600,
+          "tempo_preparo_min": 0,
+          "ingredientes": [
+            "leite condensado",
+            "leite",
+            "ovo",
+            "açúcar"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "vegetariano"
+          ],
+          "temperatura": 5,
+          "peso": 60,
+          "picancia": 0,
+          "conforto": 75,
+          "foto_url": null
+        },
+        {
+          "id": "477b5556-4578-4ae3-a138-06537089b8a5",
+          "nome": "Mousse de maracujá vegano",
+          "descricao": "Maracujá com leite de coco, azedinho no ponto.",
+          "preco_centavos": 1500,
+          "tempo_preparo_min": 0,
+          "ingredientes": [
+            "maracujá",
+            "leite de coco",
+            "açúcar"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 5,
+          "peso": 30,
+          "picancia": 0,
+          "conforto": 35,
+          "foto_url": null
+        },
+        {
+          "id": "3676ba93-3228-438c-91ca-d9a0e9d41857",
+          "nome": "Torta de limão",
+          "descricao": "Base de biscoito, creme de limão e merengue maçaricado.",
+          "preco_centavos": 1800,
+          "tempo_preparo_min": 0,
+          "ingredientes": [
+            "biscoito",
+            "limão",
+            "leite condensado",
+            "creme de leite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 5,
+          "peso": 55,
+          "picancia": 0,
+          "conforto": 45,
+          "foto_url": null
+        },
+        {
+          "id": "8b947286-6c36-43e9-9fab-5e5862c16196",
+          "nome": "Bolo de cenoura com cobertura",
+          "descricao": "Fofinho, com cobertura de brigadeiro de panela.",
+          "preco_centavos": 1400,
+          "tempo_preparo_min": 0,
+          "ingredientes": [
+            "cenoura",
+            "farinha de trigo",
+            "ovo",
+            "chocolate",
+            "açúcar",
+            "óleo"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "vegetariano"
+          ],
+          "temperatura": 30,
+          "peso": 55,
+          "picancia": 0,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "9edd51de-7a9d-4c0a-aedb-2043e2ddcf75",
+          "nome": "Cookie vegano de aveia e banana",
+          "descricao": "Aveia, banana e gotas de cacau, sem ovo e sem leite.",
+          "preco_centavos": 1100,
+          "tempo_preparo_min": 0,
+          "ingredientes": [
+            "aveia",
+            "banana",
+            "cacau",
+            "açúcar"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 35,
+          "peso": 25,
+          "picancia": 0,
+          "conforto": 40,
+          "foto_url": null
+        },
+        {
+          "id": "eb73ac3c-4593-402f-b213-dbd4e96fff5b",
+          "nome": "Churros recheado (4 un)",
+          "descricao": "Crocante, passado na canela e recheado de doce de leite.",
+          "preco_centavos": 1700,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "farinha de trigo",
+            "doce de leite",
+            "açúcar",
+            "canela",
+            "ovo"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "vegetariano"
+          ],
+          "temperatura": 90,
+          "peso": 60,
+          "picancia": 0,
+          "conforto": 85,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "dcd745c3-0827-4b94-a5bd-2416787984d1",
+      "nome": "Tempero Tailandês",
+      "taxa_entrega_centavos": 800,
+      "tempo_entrega_min": 30,
+      "pratos": [
+        {
+          "id": "a6a1b0a7-d363-4518-8743-01c7759c42f8",
+          "nome": "Curry de coco",
+          "descricao": "Curry cremoso de leite de coco com grão-de-bico, abóbora e espinafre, com arroz de jasmim.",
+          "preco_centavos": 3600,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "leite de coco",
+            "pasta de curry",
+            "grão-de-bico",
+            "batata",
+            "abóbora",
+            "espinafre",
+            "arroz",
+            "coentro"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 90,
+          "peso": 60,
+          "picancia": 55,
+          "conforto": 85,
+          "foto_url": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "be07023e-1ec6-48da-b484-53d314e72357",
+          "nome": "Pad thai de camarão",
+          "descricao": "Talharim de arroz salteado com camarão, ovo, amendoim e limão.",
+          "preco_centavos": 4400,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "talharim de arroz",
+            "camarão",
+            "ovo",
+            "amendoim",
+            "broto de feijão",
+            "limão",
+            "molho de peixe"
+          ],
+          "atende": [
+            "sem_gluten",
+            "sem_lactose"
+          ],
+          "temperatura": 80,
+          "peso": 55,
+          "picancia": 35,
+          "conforto": 60,
+          "foto_url": null
+        },
+        {
+          "id": "20658401-590f-4fb3-a8fc-57d050ace0d1",
+          "nome": "Tom kha de frango",
+          "descricao": "Caldo de coco com capim-limão, gengibre, cogumelo e frango.",
+          "preco_centavos": 3700,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "leite de coco",
+            "frango",
+            "cogumelo",
+            "capim-limão",
+            "gengibre",
+            "pimenta"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 40,
+          "picancia": 60,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "b6490866-3350-4055-8624-aa22fd3fd442",
+          "nome": "Curry verde de frango",
+          "descricao": "Frango no curry verde, berinjela, manjericão e arroz de jasmim.",
+          "preco_centavos": 4000,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "leite de coco",
+            "frango",
+            "berinjela",
+            "pimenta verde",
+            "manjericão",
+            "arroz"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 55,
+          "picancia": 80,
+          "conforto": 75,
+          "foto_url": null
+        },
+        {
+          "id": "43b992bd-24ca-499e-9b2f-8779373f6c82",
+          "nome": "Salada de mamão verde",
+          "descricao": "Som tam: mamão verde, tomate, amendoim e pimenta com limão. Fogo e frescor.",
+          "preco_centavos": 2900,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "mamão verde",
+            "tomate",
+            "amendoim",
+            "limão",
+            "pimenta",
+            "alho"
+          ],
+          "atende": [
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 5,
+          "peso": 15,
+          "picancia": 95,
+          "conforto": 10,
+          "foto_url": null
+        },
+        {
+          "id": "b9df6686-65ae-4a39-b3ed-91735baf56ae",
+          "nome": "Rolinho primavera (4 un)",
+          "descricao": "Folha de arroz recheada de cenoura, repolho e talharim, com molho de amendoim.",
+          "preco_centavos": 2400,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "folha de arroz",
+            "cenoura",
+            "repolho",
+            "talharim de arroz",
+            "hortelã",
+            "amendoim"
+          ],
+          "atende": [
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 15,
+          "peso": 25,
+          "picancia": 10,
+          "conforto": 25,
+          "foto_url": null
+        },
+        {
+          "id": "85eb7eae-8ec5-4f18-a2b3-9090292703df",
+          "nome": "Arroz frito com legumes e ovo",
+          "descricao": "Arroz salteado no wok com ovo, ervilha, cenoura e cebolinha.",
+          "preco_centavos": 3000,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "arroz",
+            "ovo",
+            "cenoura",
+            "ervilha",
+            "cebolinha",
+            "shoyu"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 55,
+          "picancia": 10,
+          "conforto": 65,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "35fd8502-5907-4c00-ac9c-19d71324e7b4",
+      "nome": "Cantina Nonna Rosa",
+      "taxa_entrega_centavos": 1000,
+      "tempo_entrega_min": 40,
+      "pratos": [
+        {
+          "id": "c4a1fd67-e29d-42d6-be63-b21574f45607",
+          "nome": "Pizza margherita",
+          "descricao": "Molho de tomate, mussarela, manjericão e azeite, borda alta.",
+          "preco_centavos": 4900,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "massa",
+            "tomate",
+            "mussarela",
+            "manjericão",
+            "azeite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 90,
+          "peso": 70,
+          "picancia": 0,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "888087aa-6b61-4082-994f-23869a57fc96",
+          "nome": "Pizza de calabresa",
+          "descricao": "Calabresa fatiada, cebola e azeitona sobre mussarela.",
+          "preco_centavos": 5400,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "massa",
+            "mussarela",
+            "calabresa",
+            "cebola",
+            "azeitona"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 80,
+          "picancia": 15,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "78f446b0-362e-4997-9209-ef426fe24171",
+          "nome": "Pizza vegana de rúcula",
+          "descricao": "Tomate seco, rúcula e creme de castanha-de-caju, sem queijo.",
+          "preco_centavos": 5200,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "massa",
+            "tomate seco",
+            "rúcula",
+            "castanha-de-caju",
+            "azeite",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 60,
+          "picancia": 0,
+          "conforto": 70,
+          "foto_url": null
+        },
+        {
+          "id": "81db7454-54bd-427b-8e0b-c75b16fb6163",
+          "nome": "Pizza quatro queijos",
+          "descricao": "Mussarela, gorgonzola, provolone e parmesão.",
+          "preco_centavos": 5800,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "massa",
+            "mussarela",
+            "gorgonzola",
+            "provolone",
+            "parmesão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 90,
+          "peso": 90,
+          "picancia": 0,
+          "conforto": 92,
+          "foto_url": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          "id": "b53cd2c4-8631-46cd-96ce-753f79dc2cb7",
+          "nome": "Calzone de presunto e queijo",
+          "descricao": "Pizza dobrada, recheio generoso e crosta dourada.",
+          "preco_centavos": 4600,
+          "tempo_preparo_min": 18,
+          "ingredientes": [
+            "massa",
+            "presunto",
+            "mussarela",
+            "tomate"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 85,
+          "picancia": 0,
+          "conforto": 88,
+          "foto_url": null
+        },
+        {
+          "id": "2fe21a8c-820f-4391-b1f5-8dde4d47a7bb",
+          "nome": "Bruschetta de tomate (4 un)",
+          "descricao": "Pão tostado, tomate maduro, manjericão e alho.",
+          "preco_centavos": 2600,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "pão",
+            "tomate",
+            "manjericão",
+            "alho",
+            "azeite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 50,
+          "peso": 25,
+          "picancia": 0,
+          "conforto": 35,
+          "foto_url": null
+        },
+        {
+          "id": "731d6d43-dd6f-4f44-aab8-3cb74ac133b4",
+          "nome": "Pizza broto de frango com catupiry",
+          "descricao": "Frango desfiado e catupiry cremoso, tamanho individual.",
+          "preco_centavos": 4100,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "massa",
+            "frango",
+            "catupiry",
+            "molho de tomate"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 75,
+          "picancia": 0,
+          "conforto": 85,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "6bf85bc2-1ea2-47df-b4b0-279f4a179886",
+      "nome": "Boteco do Cais",
+      "taxa_entrega_centavos": 1200,
+      "tempo_entrega_min": 40,
+      "pratos": [
+        {
+          "id": "7e3c6dbe-f52b-4053-a07b-e965d99d86f6",
+          "nome": "Moqueca de peixe com pirão",
+          "descricao": "Posta de peixe no leite de coco e dendê, pirão e arroz.",
+          "preco_centavos": 6200,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "peixe",
+            "leite de coco",
+            "dendê",
+            "pimentão",
+            "tomate",
+            "coentro",
+            "farinha de mandioca"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 80,
+          "picancia": 30,
+          "conforto": 90,
+          "foto_url": null
+        },
+        {
+          "id": "302f7cb3-5f58-4f6c-a7f8-43f4029de0af",
+          "nome": "Camarão na moranga",
+          "descricao": "Camarão ao requeijão servido dentro da moranga assada.",
+          "preco_centavos": 6300,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "camarão",
+            "moranga",
+            "requeijão",
+            "alho",
+            "cebola",
+            "cheiro-verde"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_gluten",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 85,
+          "picancia": 5,
+          "conforto": 92,
+          "foto_url": null
+        },
+        {
+          "id": "cb524a28-cdb3-4cc2-b7db-97018b0f3895",
+          "nome": "Bobó de camarão",
+          "descricao": "Camarão no creme de mandioca, leite de coco e dendê.",
+          "preco_centavos": 5800,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "camarão",
+            "mandioca",
+            "leite de coco",
+            "dendê",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 80,
+          "picancia": 20,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "efa9385c-6db4-4d20-bb46-e0fecfad5e30",
+          "nome": "Isca de tilápia empanada",
+          "descricao": "Tilápia crocante com limão e molho tártaro.",
+          "preco_centavos": 4600,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "tilápia",
+            "farinha de rosca",
+            "limão",
+            "maionese"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_lactose"
+          ],
+          "temperatura": 80,
+          "peso": 65,
+          "picancia": 5,
+          "conforto": 60,
+          "foto_url": null
+        },
+        {
+          "id": "2e2e3ae9-d346-49b8-b072-fec6f40a3838",
+          "nome": "Ceviche de tilápia",
+          "descricao": "Tilápia curada no limão, cebola roxa, coentro e pimenta. Gelado.",
+          "preco_centavos": 4400,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "tilápia",
+            "limão",
+            "cebola",
+            "coentro",
+            "pimenta dedo-de-moça",
+            "milho"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 0,
+          "peso": 20,
+          "picancia": 60,
+          "conforto": 10,
+          "foto_url": null
+        },
+        {
+          "id": "c29df3c1-db7b-447d-8767-d752d7d107c7",
+          "nome": "Bacalhau à Gomes de Sá",
+          "descricao": "Lascas de bacalhau, batata, ovo, cebola e azeitona.",
+          "preco_centavos": 6200,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "bacalhau",
+            "batata",
+            "ovo",
+            "azeitona",
+            "cebola",
+            "azeite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose"
+          ],
+          "temperatura": 90,
+          "peso": 75,
+          "picancia": 0,
+          "conforto": 80,
+          "foto_url": null
+        },
+        {
+          "id": "73f34aab-869c-435f-ad34-26c140cdc001",
+          "nome": "Salmão grelhado com legumes",
+          "descricao": "Salmão suculento com abobrinha, cenoura e brócolis.",
+          "preco_centavos": 5200,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "salmão",
+            "abobrinha",
+            "cenoura",
+            "brócolis",
+            "azeite",
+            "limão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 70,
+          "peso": 35,
+          "picancia": 0,
+          "conforto": 40,
+          "foto_url": null
+        },
+        {
+          "id": "b21731a9-e898-4088-b0ff-80f509d1f727",
+          "nome": "Casquinha de siri",
+          "descricao": "Siri temperado, gratinado na casquinha com farofa crocante.",
+          "preco_centavos": 3400,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "siri",
+            "farinha de rosca",
+            "cebola",
+            "tomate",
+            "pimentão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 80,
+          "peso": 45,
+          "picancia": 10,
+          "conforto": 60,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "96b9cdf0-2964-42dd-b4b4-79b674bb79cb",
+      "nome": "Brasa Sul",
+      "taxa_entrega_centavos": 900,
+      "tempo_entrega_min": 35,
+      "pratos": [
+        {
+          "id": "94445988-d1f1-4416-9ab5-c92a54f99a8b",
+          "nome": "Feijoada completa",
+          "descricao": "Feijão preto, carnes defumadas, couve, farofa e laranja. Domingo todo dia.",
+          "preco_centavos": 4800,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "feijão preto",
+            "carne seca",
+            "linguiça",
+            "costela",
+            "bacon",
+            "couve",
+            "farinha de mandioca",
+            "laranja"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 98,
+          "picancia": 20,
+          "conforto": 98,
+          "foto_url": null
+        },
+        {
+          "id": "31b192d5-a7a0-4f33-878e-5844db3da60e",
+          "nome": "Marmita de picanha",
+          "descricao": "Picanha ao ponto, arroz, feijão, farofa e vinagrete.",
+          "preco_centavos": 5700,
+          "tempo_preparo_min": 20,
+          "ingredientes": [
+            "carne",
+            "arroz",
+            "feijão",
+            "farinha de mandioca",
+            "tomate",
+            "cebola"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 85,
+          "picancia": 5,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "7ec2385e-6f10-45cb-b9b2-c19ff1dca244",
+          "nome": "Costela no bafo com mandioca",
+          "descricao": "Costela cozida por horas, soltando do osso, com mandioca.",
+          "preco_centavos": 5900,
+          "tempo_preparo_min": 25,
+          "ingredientes": [
+            "costela",
+            "mandioca",
+            "cebola",
+            "alho"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 95,
+          "picancia": 10,
+          "conforto": 92,
+          "foto_url": null
+        },
+        {
+          "id": "16620e8f-9675-4307-b75d-e9e8426af8ea",
+          "nome": "Frango assado com batata",
+          "descricao": "Frango dourado com alecrim e batatas assadas no próprio molho.",
+          "preco_centavos": 3800,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "frango",
+            "batata",
+            "alho",
+            "alecrim",
+            "limão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 90,
+          "peso": 70,
+          "picancia": 0,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "e2cdac0b-257b-4849-ac88-4564e17cd439",
+          "nome": "Linguiça artesanal com vinagrete",
+          "descricao": "Linguiça de pernil na brasa, vinagrete fresco e pimenta.",
+          "preco_centavos": 3000,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "linguiça",
+            "tomate",
+            "cebola",
+            "pimentão",
+            "pimenta"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 85,
+          "peso": 70,
+          "picancia": 25,
+          "conforto": 70,
+          "foto_url": null
+        },
+        {
+          "id": "f8ca286a-a75e-4a7f-b2f3-7f9727d9465c",
+          "nome": "Prato feito do dia",
+          "descricao": "Arroz, feijão, ovo frito e batata frita. O clássico.",
+          "preco_centavos": 2100,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "arroz",
+            "feijão",
+            "ovo",
+            "batata"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 60,
+          "picancia": 0,
+          "conforto": 80,
+          "foto_url": null
+        }
+      ]
+    },
+    {
+      "id": "84fd4562-09bd-465d-ae0f-04f746bbc5b4",
+      "nome": "Cielito Mexicano",
+      "taxa_entrega_centavos": 800,
+      "tempo_entrega_min": 30,
+      "pratos": [
+        {
+          "id": "78076b33-03b5-4575-b560-72aed54e6018",
+          "nome": "Tacos de carne (3 un)",
+          "descricao": "Tortilha de milho, carne temperada, cebola, coentro e limão.",
+          "preco_centavos": 3400,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "tortilha de milho",
+            "carne",
+            "cebola",
+            "coentro",
+            "limão",
+            "pimenta"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 80,
+          "peso": 45,
+          "picancia": 60,
+          "conforto": 60,
+          "foto_url": null
+        },
+        {
+          "id": "475a011e-a293-437a-b787-331c29fbeeb1",
+          "nome": "Burrito de frango",
+          "descricao": "Tortilha de trigo recheada de frango, arroz, feijão e queijo.",
+          "preco_centavos": 3600,
+          "tempo_preparo_min": 12,
+          "ingredientes": [
+            "tortilha de trigo",
+            "frango",
+            "arroz",
+            "feijão",
+            "queijo",
+            "creme de leite"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo"
+          ],
+          "temperatura": 85,
+          "peso": 75,
+          "picancia": 40,
+          "conforto": 75,
+          "foto_url": null
+        },
+        {
+          "id": "cd586c8b-b04f-4bc7-87d1-b075b3add399",
+          "nome": "Nachos com guacamole",
+          "descricao": "Tortilha de milho crocante, guacamole cremoso e pimenta.",
+          "preco_centavos": 2900,
+          "tempo_preparo_min": 8,
+          "ingredientes": [
+            "tortilha de milho",
+            "abacate",
+            "tomate",
+            "cebola",
+            "limão",
+            "coentro",
+            "pimenta"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo",
+            "vegano",
+            "vegetariano"
+          ],
+          "temperatura": 20,
+          "peso": 50,
+          "picancia": 35,
+          "conforto": 40,
+          "foto_url": null
+        },
+        {
+          "id": "aba4df4e-5d33-4aa0-a31e-66218c8fcea5",
+          "nome": "Quesadilla de queijo",
+          "descricao": "Tortilha de trigo dourada com queijo derretido e pimentão.",
+          "preco_centavos": 2600,
+          "tempo_preparo_min": 10,
+          "ingredientes": [
+            "tortilha de trigo",
+            "mussarela",
+            "pimentão"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 60,
+          "picancia": 10,
+          "conforto": 75,
+          "foto_url": null
+        },
+        {
+          "id": "e2f00537-367b-4c84-8504-94039bb257c3",
+          "nome": "Chili con carne",
+          "descricao": "Carne em cubos, feijão vermelho e pimenta, cozidos devagar.",
+          "preco_centavos": 3800,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "carne",
+            "feijão vermelho",
+            "tomate",
+            "pimenta",
+            "cebola",
+            "cominho"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_lactose",
+            "sem_ovo"
+          ],
+          "temperatura": 95,
+          "peso": 80,
+          "picancia": 90,
+          "conforto": 85,
+          "foto_url": null
+        },
+        {
+          "id": "e2c70b6a-fe92-4f7d-bed2-bfcc5cacf9c2",
+          "nome": "Enchilada de legumes",
+          "descricao": "Tortilha de milho recheada de abobrinha e feijão, gratinada.",
+          "preco_centavos": 3300,
+          "tempo_preparo_min": 15,
+          "ingredientes": [
+            "tortilha de milho",
+            "abobrinha",
+            "milho",
+            "feijão",
+            "queijo",
+            "tomate"
+          ],
+          "atende": [
+            "sem_amendoim",
+            "sem_frutos_do_mar",
+            "sem_gluten",
+            "sem_ovo",
+            "vegetariano"
+          ],
+          "temperatura": 85,
+          "peso": 55,
+          "picancia": 45,
+          "conforto": 70,
+          "foto_url": null
+        }
+      ]
+    }
+  ]
+}
