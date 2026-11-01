@@ -4,6 +4,7 @@ import pytest
 
 from app.cardapio.repositorio import RepositorioArquivo
 from app.domain.filtro import passa_restricoes
+from app.domain.modelos import Eixo
 from app.sugestoes.esquemas import PedidoSugestao
 from app.sugestoes.servico import sugerir
 from tests.sugestoes.conftest import LLMQueFalha
@@ -33,6 +34,5 @@ async def test_fresquinho_e_rapido_traz_prato_fresco():
     r = await sugerir(
         PedidoSugestao(texto=EXEMPLOS[1]), repo, LLMQueFalha(), timeout_s=5
     )
-    from app.domain.modelos import Eixo
-
+    assert r.principal is not None
     assert pratos[r.principal.id].eixos[Eixo.temperatura] <= 40

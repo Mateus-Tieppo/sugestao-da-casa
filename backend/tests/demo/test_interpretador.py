@@ -1,3 +1,5 @@
+import pytest
+
 from app.demo.interpretador import interpretar, remover, rotulos
 from app.domain.ajustes import Ajuste
 from app.domain.modelos import Criterios, Eixo, Restricao
@@ -213,3 +215,30 @@ def test_rotulo_e_remover_doce():
     ]
     assert remover(c, "doce").quer_doce is False
     assert c.quer_doce
+
+
+@pytest.mark.parametrize(
+    "texto",
+    ["quero batata-doce", "bowl de batata doce", "batata doce assada", "algo quentinho"],
+)
+def test_batata_doce_nao_e_sobremesa(texto):
+    assert interpretar(texto, None).criterios.quer_doce is False
+
+
+@pytest.mark.parametrize(
+    "texto",
+    ["quero doce de leite", "um doce", "sobremesa", "brigadeiro", "quero doces"],
+)
+def test_palavras_de_doce(texto):
+    assert interpretar(texto, None).criterios.quer_doce is True
+
+
+@pytest.mark.parametrize(
+    "texto", ["sem doce", "não quero doce", "nada doce", "nao quero nenhum doce"]
+)
+def test_negacao_de_doce(texto):
+    assert interpretar(texto, None).criterios.quer_doce is False
+    atuais = Criterios(quer_doce=True)
+    c = interpretar(texto, atuais).criterios
+    assert c.quer_doce is False
+    assert "doce" not in c.ingredientes_excluidos

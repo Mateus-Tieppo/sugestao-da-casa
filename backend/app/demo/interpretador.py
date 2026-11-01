@@ -51,6 +51,11 @@ _ALVOS: list[tuple[str, Eixo, int]] = [
     (r"reconfort|aconcheg|abraco", Eixo.conforto, 85),
 ]
 
+# "batata doce" não é sobremesa; negações desligam o pedido de doce.
+_BATATA_DOCE = r"batata[- ]doces?\b"
+_SEM_DOCE = r"\bsem (?:doces?|sobremesas?)\b|\bnada doces?\b|\bnao (?:quero|quer|queria|precisa)(?: nenhum| nenhuma)? (?:doces?|sobremesas?)\b"
+_DOCE = r"\bdoces?\b|sobremesa|chocolate|brigadeiro|acucar|docinho|sorvete|brownie"
+
 _TEMPO = re.compile(r"(?:(?:ate|max(?:imo)?|em) )?\b(\d+) ?min\w*")
 _ORCAMENTO = re.compile(
     r"(?:ate|max(?:imo)?) ?(?:r ?\$|reais)? ?(\d+)(?:[.,](\d{1,2}))?"
@@ -83,6 +88,12 @@ def interpretar(texto: str, atuais: Criterios | None) -> Interpretacao:
     ajuste = min(achados, key=lambda a: a[0])[1] if achados else None
     for padrao, _ in _AJUSTES:
         _, t = _consumir(padrao, t)
+
+    # 1b. batata doce não conta; "sem doce" desliga o pedido
+    _, t = _consumir(_BATATA_DOCE, t)
+    negou, t = _consumir(_SEM_DOCE, t)
+    if negou:
+        quer_doce = False
 
     # 2. restrições (nunca viram ingrediente excluído)
     for padrao, restricao in _RESTRICOES:
@@ -123,9 +134,7 @@ def interpretar(texto: str, atuais: Criterios | None) -> Interpretacao:
         barato = True
     if re.search(r"rapid|\blogo\b|pressa", t):
         rapido = True
-    if re.search(
-        r"doce|sobremesa|chocolate|brigadeiro|acucar|docinho|sorvete|brownie", t
-    ):
+    if re.search(_DOCE, t):
         quer_doce = True
 
     criterios = Criterios(

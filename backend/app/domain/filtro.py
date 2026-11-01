@@ -17,6 +17,8 @@ def _ingrediente_excluido(prato: Prato, excluidos: set[str]) -> bool:
 
 
 def passa_restricoes(prato: Prato, criterios: Criterios) -> bool:
+    """Checa as restrições duras (dieta, orçamento, tempo, ingredientes excluídos)
+    e a regra de não sugerir sobremesa que ninguém pediu."""
     if prato.doce and not criterios.quer_doce:
         return False  # doce só aparece quando a pessoa pede
     if not criterios.restricoes <= prato.atende:
