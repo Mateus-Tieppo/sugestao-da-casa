@@ -31,6 +31,7 @@ class Criterios(BaseModel):
     alvos: dict[Eixo, int] = Field(default_factory=dict)  # 0 a 100
     barato: bool = False
     rapido: bool = False
+    quer_doce: bool = False
 
 
 class Prato(BaseModel):
@@ -46,6 +47,7 @@ class Prato(BaseModel):
     atende: set[Restricao]
     eixos: dict[Eixo, int]
     foto_url: str | None
+    doce: bool = False
 
     @property
     def total_centavos(self) -> int:

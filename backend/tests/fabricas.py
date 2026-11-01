@@ -17,6 +17,7 @@ def prato(**sobrescritas: Any) -> Prato:
         "atende": set(),
         "eixos": {},
         "foto_url": None,
+        "doce": False,
     }
     base.update(sobrescritas)
     return Prato(**base)

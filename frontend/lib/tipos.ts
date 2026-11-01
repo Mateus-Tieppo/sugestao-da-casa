@@ -22,6 +22,7 @@ export interface Criterios {
   alvos: Partial<Record<Eixo, number>>;
   barato: boolean;
   rapido: boolean;
+  quer_doce: boolean;
 }
 
 export interface PedidoSugestao {

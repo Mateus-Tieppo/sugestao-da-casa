@@ -159,3 +159,15 @@ def test_seed_sql_esta_atualizado():
     assert (RAIZ / "seed.sql").read_text(encoding="utf-8") == esperado, (
         "rode: python supabase/gerar_seed.py"
     )
+
+
+def test_doces_marcados(itens):
+    assert all(isinstance(p.get("doce"), bool) for _, p in itens)
+    doces = {p["nome"] for _, p in itens if p["doce"]}
+    assert len(doces) >= 5
+    for r, p in itens:
+        if r["nome"] == "Doceria Açúcar & Afeto":
+            assert p["doce"], p["nome"]
+    assert "Bowl de açaí com granola" in doces
+    assert "Pé de moleque caseiro" in doces
+    assert "Caldo verde da Vó Lina" not in doces

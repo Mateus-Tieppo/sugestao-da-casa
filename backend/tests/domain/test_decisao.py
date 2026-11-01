@@ -1,5 +1,5 @@
 from app.domain.decisao import escolher
-from app.domain.modelos import Criterios, Restricao
+from app.domain.modelos import Criterios, Eixo, Restricao
 from tests.fabricas import prato
 
 
@@ -39,3 +39,34 @@ def test_candidatos_ate_seis():
     ps = [prato(id=str(i)) for i in range(8)]
     e = escolher(ps, Criterios())
     assert [p.id for p in e.candidatos] == ["0", "1", "2", "3", "4", "5"]
+
+
+def test_doce_fora_quando_nao_pedido():
+    salgado = prato(id="s", restaurante_id="r1", eixos={Eixo.temperatura: 10})
+    sobremesa = prato(
+        id="d", restaurante_id="r2", doce=True, eixos={Eixo.temperatura: 20}
+    )
+    c = Criterios(alvos={Eixo.temperatura: 20})
+    e = escolher([salgado, sobremesa], c)
+    assert e.principal.id == "s"
+    assert all(not p.doce for p in e.candidatos + e.alternativas)
+    assert escolher([sobremesa], c).principal is None
+
+
+def test_doce_ganha_quando_pedido():
+    salgado = prato(id="s", restaurante_id="r1", eixos={Eixo.temperatura: 20})
+    sobremesa = prato(
+        id="d", restaurante_id="r2", doce=True, eixos={Eixo.temperatura: 60}
+    )
+    c = Criterios(alvos={Eixo.temperatura: 20}, quer_doce=True)
+    e = escolher([salgado, sobremesa], c)
+    assert e.principal.id == "d"
+    assert "s" in [p.id for p in e.candidatos]  # salgado continua possível
+
+
+def test_afrouxar_ignora_doce_quando_nao_pedido():
+    from app.domain.afrouxar import propor_afrouxar
+
+    sobremesa = prato(id="d", doce=True, preco_centavos=1000)
+    c = Criterios(orcamento_max_centavos=100)
+    assert propor_afrouxar([sobremesa], c) is None

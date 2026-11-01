@@ -73,6 +73,9 @@ export function removerCriterio(criterios: Criterios, chave: string): Criterios 
     case "rapido":
       c.rapido = false;
       break;
+    case "doce":
+      c.quer_doce = false;
+      break;
   }
   return c;
 }

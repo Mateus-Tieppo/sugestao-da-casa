@@ -190,3 +190,26 @@ def test_remover_cada_chave():
     assert remover(c, "rapido").rapido is False
     assert remover(c, "inexistente") == c
     assert c.tempo_max_min == 30  # não muta
+
+
+def test_detecta_doce():
+    assert interpretar("uma sobremesa de chocolate", None).criterios.quer_doce
+    assert interpretar("quero um brigadeiro", None).criterios.quer_doce
+    assert interpretar("algo com açúcar", None).criterios.quer_doce
+    assert not interpretar("algo quentinho", None).criterios.quer_doce
+
+
+def test_doce_mantem_o_que_ja_estava():
+    atuais = Criterios(quer_doce=True)
+    assert interpretar("sem cebola", atuais).criterios.quer_doce
+
+
+def test_rotulo_e_remover_doce():
+    c = Criterios(rapido=True, barato=True, quer_doce=True)
+    assert rotulos(c)[-3:] == [
+        ("barato", "barato"),
+        ("rapido", "rápido"),
+        ("doce", "algo doce"),
+    ]
+    assert remover(c, "doce").quer_doce is False
+    assert c.quer_doce

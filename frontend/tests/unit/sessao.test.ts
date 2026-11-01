@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { estadoInicial, reducerSessao, useSessao } from "@/lib/sessao";
+import { estadoInicial, reducerSessao, removerCriterio, useSessao } from "@/lib/sessao";
 import type { PedidoSugestao, PropostaSugerida } from "@/lib/tipos";
 import { criteriosBase, prato, respostaOk } from "./fixtures";
 
@@ -207,5 +207,13 @@ describe("useSessao: texto do envio", () => {
     expect(pendentes[0].corpo.texto).toBe("oi");
     act(() => result.current.enviar("a".repeat(500)));
     expect(pendentes[1].corpo.texto).toHaveLength(300);
+  });
+});
+
+describe("removerCriterio", () => {
+  it('remove a chave "doce" zerando quer_doce, sem mutar a entrada', () => {
+    const c = { ...criteriosBase, quer_doce: true };
+    expect(removerCriterio(c, "doce").quer_doce).toBe(false);
+    expect(c.quer_doce).toBe(true);
   });
 });

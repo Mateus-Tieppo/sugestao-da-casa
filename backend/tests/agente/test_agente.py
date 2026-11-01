@@ -398,3 +398,23 @@ async def test_ingrediente_que_e_palavra_de_restricao_e_descartado():
     r = await rodar_agente("sem lactose", None, None, _pratos(), llm)
     assert r.criterios.ingredientes_excluidos == {"cebola"}
     assert SL in r.criterios.restricoes
+
+
+async def test_quer_doce_do_llm_e_mantido():
+    llm = LLMRoteirizado([_busca(quer_doce=True), _escrita()])
+    r = await rodar_agente("algo para fechar", None, None, _pratos(), llm)
+    assert r.criterios.quer_doce is True
+
+
+async def test_quer_doce_do_texto_vence_llm_false():
+    llm = LLMRoteirizado([_busca(quer_doce=False), _escrita()])
+    r = await rodar_agente("quero um brigadeiro", None, None, _pratos(), llm)
+    assert r.criterios.quer_doce is True
+
+
+async def test_quer_doce_nulo_nao_falha_e_ferramenta_declara_campo():
+    llm = LLMRoteirizado([_busca(quer_doce=None), _escrita()])
+    r = await rodar_agente("algo gostoso", None, None, _pratos(), llm)
+    assert r.criterios.quer_doce is False
+    props = llm.ferramentas_recebidas[0][0]["function"]["parameters"]["properties"]
+    assert props["quer_doce"] == {"type": "boolean"}

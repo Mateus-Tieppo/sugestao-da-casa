@@ -41,6 +41,7 @@ _PADRAO_NULO: dict[str, Any] = {
     "alvos": {},
     "barato": False,
     "rapido": False,
+    "quer_doce": False,
 }
 
 
@@ -52,6 +53,7 @@ class _Argumentos(BaseModel):
     alvos: dict[Eixo, int] = Field(default_factory=dict)
     barato: bool = False
     rapido: bool = False
+    quer_doce: bool = False
     ajuste: Ajuste | None = None
 
     @field_validator(
@@ -60,6 +62,7 @@ class _Argumentos(BaseModel):
         "alvos",
         "barato",
         "rapido",
+        "quer_doce",
         mode="before",
     )
     @classmethod
@@ -117,6 +120,7 @@ def _mesclar(
         alvos={**base.alvos, **args.alvos, **palavras.alvos},  # texto atual vence
         barato=args.barato or palavras.barato or base.barato,
         rapido=args.rapido or palavras.rapido or base.rapido,
+        quer_doce=args.quer_doce or palavras.quer_doce or base.quer_doce,
     )
 
 

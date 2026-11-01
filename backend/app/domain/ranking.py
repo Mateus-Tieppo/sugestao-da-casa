@@ -1,6 +1,7 @@
 from app.domain.modelos import Criterios, Prato
 
 EIXO_AUSENTE = 50
+BONUS_DOCE = 100
 
 
 def _normalizado(valor: int, valores: list[int]) -> float:
@@ -21,6 +22,8 @@ def pontuar(prato: Prato, criterios: Criterios, todos: list[Prato]) -> float:
     if criterios.rapido:
         tempos = [p.tempo_min for p in todos]
         pontos += 100 * (1 - _normalizado(prato.tempo_min, tempos))
+    if criterios.quer_doce and prato.doce:
+        pontos += BONUS_DOCE
     return pontos
 
 

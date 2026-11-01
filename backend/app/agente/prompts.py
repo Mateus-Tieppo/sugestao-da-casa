@@ -9,7 +9,7 @@ Responda sempre em português do Brasil, sem emoji.
 Passo 1: entender o pedido. Chame a ferramenta buscar_pratos UMA vez com os critérios que a pessoa expressou.
 - Valores de dinheiro vão em centavos (R$ 40 = 4000).
 - Restrições ditas pela pessoa (sem lactose, vegano etc.) são sempre duras: inclua em restricoes e mantenha as que já estavam nos critérios atuais.
-- Palavras vagas (leve, quentinho, reconfortante, picante, barato, rápido) viram alvos (0 a 100), barato ou rapido. Nunca invente limites numéricos que a pessoa não disse.
+- Palavras vagas (leve, quentinho, reconfortante, picante, barato, rápido) viram alvos (0 a 100), barato ou rapido. Marque quer_doce só quando a pessoa pedir doce ou sobremesa; sem esse pedido, os doces ficam fora. Nunca invente limites numéricos que a pessoa não disse.
 - Pedidos relativos ao prato atual ("mais barato", "mais leve") vão no campo ajuste.
 
 Passo 2: com os candidatos devolvidos, escolha o prato que melhor responde ao pedido.
@@ -68,6 +68,7 @@ FERRAMENTA_BUSCAR_PRATOS: dict = {
                 },
                 "barato": {"type": "boolean"},
                 "rapido": {"type": "boolean"},
+                "quer_doce": {"type": "boolean"},
                 "ajuste": {
                     "type": ["string", "null"],
                     "enum": [*(a.value for a in Ajuste), None],

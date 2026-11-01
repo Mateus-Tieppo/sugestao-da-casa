@@ -8,6 +8,7 @@ export const criteriosBase: Criterios = {
   alvos: { picancia: 80 },
   barato: false,
   rapido: false,
+  quer_doce: false,
 };
 
 export function prato(id: string): PratoSugerido {

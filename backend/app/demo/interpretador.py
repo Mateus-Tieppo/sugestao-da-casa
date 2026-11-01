@@ -72,7 +72,7 @@ def interpretar(texto: str, atuais: Criterios | None) -> Interpretacao:
     orcamento = base.orcamento_max_centavos
     tempo = base.tempo_max_min
     alvos = dict(base.alvos)
-    barato, rapido = base.barato, base.rapido
+    barato, rapido, quer_doce = base.barato, base.rapido, base.quer_doce
 
     # 1. ajustes: o primeiro por posição vence; todos saem do texto
     achados = [
@@ -123,6 +123,10 @@ def interpretar(texto: str, atuais: Criterios | None) -> Interpretacao:
         barato = True
     if re.search(r"rapid|\blogo\b|pressa", t):
         rapido = True
+    if re.search(
+        r"doce|sobremesa|chocolate|brigadeiro|acucar|docinho|sorvete|brownie", t
+    ):
+        quer_doce = True
 
     criterios = Criterios(
         restricoes=restricoes,
@@ -132,6 +136,7 @@ def interpretar(texto: str, atuais: Criterios | None) -> Interpretacao:
         alvos=alvos,
         barato=barato,
         rapido=rapido,
+        quer_doce=quer_doce,
     )
     return Interpretacao(criterios=criterios, ajuste=ajuste)
 
@@ -178,6 +183,8 @@ def rotulos(criterios: Criterios) -> list[tuple[str, str]]:
         saida.append(("barato", "barato"))
     if criterios.rapido:
         saida.append(("rapido", "rápido"))
+    if criterios.quer_doce:
+        saida.append(("doce", "algo doce"))
     return saida
 
 
@@ -199,4 +206,6 @@ def remover(criterios: Criterios, chave: str) -> Criterios:
         c.barato = False
     elif tipo == "rapido":
         c.rapido = False
+    elif tipo == "doce":
+        c.quer_doce = False
     return c

@@ -42,6 +42,7 @@ def linha_para_prato(linha: dict[str, Any]) -> Prato:
         atende={Restricao(r) for r in linha["atende"]},
         eixos=eixos,
         foto_url=linha.get("foto_url"),
+        doce=bool(linha.get("doce", False)),
     )
 
 

@@ -31,7 +31,8 @@
           "peso": 25,
           "picancia": 10,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "02484c2c-0e2d-4909-b5b3-73d23231185f",
@@ -58,7 +59,8 @@
           "peso": 20,
           "picancia": 5,
           "conforto": 95,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "e3910973-cdb2-400c-a9eb-c8590fa9d80c",
@@ -86,7 +88,8 @@
           "peso": 20,
           "picancia": 25,
           "conforto": 80,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "4360082d-aa40-46c2-8a02-3608a508076b",
@@ -115,7 +118,8 @@
           "peso": 15,
           "picancia": 0,
           "conforto": 75,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "1db19294-79e1-4004-abbd-13ec0d6072d5",
@@ -141,7 +145,8 @@
           "peso": 60,
           "picancia": 15,
           "conforto": 90,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "0612c9ad-1038-4204-a9f6-ea2bee20ba1b",
@@ -167,7 +172,8 @@
           "peso": 50,
           "picancia": 0,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "416c8ee4-53cc-4d58-a385-5e354b8c4aa8",
@@ -193,7 +199,8 @@
           "peso": 65,
           "picancia": 10,
           "conforto": 90,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -227,7 +234,8 @@
           "peso": 35,
           "picancia": 20,
           "conforto": 80,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "a7710d7f-58fc-40b7-946f-2beed5bbf118",
@@ -255,7 +263,8 @@
           "peso": 40,
           "picancia": 30,
           "conforto": 35,
-          "foto_url": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
+          "foto_url": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80",
+          "doce": false
         },
         {
           "id": "799f6424-6964-43eb-914c-57183ce91a3b",
@@ -281,7 +290,8 @@
           "peso": 30,
           "picancia": 5,
           "conforto": 40,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "3eea913d-969f-40fd-8367-ee0a175c0e70",
@@ -309,7 +319,8 @@
           "peso": 55,
           "picancia": 10,
           "conforto": 60,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "1c4e9c10-252f-47aa-a505-af3e55fccbf8",
@@ -336,7 +347,8 @@
           "peso": 35,
           "picancia": 15,
           "conforto": 30,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "f6784a50-04bb-4b29-b7b2-71147109f4ce",
@@ -364,7 +376,8 @@
           "peso": 40,
           "picancia": 5,
           "conforto": 65,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "6ae1001a-24be-4d24-819e-710bc15ac4c8",
@@ -390,7 +403,8 @@
           "peso": 50,
           "picancia": 5,
           "conforto": 70,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "9d5ab752-1d3a-48f5-9a98-028094f02155",
@@ -419,7 +433,8 @@
           "peso": 45,
           "picancia": 85,
           "conforto": 75,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -452,7 +467,8 @@
           "peso": 45,
           "picancia": 10,
           "conforto": 60,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "59d68fe2-ba15-4a05-b3c0-66e65d8e8055",
@@ -476,7 +492,8 @@
           "peso": 55,
           "picancia": 5,
           "conforto": 65,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "a11c4d57-397a-4349-9fd8-9f6de07c2f49",
@@ -508,7 +525,8 @@
           "peso": 45,
           "picancia": 10,
           "conforto": 50,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "4e40cc3c-b219-4654-b9ae-2d4fc83b3ee3",
@@ -534,7 +552,8 @@
           "peso": 60,
           "picancia": 25,
           "conforto": 75,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "f3b158fd-1e51-45ae-b2bd-b1c4b91fbcb2",
@@ -563,7 +582,8 @@
           "peso": 10,
           "picancia": 0,
           "conforto": 10,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "b4aa9f89-3205-43b8-860e-e5ded5c3addf",
@@ -591,7 +611,8 @@
           "peso": 35,
           "picancia": 0,
           "conforto": 50,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "3c805c9f-1f41-4bcc-9537-3395de9d065c",
@@ -617,7 +638,8 @@
           "peso": 60,
           "picancia": 15,
           "conforto": 75,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "376726b1-01a7-4726-88cd-85bc835f653f",
@@ -645,7 +667,8 @@
           "peso": 40,
           "picancia": 5,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -680,7 +703,8 @@
           "peso": 80,
           "picancia": 10,
           "conforto": 95,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "6aee8692-a0e7-4d09-8a51-33c32517e4a7",
@@ -704,7 +728,8 @@
           "peso": 85,
           "picancia": 10,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "be66592b-b89a-4602-b87f-e68d3a86346f",
@@ -728,7 +753,8 @@
           "peso": 50,
           "picancia": 0,
           "conforto": 80,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "bceaedf8-aa0e-4423-8a99-0bacf1e06214",
@@ -752,7 +778,8 @@
           "peso": 20,
           "picancia": 0,
           "conforto": 55,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "4126bffa-fdfa-4df3-aedb-f740e99ecd1e",
@@ -782,7 +809,8 @@
           "peso": 55,
           "picancia": 35,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "7bb54785-ec14-4021-89a0-181cdf25ade0",
@@ -808,7 +836,8 @@
           "peso": 90,
           "picancia": 15,
           "conforto": 90,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "7f702cdd-52d3-48d5-b288-640c19eb3fa9",
@@ -832,7 +861,8 @@
           "peso": 90,
           "picancia": 10,
           "conforto": 95,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "97797096-43ce-41e3-87f5-b882392b2aca",
@@ -857,7 +887,8 @@
           "peso": 75,
           "picancia": 70,
           "conforto": 70,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "2b10c92a-c03f-4fac-b58b-05388ccc1c9a",
@@ -881,7 +912,8 @@
           "peso": 40,
           "picancia": 0,
           "conforto": 50,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         }
       ]
     },
@@ -918,7 +950,8 @@
           "peso": 40,
           "picancia": 0,
           "conforto": 15,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "ef673a4b-5f13-403d-82b8-6fa5794ae786",
@@ -943,7 +976,8 @@
           "peso": 25,
           "picancia": 0,
           "conforto": 20,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "dff0cb2b-22d2-4c7d-bda4-267d6945441f",
@@ -973,7 +1007,8 @@
           "peso": 25,
           "picancia": 5,
           "conforto": 15,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "d28a040e-9b6b-48e8-a433-13507634ce5b",
@@ -1003,7 +1038,8 @@
           "peso": 35,
           "picancia": 0,
           "conforto": 30,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "c230fdb8-547b-4ecd-8bbd-9f5f4201281c",
@@ -1026,7 +1062,8 @@
           "peso": 50,
           "picancia": 5,
           "conforto": 30,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "7b7f8024-e7d9-43e8-a9c0-0d6719cd11ce",
@@ -1053,7 +1090,8 @@
           "peso": 35,
           "picancia": 5,
           "conforto": 15,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "35947d6f-fdd4-404d-b665-9c94d8146860",
@@ -1081,7 +1119,8 @@
           "peso": 35,
           "picancia": 5,
           "conforto": 30,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "c414d205-d209-468b-b4ff-52fde0c03653",
@@ -1110,7 +1149,8 @@
           "peso": 10,
           "picancia": 15,
           "conforto": 5,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -1147,7 +1187,8 @@
           "peso": 35,
           "picancia": 5,
           "conforto": 40,
-          "foto_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
+          "foto_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
+          "doce": false
         },
         {
           "id": "f9bf9188-e8b0-4595-b36b-aca1b0ba611c",
@@ -1172,7 +1213,8 @@
           "peso": 50,
           "picancia": 5,
           "conforto": 55,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "bea8fe04-b1a4-4032-aa79-388a12b272e7",
@@ -1199,7 +1241,8 @@
           "peso": 40,
           "picancia": 5,
           "conforto": 30,
-          "foto_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+          "foto_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80",
+          "doce": false
         },
         {
           "id": "24b44555-e038-4a26-96a6-16706e5849ff",
@@ -1225,7 +1268,8 @@
           "peso": 45,
           "picancia": 0,
           "conforto": 60,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         },
         {
           "id": "5d69bd76-fbcd-4e06-b0c4-25aa976acf26",
@@ -1255,7 +1299,8 @@
           "peso": 50,
           "picancia": 60,
           "conforto": 45,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "4b6fd71e-d8c0-4a7e-a1af-24c3cca383d4",
@@ -1283,7 +1328,8 @@
           "peso": 40,
           "picancia": 15,
           "conforto": 45,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "eb0a301c-81ab-415a-ae17-b38610d40a79",
@@ -1307,7 +1353,8 @@
           "peso": 70,
           "picancia": 5,
           "conforto": 80,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -1340,7 +1387,8 @@
           "peso": 90,
           "picancia": 0,
           "conforto": 95,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "5f6b54fd-756e-4f4d-ad85-6a194136e3dc",
@@ -1363,7 +1411,8 @@
           "peso": 85,
           "picancia": 5,
           "conforto": 90,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "304d4a2f-93cc-4405-b2ec-bf3aa71fad8d",
@@ -1391,7 +1440,8 @@
           "peso": 55,
           "picancia": 5,
           "conforto": 70,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "edd78aff-55be-47a1-bc60-fba6d1415a40",
@@ -1416,7 +1466,8 @@
           "peso": 95,
           "picancia": 5,
           "conforto": 98,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "6ffe6bd2-26ef-4ac2-91bf-1ecc6544ff46",
@@ -1442,7 +1493,8 @@
           "peso": 70,
           "picancia": 0,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "6ac47835-5c59-4974-8e81-597141970842",
@@ -1469,7 +1521,8 @@
           "peso": 75,
           "picancia": 0,
           "conforto": 90,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "b7276793-8ac6-4fd9-b4dd-35f23e64d650",
@@ -1496,7 +1549,8 @@
           "peso": 50,
           "picancia": 60,
           "conforto": 60,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "a2ff5baf-5c42-4ed0-98e8-a94f775ca253",
@@ -1525,7 +1579,8 @@
           "peso": 40,
           "picancia": 5,
           "conforto": 55,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -1557,7 +1612,8 @@
           "peso": 85,
           "picancia": 10,
           "conforto": 80,
-          "foto_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+          "foto_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80",
+          "doce": false
         },
         {
           "id": "8ef622ed-9cc5-490e-a419-986bacb326fb",
@@ -1580,7 +1636,8 @@
           "peso": 98,
           "picancia": 10,
           "conforto": 90,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "946b8cdd-50bc-4bc1-8a72-6f8b39bf41be",
@@ -1608,7 +1665,8 @@
           "peso": 55,
           "picancia": 10,
           "conforto": 55,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "1da1b5ab-4df8-4f10-893e-bf0fc3318bb2",
@@ -1633,7 +1691,8 @@
           "peso": 65,
           "picancia": 35,
           "conforto": 70,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "6ea2eaef-53b0-46d3-846b-54835180dd59",
@@ -1659,7 +1718,8 @@
           "peso": 60,
           "picancia": 10,
           "conforto": 65,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "a0edfd07-e982-4972-9b69-77952f3c4b7e",
@@ -1682,7 +1742,8 @@
           "peso": 95,
           "picancia": 5,
           "conforto": 92,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "797db728-9d3e-4d09-9a2c-d28f5a0ea899",
@@ -1706,7 +1767,8 @@
           "peso": 25,
           "picancia": 0,
           "conforto": 20,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "dd9e113b-0e17-4817-9fd7-8a860b027d01",
@@ -1731,7 +1793,8 @@
           "peso": 45,
           "picancia": 0,
           "conforto": 70,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "1ccad7e1-c59e-49c6-a804-89842543ea09",
@@ -1755,7 +1818,8 @@
           "peso": 85,
           "picancia": 95,
           "conforto": 80,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -1787,7 +1851,8 @@
           "peso": 40,
           "picancia": 0,
           "conforto": 70,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         },
         {
           "id": "43b0409d-6760-4e04-91d9-da900b31ddd3",
@@ -1811,7 +1876,8 @@
           "peso": 70,
           "picancia": 0,
           "conforto": 90,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         },
         {
           "id": "b8c51747-f0f3-4c5d-9cb3-b16757ea0fca",
@@ -1837,7 +1903,8 @@
           "peso": 5,
           "picancia": 0,
           "conforto": 20,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         },
         {
           "id": "9626097a-8d3c-4846-a9b5-0037ae899dea",
@@ -1861,7 +1928,8 @@
           "peso": 60,
           "picancia": 0,
           "conforto": 75,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         },
         {
           "id": "477b5556-4578-4ae3-a138-06537089b8a5",
@@ -1887,7 +1955,8 @@
           "peso": 30,
           "picancia": 0,
           "conforto": 35,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         },
         {
           "id": "3676ba93-3228-438c-91ca-d9a0e9d41857",
@@ -1911,7 +1980,8 @@
           "peso": 55,
           "picancia": 0,
           "conforto": 45,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         },
         {
           "id": "8b947286-6c36-43e9-9fab-5e5862c16196",
@@ -1937,7 +2007,8 @@
           "peso": 55,
           "picancia": 0,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         },
         {
           "id": "9edd51de-7a9d-4c0a-aedb-2043e2ddcf75",
@@ -1963,7 +2034,8 @@
           "peso": 25,
           "picancia": 0,
           "conforto": 40,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         },
         {
           "id": "eb73ac3c-4593-402f-b213-dbd4e96fff5b",
@@ -1987,7 +2059,8 @@
           "peso": 60,
           "picancia": 0,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": true
         }
       ]
     },
@@ -2026,7 +2099,8 @@
           "peso": 60,
           "picancia": 55,
           "conforto": 85,
-          "foto_url": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=800&q=80"
+          "foto_url": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=800&q=80",
+          "doce": false
         },
         {
           "id": "be07023e-1ec6-48da-b484-53d314e72357",
@@ -2051,7 +2125,8 @@
           "peso": 55,
           "picancia": 35,
           "conforto": 60,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "20658401-590f-4fb3-a8fc-57d050ace0d1",
@@ -2078,7 +2153,8 @@
           "peso": 40,
           "picancia": 60,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "b6490866-3350-4055-8624-aa22fd3fd442",
@@ -2105,7 +2181,8 @@
           "peso": 55,
           "picancia": 80,
           "conforto": 75,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "43b992bd-24ca-499e-9b2f-8779373f6c82",
@@ -2133,7 +2210,8 @@
           "peso": 15,
           "picancia": 95,
           "conforto": 10,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "b9df6686-65ae-4a39-b3ed-91735baf56ae",
@@ -2161,7 +2239,8 @@
           "peso": 25,
           "picancia": 10,
           "conforto": 25,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "85eb7eae-8ec5-4f18-a2b3-9090292703df",
@@ -2187,7 +2266,8 @@
           "peso": 55,
           "picancia": 10,
           "conforto": 65,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -2220,7 +2300,8 @@
           "peso": 70,
           "picancia": 0,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "888087aa-6b61-4082-994f-23869a57fc96",
@@ -2244,7 +2325,8 @@
           "peso": 80,
           "picancia": 15,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "78f446b0-362e-4997-9209-ef426fe24171",
@@ -2272,7 +2354,8 @@
           "peso": 60,
           "picancia": 0,
           "conforto": 70,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "81db7454-54bd-427b-8e0b-c75b16fb6163",
@@ -2297,7 +2380,8 @@
           "peso": 90,
           "picancia": 0,
           "conforto": 92,
-          "foto_url": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
+          "foto_url": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80",
+          "doce": false
         },
         {
           "id": "b53cd2c4-8631-46cd-96ce-753f79dc2cb7",
@@ -2320,7 +2404,8 @@
           "peso": 85,
           "picancia": 0,
           "conforto": 88,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "2fe21a8c-820f-4391-b1f5-8dde4d47a7bb",
@@ -2347,7 +2432,8 @@
           "peso": 25,
           "picancia": 0,
           "conforto": 35,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "731d6d43-dd6f-4f44-aab8-3cb74ac133b4",
@@ -2370,7 +2456,8 @@
           "peso": 75,
           "picancia": 0,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -2406,7 +2493,8 @@
           "peso": 80,
           "picancia": 30,
           "conforto": 90,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "302f7cb3-5f58-4f6c-a7f8-43f4029de0af",
@@ -2431,7 +2519,8 @@
           "peso": 85,
           "picancia": 5,
           "conforto": 92,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "cb524a28-cdb3-4cc2-b7db-97018b0f3895",
@@ -2456,7 +2545,8 @@
           "peso": 80,
           "picancia": 20,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "efa9385c-6db4-4d20-bb46-e0fecfad5e30",
@@ -2479,7 +2569,8 @@
           "peso": 65,
           "picancia": 5,
           "conforto": 60,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "2e2e3ae9-d346-49b8-b072-fec6f40a3838",
@@ -2506,7 +2597,8 @@
           "peso": 20,
           "picancia": 60,
           "conforto": 10,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "c29df3c1-db7b-447d-8767-d752d7d107c7",
@@ -2532,7 +2624,8 @@
           "peso": 75,
           "picancia": 0,
           "conforto": 80,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "73f34aab-869c-435f-ad34-26c140cdc001",
@@ -2559,7 +2652,8 @@
           "peso": 35,
           "picancia": 0,
           "conforto": 40,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "b21731a9-e898-4088-b0ff-80f509d1f727",
@@ -2583,7 +2677,8 @@
           "peso": 45,
           "picancia": 10,
           "conforto": 60,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -2620,7 +2715,8 @@
           "peso": 98,
           "picancia": 20,
           "conforto": 98,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "31b192d5-a7a0-4f33-878e-5844db3da60e",
@@ -2647,7 +2743,8 @@
           "peso": 85,
           "picancia": 5,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "7ec2385e-6f10-45cb-b9b2-c19ff1dca244",
@@ -2672,7 +2769,8 @@
           "peso": 95,
           "picancia": 10,
           "conforto": 92,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "16620e8f-9675-4307-b75d-e9e8426af8ea",
@@ -2698,7 +2796,8 @@
           "peso": 70,
           "picancia": 0,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "e2cdac0b-257b-4849-ac88-4564e17cd439",
@@ -2724,7 +2823,8 @@
           "peso": 70,
           "picancia": 25,
           "conforto": 70,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "f8ca286a-a75e-4a7f-b2f3-7f9727d9465c",
@@ -2749,7 +2849,8 @@
           "peso": 60,
           "picancia": 0,
           "conforto": 80,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     },
@@ -2784,7 +2885,8 @@
           "peso": 45,
           "picancia": 60,
           "conforto": 60,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "475a011e-a293-437a-b787-331c29fbeeb1",
@@ -2809,7 +2911,8 @@
           "peso": 75,
           "picancia": 40,
           "conforto": 75,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "cd586c8b-b04f-4bc7-87d1-b075b3add399",
@@ -2839,7 +2942,8 @@
           "peso": 50,
           "picancia": 35,
           "conforto": 40,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "aba4df4e-5d33-4aa0-a31e-66218c8fcea5",
@@ -2862,7 +2966,8 @@
           "peso": 60,
           "picancia": 10,
           "conforto": 75,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "e2f00537-367b-4c84-8504-94039bb257c3",
@@ -2889,7 +2994,8 @@
           "peso": 80,
           "picancia": 90,
           "conforto": 85,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         },
         {
           "id": "e2c70b6a-fe92-4f7d-bed2-bfcc5cacf9c2",
@@ -2916,7 +3022,8 @@
           "peso": 55,
           "picancia": 45,
           "conforto": 70,
-          "foto_url": null
+          "foto_url": null,
+          "doce": false
         }
       ]
     }

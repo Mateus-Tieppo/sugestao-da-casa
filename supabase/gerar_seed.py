@@ -50,11 +50,12 @@ def gerar(dados: dict) -> str:
                 literal(p["picancia"]),
                 literal(p["conforto"]),
                 literal(p["foto_url"]),
+                "true" if p["doce"] else "false",
             ]
             saida.append(
                 "insert into public.pratos (id, restaurante_id, nome, descricao, "
                 "preco_centavos, tempo_preparo_min, ingredientes, atende, temperatura, "
-                "peso, picancia, conforto, foto_url) values ("
+                "peso, picancia, conforto, foto_url, doce) values ("
                 + ", ".join(valores)
                 + ");"
             )
