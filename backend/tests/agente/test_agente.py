@@ -418,3 +418,22 @@ async def test_quer_doce_nulo_nao_falha_e_ferramenta_declara_campo():
     assert r.criterios.quer_doce is False
     props = llm.ferramentas_recebidas[0][0]["function"]["parameters"]["properties"]
     assert props["quer_doce"] == {"type": "boolean"}
+
+
+async def test_negacao_de_doce_no_texto_vence_llm_e_atuais():
+    atuais = Criterios(quer_doce=True)
+    llm = LLMRoteirizado([_busca(quer_doce=True), _escrita()])
+    r = await rodar_agente("não quero doce", atuais, None, _pratos(), llm)
+    assert r.criterios.quer_doce is False
+
+
+async def test_sem_sobremesa_com_llm_true_fica_false():
+    llm = LLMRoteirizado([_busca(quer_doce=True), _escrita()])
+    r = await rodar_agente("sem sobremesa", None, None, _pratos(), llm)
+    assert r.criterios.quer_doce is False
+
+
+async def test_brigadeiro_com_llm_false_fica_true():
+    llm = LLMRoteirizado([_busca(quer_doce=False), _escrita()])
+    r = await rodar_agente("quero um brigadeiro", None, None, _pratos(), llm)
+    assert r.criterios.quer_doce is True

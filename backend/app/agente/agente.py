@@ -95,7 +95,10 @@ def _ler_argumentos(resposta_chamadas: list) -> _Argumentos:
 
 
 def _mesclar(
-    atuais: Criterios | None, args: _Argumentos, palavras: Criterios
+    atuais: Criterios | None,
+    args: _Argumentos,
+    palavras: Criterios,
+    nega_doce: bool = False,
 ) -> Criterios:
     base = atuais or Criterios()
     return Criterios(
@@ -120,7 +123,9 @@ def _mesclar(
         alvos={**base.alvos, **args.alvos, **palavras.alvos},  # texto atual vence
         barato=args.barato or palavras.barato or base.barato,
         rapido=args.rapido or palavras.rapido or base.rapido,
-        quer_doce=args.quer_doce or palavras.quer_doce or base.quer_doce,
+        # a negação dita no texto vence o LLM e o que já estava ligado
+        quer_doce=not nega_doce
+        and (args.quer_doce or palavras.quer_doce or base.quer_doce),
     )
 
 
@@ -306,7 +311,7 @@ async def rodar_agente(
         )
         args = _ler_argumentos(resposta.chamadas)
         palavras = interpretar(texto, None)
-        criterios = _mesclar(atuais, args, palavras.criterios)
+        criterios = _mesclar(atuais, args, palavras.criterios, palavras.nega_doce)
         ajuste = args.ajuste or palavras.ajuste
         if ajuste is not None and prato_atual is not None:
             criterios = aplicar_ajuste(criterios, ajuste, prato_atual)

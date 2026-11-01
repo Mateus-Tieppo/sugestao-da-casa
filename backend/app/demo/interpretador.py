@@ -12,6 +12,7 @@ from app.domain.texto import normalizar
 class Interpretacao(BaseModel):
     criterios: Criterios
     ajuste: Ajuste | None = None
+    nega_doce: bool = False  # o texto disse "sem doce" e afins
 
 
 # Frases de ajuste relativo (já sem acento). Removidas do texto antes de tudo.
@@ -91,8 +92,8 @@ def interpretar(texto: str, atuais: Criterios | None) -> Interpretacao:
 
     # 1b. batata doce não conta; "sem doce" desliga o pedido
     _, t = _consumir(_BATATA_DOCE, t)
-    negou, t = _consumir(_SEM_DOCE, t)
-    if negou:
+    nega_doce, t = _consumir(_SEM_DOCE, t)
+    if nega_doce:
         quer_doce = False
 
     # 2. restrições (nunca viram ingrediente excluído)
@@ -147,7 +148,7 @@ def interpretar(texto: str, atuais: Criterios | None) -> Interpretacao:
         rapido=rapido,
         quer_doce=quer_doce,
     )
-    return Interpretacao(criterios=criterios, ajuste=ajuste)
+    return Interpretacao(criterios=criterios, ajuste=ajuste, nega_doce=nega_doce)
 
 
 _ROTULO_RESTRICAO = {
