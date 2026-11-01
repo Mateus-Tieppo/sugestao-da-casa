@@ -1,7 +1,15 @@
 import type { PedidoSugestao, RespostaSugestao } from "./tipos";
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/+$/, "");
-export const TIMEOUT_MS = 12_000;
+const TIMEOUT_PADRAO_MS = 12_000;
+
+/** Lê NEXT_PUBLIC_TIMEOUT_MS; vazio, não numérico ou não positivo volta ao padrão (12 s). */
+export function lerTimeout(valor: string | undefined): number {
+  const n = Number(valor);
+  return valor && Number.isFinite(n) && n > 0 ? Math.round(n) : TIMEOUT_PADRAO_MS;
+}
+
+export const TIMEOUT_MS = lerTimeout(process.env.NEXT_PUBLIC_TIMEOUT_MS);
 
 export type TipoFalha = "timeout" | "rede" | "servidor";
 
@@ -23,7 +31,7 @@ export function ehCancelamento(e: unknown): boolean {
 }
 
 /**
- * POST /v1/sugestoes. Rejeita com FalhaApi (timeout após 12 s, rede, servidor)
+ * POST /v1/sugestoes. Rejeita com FalhaApi (timeout após TIMEOUT_MS, rede, servidor)
  * ou com AbortError quando `sinal` é cancelado pelo chamador.
  */
 export function pedirSugestao(pedido: PedidoSugestao, sinal: AbortSignal): Promise<RespostaSugestao> {

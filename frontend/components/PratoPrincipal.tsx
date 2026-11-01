@@ -2,6 +2,9 @@ import { useId } from "react";
 import { formatarReais } from "@/lib/formato";
 import type { PratoSugerido } from "@/lib/tipos";
 
+/** O botão que abre o pedido; ao fechar o carrinho o foco volta para ele. */
+export const ID_QUERO_ESSE = "quero-esse";
+
 const TEMPO = /^\d+\s*min$/;
 
 interface Props {
@@ -57,6 +60,7 @@ export function PratoPrincipal({ prato, aoQuerer, esmaecido = false }: Props) {
         ) : null}
 
         <button
+          id={ID_QUERO_ESSE}
           type="button"
           onClick={() => aoQuerer(prato)}
           className="mt-6 flex h-[3.25rem] w-full items-center justify-center rounded-xl bg-tomate text-[1rem] font-semibold text-[#fff8ec] shadow-[0_10px_22px_-8px_rgb(200_51_27/0.6)] transition-[background-color,translate] duration-200 ease-saida hover:bg-tomate-escuro active:translate-y-px"

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { aquecer, FalhaApi, pedirSugestao } from "@/lib/api";
+import { aquecer, FalhaApi, lerTimeout, pedirSugestao, TIMEOUT_MS } from "@/lib/api";
 import { respostaOk } from "./fixtures";
 
 beforeEach(() => vi.useFakeTimers());
@@ -61,5 +61,17 @@ describe("aquecer", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect((fetchMock.mock.calls[0] as unknown[])[0]).toBe("http://localhost:8000/health");
     await vi.advanceTimersByTimeAsync(0);
+  });
+});
+
+describe("timeout configurável", () => {
+  it("o padrão é 12 s e valores inválidos voltam ao padrão", () => {
+    expect(TIMEOUT_MS).toBe(12_000);
+    expect(lerTimeout(undefined)).toBe(12_000);
+    expect(lerTimeout("")).toBe(12_000);
+    expect(lerTimeout("abc")).toBe(12_000);
+    expect(lerTimeout("-5")).toBe(12_000);
+    expect(lerTimeout("0")).toBe(12_000);
+    expect(lerTimeout("60000")).toBe(60_000);
   });
 });

@@ -17,7 +17,8 @@ export interface EstadoSessao {
 export type AcaoSessao =
   | { tipo: "enviado"; pedido: PedidoSugestao }
   | { tipo: "respondido"; resposta: RespostaSugestao }
-  | { tipo: "falhou"; erro: TipoFalha };
+  | { tipo: "falhou"; erro: TipoFalha }
+  | { tipo: "reiniciou" };
 
 export const estadoInicial: EstadoSessao = {
   fase: "inicio",
@@ -39,6 +40,8 @@ export function reducerSessao(estado: EstadoSessao, acao: AcaoSessao): EstadoSes
       };
     case "falhou":
       return { ...estado, fase: "falha", erro: acao.erro };
+    case "reiniciou":
+      return estadoInicial;
   }
 }
 
@@ -169,5 +172,15 @@ export function useSessao() {
     if (pedidoAtual.current) disparar(pedidoAtual.current);
   }, [disparar]);
 
-  return { estado, enviar, removerEtiqueta, aceitarProposta, tentarDeNovo, escolherPrato };
+  /** Volta ao início: cancela o que estiver em andamento e esquece a conversa. */
+  const reiniciar = useCallback(() => {
+    sequencia.current++;
+    controlador.current?.abort();
+    respostaAtual.current = null;
+    pedidoAtual.current = null;
+    pratoAtualId.current = null;
+    dispatch({ tipo: "reiniciou" });
+  }, []);
+
+  return { estado, enviar, removerEtiqueta, aceitarProposta, tentarDeNovo, escolherPrato, reiniciar };
 }

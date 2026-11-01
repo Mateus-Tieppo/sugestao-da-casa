@@ -140,6 +140,22 @@ describe("useSessao", () => {
     expect(pendentes[1].corpo).toEqual(pendentes[0].corpo);
   });
 
+  it("reiniciar volta ao início, cancela o que está em andamento e esquece a resposta", async () => {
+    const pendentes = simularFetch();
+    const { result } = renderHook(() => useSessao());
+    act(() => result.current.enviar("algo"));
+    await act(async () => pendentes[0].resolver(json(respostaOk("a"))));
+    expect(result.current.estado.fase).toBe("resultado");
+    act(() => result.current.enviar("outra"));
+    act(() => result.current.reiniciar());
+    expect(pendentes[1].sinal?.aborted).toBe(true);
+    expect(result.current.estado).toEqual({ fase: "inicio", resposta: null, ultimoPedido: null, erro: null });
+    await act(async () => pendentes[1].resolver(json(respostaOk("b"))));
+    expect(result.current.estado.fase).toBe("inicio");
+    act(() => result.current.enviar("do zero"));
+    expect(result.current.estado.ultimoPedido).toEqual({ texto: "do zero", criterios: null, prato_atual_id: null });
+  });
+
   it("cancela o pedido em andamento ao desmontar", () => {
     const pendentes = simularFetch();
     const { result, unmount } = renderHook(() => useSessao());

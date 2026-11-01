@@ -205,6 +205,46 @@ body {
     radial-gradient(circle, #5a2e1c 0 62%, #fffaf2 63%);
 }
 
+/* Prato limpo: sem resultado e falha. */
+.prato-vazio {
+  background:
+    radial-gradient(circle, transparent 0 46%, rgb(120 80 40 / 0.1) 47%, transparent 49%),
+    radial-gradient(circle at 42% 38%, #fffdf8 0 30%, #f6ead6 100%);
+}
+
+/* Carrinho: sobe do rodapé no celular e entra pela direita no desktop. */
+@keyframes painel-sobe {
+  from {
+    translate: 0 100%;
+  }
+}
+
+@keyframes painel-entra {
+  from {
+    translate: 100% 0;
+  }
+}
+
+@keyframes fundo-aparece {
+  from {
+    opacity: 0;
+  }
+}
+
+.painel[open] {
+  animation: painel-sobe 0.38s var(--ease-saida);
+}
+
+.painel[open]::backdrop {
+  animation: fundo-aparece 0.3s ease-out;
+}
+
+@media (min-width: 48rem) {
+  .painel[open] {
+    animation-name: painel-entra;
+  }
+}
+
 /* Prato que gira devagar enquanto a cozinha pensa. */
 @keyframes girar {
   to {

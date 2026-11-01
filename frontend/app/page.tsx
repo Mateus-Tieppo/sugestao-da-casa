@@ -1,21 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useReducer, useRef, useState, type ReactNode } from "react";
 import { Ajuste } from "@/components/Ajuste";
 import { Compositor } from "@/components/Compositor";
+import { Carrinho } from "@/components/Carrinho";
+import { Confirmacao } from "@/components/Confirmacao";
 import { Cozinha, ID_CAMPO_PEDIDO, ID_TITULO } from "@/components/Cozinha";
 import { Decisao } from "@/components/Decisao";
+import { FalhaAmigavel } from "@/components/FalhaAmigavel";
+import { ID_QUERO_ESSE } from "@/components/PratoPrincipal";
+import { SemResultado } from "@/components/SemResultado";
+import { TituloTela } from "@/components/TituloTela";
 import { aquecer } from "@/lib/api";
+import { reduzirCarrinho, type EstadoCarrinho } from "@/lib/carrinho";
 import { formatarReais } from "@/lib/formato";
 import { useSessao, type EstadoSessao } from "@/lib/sessao";
 import type { PratoSugerido, RespostaSugestao } from "@/lib/tipos";
 
-// O carrinho chega na próxima etapa; por enquanto "Quero esse" não leva a lugar nenhum.
-function aoQuerer(prato: PratoSugerido) {
-  void prato;
-}
-
-function anuncio(estado: EstadoSessao): string {
+function anuncio(estado: EstadoSessao, confirmado: boolean): string {
+  if (confirmado) return "Pedido simulado confirmado. Nada foi cobrado.";
   const { fase, resposta } = estado;
   if (fase === "pensando") return "Pensando na sua sugestão.";
   if (fase === "resultado" && resposta?.principal) {
@@ -35,30 +38,17 @@ const PRATOS_DA_ABERTURA = (
   </div>
 );
 
-function TituloSimples({ titulo, texto }: { titulo: ReactNode; texto: string }) {
-  return (
-    <>
-      <h1
-        id={ID_TITULO}
-        tabIndex={-1}
-        className="font-titulo text-[2.125rem] outline-none font-normal leading-[1.04] tracking-[-0.025em] text-balance sm:text-[2.75rem] md:text-[4rem]"
-      >
-        {titulo}
-      </h1>
-      <p className="mt-3 max-w-[38ch] text-[0.9375rem] leading-snug text-creme-rosado md:mt-5 md:text-[1.0625rem]">
-        {texto}
-      </p>
-    </>
-  );
-}
-
 export default function Home() {
-  const { estado, enviar, removerEtiqueta, tentarDeNovo, escolherPrato } = useSessao();
+  const { estado, enviar, removerEtiqueta, aceitarProposta, tentarDeNovo, escolherPrato, reiniciar } = useSessao();
   const { fase, resposta } = estado;
   const pensando = fase === "pensando";
   const frasePensando = estado.ultimoPedido?.texto ?? null;
   // Troca de alternativa feita na tela, anunciada enquanto a resposta for a mesma.
   const [troca, setTroca] = useState<{ de: RespostaSugestao; nome: string } | null>(null);
+  const [carrinho, dispatchCarrinho] = useReducer(reduzirCarrinho, { itens: [] } satisfies EstadoCarrinho);
+  const [carrinhoAberto, setCarrinhoAberto] = useState(false);
+  const [confirmado, setConfirmado] = useState<EstadoCarrinho | null>(null);
+  const devolverFoco = useRef(false);
   const faseAnterior = useRef(fase);
 
   useEffect(() => {
@@ -76,17 +66,55 @@ export default function Home() {
     }
   }, [fase, resposta]);
 
+  useEffect(() => {
+    if (confirmado) document.getElementById(ID_TITULO)?.focus();
+  }, [confirmado]);
+
+  // Ao fechar o carrinho sem confirmar, o foco volta ao botão que o abriu.
+  useEffect(() => {
+    if (!carrinhoAberto && devolverFoco.current) {
+      devolverFoco.current = false;
+      document.getElementById(ID_QUERO_ESSE)?.focus();
+    }
+  }, [carrinhoAberto]);
+
   function aoTrocar(prato: PratoSugerido) {
     escolherPrato(prato.id);
     if (resposta) setTroca({ de: resposta, nome: prato.nome });
   }
 
+  function aoQuerer(prato: PratoSugerido) {
+    dispatchCarrinho({ tipo: "limpar" });
+    dispatchCarrinho({ tipo: "adicionar", prato });
+    setCarrinhoAberto(true);
+  }
+
+  function fecharCarrinho() {
+    devolverFoco.current = true;
+    setCarrinhoAberto(false);
+  }
+
+  function confirmarPedido() {
+    setConfirmado(carrinho);
+    setCarrinhoAberto(false);
+  }
+
+  function recomecar() {
+    dispatchCarrinho({ tipo: "limpar" });
+    setConfirmado(null);
+    reiniciar();
+  }
+
   const aviso =
-    fase === "resultado" && troca && troca.de === resposta ? `Agora a sugestão é ${troca.nome}.` : anuncio(estado);
+    fase === "resultado" && troca && troca.de === resposta
+      ? `Agora a sugestão é ${troca.nome}.`
+      : anuncio(estado, confirmado !== null);
 
   let tela: ReactNode;
 
-  if (resposta?.principal && resposta.status === "ok" && (fase === "resultado" || pensando)) {
+  if (confirmado) {
+    tela = <Confirmacao estado={confirmado} aoReiniciar={recomecar} />;
+  } else if (resposta?.principal && resposta.status === "ok" && (fase === "resultado" || pensando)) {
     tela = (
       <Decisao resposta={resposta} aoQuerer={aoQuerer} aoTrocar={aoTrocar} pensando={pensando}>
         <Ajuste
@@ -99,56 +127,23 @@ export default function Home() {
       </Decisao>
     );
   } else if (resposta && (fase === "sem_resultado" || fase === "resultado" || pensando)) {
-    // Provisório: a tela caprichada de "sem resultado" vem na próxima etapa.
     tela = (
-      <Cozinha
-        topo={
-          <TituloSimples
-            titulo="Com tudo isso junto, não achei."
-            texto={resposta.proposta?.mensagem ?? "Tente tirar alguma exigência."}
-          />
-        }
-        prato={<div className="prato prato-grande prato-caldo size-full opacity-80" />}
-      >
-        <div className="rounded-2xl bg-cartao p-5 shadow-[0_22px_44px_-18px_rgb(90_30_10/0.35)] sm:p-7">
-          <Ajuste
-            etiquetas={resposta.entendido}
-            aoRemover={removerEtiqueta}
-            aoEnviar={enviar}
-            pensando={pensando}
-            frasePensando={frasePensando}
-          />
-        </div>
-      </Cozinha>
+      <SemResultado
+        resposta={resposta}
+        aoAceitar={aceitarProposta}
+        aoRemover={removerEtiqueta}
+        aoEnviar={enviar}
+        pensando={pensando}
+        frasePensando={frasePensando}
+      />
     );
   } else if (fase === "falha") {
-    // Provisório: a tela caprichada de falha vem na próxima etapa.
-    tela = (
-      <Cozinha
-        topo={
-          <TituloSimples
-            titulo="A cozinha não respondeu."
-            texto="Às vezes ela demora para acordar. Tente de novo em instantes."
-          />
-        }
-        prato={<div className="prato prato-grande prato-caldo size-full" />}
-      >
-        <div className="rounded-2xl bg-cartao p-5 shadow-[0_22px_44px_-18px_rgb(90_30_10/0.35)] sm:p-7">
-          <button
-            type="button"
-            onClick={tentarDeNovo}
-            className="flex h-[3.25rem] w-full items-center justify-center rounded-xl bg-tomate font-semibold text-[#fff8ec] transition-colors duration-200 hover:bg-tomate-escuro"
-          >
-            Tentar de novo
-          </button>
-        </div>
-      </Cozinha>
-    );
+    tela = <FalhaAmigavel erro={estado.erro ?? "rede"} tentarDeNovo={tentarDeNovo} aoRecomecar={recomecar} />;
   } else {
     tela = (
       <Cozinha
         topo={
-          <TituloSimples
+          <TituloTela
             titulo={
               <>
                 Diga a vontade. <em className="text-acafrao">A casa decide.</em>
@@ -171,6 +166,14 @@ export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
       {tela}
+      {carrinhoAberto ? (
+        <Carrinho
+          estado={carrinho}
+          aoAlterarQuantidade={(id, quantidade) => dispatchCarrinho({ tipo: "alterarQuantidade", id, quantidade })}
+          aoConfirmar={confirmarPedido}
+          aoFechar={fecharCarrinho}
+        />
+      ) : null}
       <p aria-live="polite" className="sr-only">
         {aviso}
       </p>
