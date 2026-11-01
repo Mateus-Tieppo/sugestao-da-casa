@@ -15,6 +15,7 @@ from app.domain.modelos import Criterios, Prato
 from app.llm.cliente import ClienteLLM
 from app.sugestoes.esquemas import (
     Etiqueta,
+    MudancaSugerida,
     PedidoSugestao,
     PratoSugerido,
     PropostaSugerida,
@@ -70,9 +71,7 @@ def montar_resposta(
         sugerida = None
         if proposta is not None:
             sugerida = PropostaSugerida(
-                campo=proposta.campo,
-                valor_atual=proposta.valor_atual,
-                valor_sugerido=proposta.valor_sugerido,
+                mudancas=[MudancaSugerida(**m.model_dump()) for m in proposta.mudancas],
                 mensagem=mensagem_afrouxar(proposta),
                 prato=_sugerido(
                     proposta.prato,

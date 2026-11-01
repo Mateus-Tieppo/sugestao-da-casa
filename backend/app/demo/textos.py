@@ -42,11 +42,16 @@ def _reais(centavos: int) -> str:
 
 
 def mensagem_afrouxar(proposta: PropostaAfrouxar) -> str:
-    inicio = "Com tudo isso junto não achei nada, mas"
-    nome = proposta.prato.nome
-    if proposta.campo == "orcamento":
-        return f"{inicio} se subir para {_reais(proposta.valor_sugerido)} tem {nome}."
-    return f"{inicio} se der para esperar {proposta.valor_sugerido} min tem {nome}."
+    partes = []
+    for m in proposta.mudancas:
+        if m.campo == "orcamento":
+            partes.append(f"subir para {_reais(m.valor_sugerido)}")
+        else:
+            partes.append(f"der para esperar {m.valor_sugerido} min")
+    return (
+        f"Com tudo isso junto não achei nada, mas se {' e '.join(partes)} "
+        f"tem {proposta.prato.nome}."
+    )
 
 
 _EIXO_FRASES: dict[Eixo, tuple[str, str | None]] = {

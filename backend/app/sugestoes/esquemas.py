@@ -38,10 +38,14 @@ class Etiqueta(BaseModel):
     rotulo: str
 
 
-class PropostaSugerida(BaseModel):
+class MudancaSugerida(BaseModel):
     campo: Literal["orcamento", "tempo"]
     valor_atual: int
     valor_sugerido: int
+
+
+class PropostaSugerida(BaseModel):
+    mudancas: list[MudancaSugerida]  # 1 ou 2 itens, orçamento primeiro
     mensagem: str
     prato: PratoSugerido
 

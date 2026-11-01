@@ -5,28 +5,25 @@ from tests.sugestoes.conftest import RepositorioQuebrado
 def test_post_sugestoes_sem_resultado(cliente_http):
     r = cliente_http.post(
         "/v1/sugestoes",
-        json={"texto": "vegano, sem glúten, até R$ 15"},
+        json={"texto": "vegano, sem glúten, até R$ 15, em 10 min"},
     )
     assert r.status_code == 200
     corpo = r.json()
     assert corpo["modo"] == "demonstracao"
     assert corpo["status"] == "sem_resultado"
     assert corpo["principal"] is None
-    assert corpo["proposta"]["campo"] in {"orcamento", "tempo"}
+    assert [m["campo"] for m in corpo["proposta"]["mudancas"]] == ["orcamento", "tempo"]
     assert corpo["proposta"]["mensagem"]
     assert corpo["proposta"]["prato"]["explicacao"]
 
 
-def test_sem_resultado_com_dois_limites_impossiveis_nao_quebra(cliente_http):
-    # orçamento e tempo falham juntos: afrouxar um só não resolve, então não há proposta
+def test_sem_resultado_com_um_campo_so(cliente_http):
     r = cliente_http.post(
-        "/v1/sugestoes",
-        json={"texto": "vegano, sem glúten, até R$ 15, em 10 min"},
+        "/v1/sugestoes", json={"texto": "vegano, sem glúten, até R$ 15"}
     )
     corpo = r.json()
-    assert r.status_code == 200
-    assert corpo["status"] == "sem_resultado" and corpo["principal"] is None
-    assert corpo["proposta"] is None
+    assert corpo["status"] == "sem_resultado"
+    assert [m["campo"] for m in corpo["proposta"]["mudancas"]] == ["orcamento"]
 
 
 def test_post_sugestoes_ok_tem_o_contrato(cliente_http):

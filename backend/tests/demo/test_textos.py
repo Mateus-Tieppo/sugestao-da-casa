@@ -1,5 +1,5 @@
 from app.demo.textos import diferenca, explicar, frase_decisao, mensagem_afrouxar
-from app.domain.afrouxar import PropostaAfrouxar
+from app.domain.afrouxar import Mudanca, PropostaAfrouxar
 from app.domain.modelos import Criterios, Eixo, Restricao
 from tests.fabricas import prato
 
@@ -52,21 +52,36 @@ def test_explicar_com_restricao_e_orcamento():
     assert "sem lactose" in t and "R$ 40" in t
 
 
+def _proposta(pr, *mudancas):
+    return PropostaAfrouxar(mudancas=list(mudancas), prato=pr)
+
+
+def test_mensagem_afrouxar_dois_campos():
+    pr = prato(nome="Sopa de abóbora")
+    m = mensagem_afrouxar(
+        _proposta(
+            pr,
+            Mudanca(campo="orcamento", valor_atual=1500, valor_sugerido=1900),
+            Mudanca(campo="tempo", valor_atual=10, valor_sugerido=15),
+        )
+    )
+    assert (
+        m
+        == "Com tudo isso junto não achei nada, mas se subir para R$ 19 e der para esperar 15 min tem Sopa de abóbora."
+    )
+
+
 def test_mensagem_afrouxar_orcamento():
     pr = prato(nome="Sopa de abóbora")
     m = mensagem_afrouxar(
-        PropostaAfrouxar(
-            campo="orcamento", valor_atual=2000, valor_sugerido=2200, prato=pr
-        )
+        _proposta(pr, Mudanca(campo="orcamento", valor_atual=2000, valor_sugerido=2200))
     )
     assert (
         m
         == "Com tudo isso junto não achei nada, mas se subir para R$ 22 tem Sopa de abóbora."
     )
     m = mensagem_afrouxar(
-        PropostaAfrouxar(
-            campo="orcamento", valor_atual=2000, valor_sugerido=2250, prato=pr
-        )
+        _proposta(pr, Mudanca(campo="orcamento", valor_atual=2000, valor_sugerido=2250))
     )
     assert "R$ 22,50" in m
 
@@ -74,7 +89,7 @@ def test_mensagem_afrouxar_orcamento():
 def test_mensagem_afrouxar_tempo():
     pr = prato(nome="Sopa de abóbora")
     m = mensagem_afrouxar(
-        PropostaAfrouxar(campo="tempo", valor_atual=20, valor_sugerido=35, prato=pr)
+        _proposta(pr, Mudanca(campo="tempo", valor_atual=20, valor_sugerido=35))
     )
     assert (
         m
