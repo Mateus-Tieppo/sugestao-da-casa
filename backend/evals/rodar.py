@@ -8,6 +8,7 @@ Uso:
 import argparse
 import asyncio
 import json
+import os
 import time
 from pathlib import Path
 from typing import Any
@@ -122,7 +123,9 @@ def tabela_markdown(nome: str, r: dict[str, Any]) -> str:
     )
 
 
-async def avaliar(base_url: str, modelo: str, api_key: str) -> list[dict[str, Any]]:
+async def avaliar(
+    base_url: str, modelo: str, api_key: str, intervalo_s: float = 0.0
+) -> list[dict[str, Any]]:
     settings = Settings(
         llm_base_url=base_url,
         llm_model=modelo,
@@ -133,6 +136,9 @@ async def avaliar(base_url: str, modelo: str, api_key: str) -> list[dict[str, An
     pratos = await RepositorioArquivo().pratos()
     linhas = []
     for i, frase in enumerate(carregar_frases(), start=1):
+        if i > 1 and intervalo_s:
+            # cotas gratuitas limitam tokens por minuto; a pausa não entra na latência
+            await asyncio.sleep(intervalo_s)
         linha = await avaliar_frase(frase, pratos, llm)
         marca = "ok" if linha["ok_passo1"] and linha["restricoes_corretas"] else "falha"
         print(
@@ -147,11 +153,13 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--base-url", required=True)
     ap.add_argument("--modelo", required=True)
-    ap.add_argument("--api-key", default="sem-chave")
+    # Padrão: a chave vem de LLM_API_KEY no ambiente, para não aparecer na linha de comando.
+    ap.add_argument("--api-key", default=os.environ.get("LLM_API_KEY", "sem-chave"))
+    ap.add_argument("--intervalo", type=float, default=0.0, help="segundos entre frases")
     ap.add_argument("--saida", type=Path)
     args = ap.parse_args()
 
-    linhas = asyncio.run(avaliar(args.base_url, args.modelo, args.api_key))
+    linhas = asyncio.run(avaliar(args.base_url, args.modelo, args.api_key, args.intervalo))
     resumo = resumir(linhas)
     print()
     print(tabela_markdown(args.modelo, resumo))

@@ -39,16 +39,17 @@ O frontend mostra o que foi entendido como etiquetas removíveis; remover uma et
 
 ## Avaliação de provedores
 
-Rodei 20 frases (`backend/evals/frases.jsonl`) contra dois modelos locais via Ollama. Os resultados completos estão em `backend/evals/resultados/`.
+Rodei 20 frases (`backend/evals/frases.jsonl`) contra dois modelos locais via Ollama e contra o modelo usado no site público (Groq). Os resultados completos estão em `backend/evals/resultados/`.
 
 | Modelo | Sucesso no passo 1 | Restrições corretas | Guarda 100% | Escolha do modelo aceita | Latência p50 | Latência p95 |
 | --- | --- | --- | --- | --- | --- | --- |
+| Groq openai/gpt-oss-120b | 100% | 90% | sim | 100% | 2,5 s | 3,4 s |
 | Ollama qwen2.5:7b | 90% | 85% | sim | 100% | 19,7 s | 25,3 s |
 | Ollama llama3.2:3b | 45% | 35% | sim | 100% | 6,2 s | 14,1 s |
 
 O modelo menor é mais rápido, mas erra o formato dos argumentos da ferramenta em mais da metade das frases, o que cai no modo demonstração. Por isso o padrão local é o qwen2.5:7b.
 
-No site público o modelo é o `openai/gpt-oss-120b`, servido pela cota gratuita do Groq. Nas primeiras requisições a resposta completa (dois passos do agente) levou cerca de 3 s. A avaliação das 20 frases nesse provedor ainda está pendente.
+No site público o modelo é o `openai/gpt-oss-120b`, servido pela cota gratuita do Groq. Ele acertou o formato da ferramenta nas 20 frases e respondeu em 2,5 s (p50), contando os dois passos do agente. As duas frases que erraram as restrições esperadas foram "nada de frutos do mar hoje" (o modelo tratou "frutos do mar" como ingrediente, não como restrição) e "não como carne de porco nem camarão" (virou vegetariano, mais restritivo que o esperado).
 
 Para repetir:
 
