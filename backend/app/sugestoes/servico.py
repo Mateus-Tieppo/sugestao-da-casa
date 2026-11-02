@@ -2,6 +2,7 @@
 
 import asyncio
 import logging
+import time
 from typing import Literal
 
 from app.agente.agente import ResultadoAgente, rodar_agente
@@ -164,10 +165,12 @@ async def sugerir(
     texto = (pedido.texto or "").strip() or None
     prato_atual = next((p for p in pratos if p.id == pedido.prato_atual_id), None)
 
+    limite = time.monotonic() + timeout_s
     try:
+        # teto de segurança para tudo; o passo 2 do agente tem prazo próprio, menor
         async with asyncio.timeout(timeout_s):
             resultado = await rodar_agente(
-                texto, pedido.criterios, prato_atual, pratos, llm
+                texto, pedido.criterios, prato_atual, pratos, llm, limite
             )
         return _resposta_do_agente(resultado)
     except Exception as e:  # noqa: BLE001 - qualquer falha do LLM cai na demonstração

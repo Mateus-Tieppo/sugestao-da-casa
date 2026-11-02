@@ -1,6 +1,8 @@
 """Agente: o LLM interpreta e redige; o código filtra, ranqueia e garante as restrições."""
 
+import asyncio
 import json
+import time
 from typing import Any
 
 from pydantic import BaseModel, Field, ValidationError, field_validator
@@ -18,6 +20,7 @@ from app.llm.cliente import ClienteLLM
 LIMITE_EXPLICACAO_GUARDA = 200
 LIMITE_DIFERENCA_GUARDA = 60
 NOME_FERRAMENTA = "buscar_pratos"
+MARGEM_ESCRITA_S = 0.5  # folga do passo 2 antes do teto total; também o prazo mínimo
 # Já cobertas por restrições: como ingrediente excluído viram etiqueta duplicada.
 _PALAVRAS_DE_RESTRICAO = {"lactose", "gluten"}
 
@@ -222,7 +225,8 @@ def _guardar(escolha: Escolha, criterios: Criterios, dados: dict) -> ResultadoAg
     modelo_acertou = principal is not None
     if principal is None:
         principal = escolha.principal
-    assert principal is not None
+    if principal is None:  # escolher() garante um principal; sem ele não há o que guardar
+        raise AgenteFalhou("escolha sem prato principal")
 
     alternativas: list[Prato] = []
     diferencas_modelo: dict[str, Any] = {}
@@ -292,7 +296,13 @@ async def rodar_agente(
     prato_atual: Prato | None,
     pratos: list[Prato],
     llm: ClienteLLM,
+    limite_monotonic: float | None = None,
 ) -> ResultadoAgente:
+    """`limite_monotonic`: instante (time.monotonic) em que o pedido todo deve acabar.
+
+    O passo 2 (escrita) ganha um prazo próprio, menor que o que sobrou; se estourar,
+    saem os textos prontos e o modo continua "ia" (o prato já foi escolhido pelo filtro).
+    """
     mensagens: list[dict] = [{"role": "system", "content": SISTEMA}]
 
     if texto is not None:
@@ -359,5 +369,14 @@ async def rodar_agente(
                 "content": f"Resultado da busca: {resultado}\n{PEDIDO_ESCRITA}",
             }
         )
-    escrita = await llm.conversar(mensagens, json=True)
-    return _guardar(escolha, criterios, _ler_escrita(escrita.conteudo))
+    prazo = None
+    if limite_monotonic is not None:
+        sobra = limite_monotonic - time.monotonic()
+        prazo = max(MARGEM_ESCRITA_S, sobra - MARGEM_ESCRITA_S)
+    try:
+        async with asyncio.timeout(prazo):
+            escrita = await llm.conversar(mensagens, json=True)
+        dados = _ler_escrita(escrita.conteudo)
+    except TimeoutError:
+        dados = {}  # textos prontos; o principal continua sendo o do filtro
+    return _guardar(escolha, criterios, dados)

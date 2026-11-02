@@ -4,7 +4,7 @@ import pytest
 
 from app.demo.interpretador import rotulos
 from app.domain.modelos import Criterios, Restricao
-from app.llm.cliente import RespostaLLM
+from app.llm.cliente import ChamadaFerramenta, RespostaLLM
 from app.sugestoes.esquemas import PedidoSugestao
 from app.sugestoes.servico import CardapioIndisponivel, sugerir
 from tests.agente.llm_falso import LLMRoteirizado
@@ -135,3 +135,46 @@ async def test_erro_nao_openai_do_agente_cai_em_demonstracao(repo, monkeypatch):
     monkeypatch.setattr("app.sugestoes.servico.rodar_agente", quebra)
     r = await sugerir(PedidoSugestao(texto="algo leve"), repo, LLMQueFalha(), 5)
     assert r.modo == "demonstracao" and r.status == "ok"
+
+
+async def test_algo_sem_carne_so_devolve_vegetarianos(repo):
+    r = await sugerir(PedidoSugestao(texto="algo sem carne"), repo, LLMQueFalha(), 5)
+    assert r.status == "ok"
+    assert Restricao.vegetariano in r.criterios.restricoes
+    por_id = {p.id: p for p in await repo.pratos()}
+    devolvidos = [r.principal, *r.alternativas]
+    assert devolvidos
+    for d in devolvidos:
+        assert Restricao.vegetariano in por_id[d.id].atende, d.nome
+
+
+class LLMEscritaLenta:
+    """Passo 1 responde na hora; o passo 2 (escrita) demora demais."""
+
+    def __init__(self):
+        self.chamadas = 0
+
+    async def conversar(self, mensagens, ferramentas=None, json=False):
+        import asyncio
+
+        self.chamadas += 1
+        if self.chamadas == 1:
+            return RespostaLLM(
+                chamadas=[
+                    ChamadaFerramenta(nome="buscar_pratos", argumentos="{}")
+                ]
+            )
+        await asyncio.sleep(5)
+        return RespostaLLM(conteudo="{}")
+
+
+async def test_escrita_lenta_mantem_modo_ia_com_textos_prontos(repo):
+    inicio = time.monotonic()
+    r = await sugerir(
+        PedidoSugestao(texto="algo quentinho"), repo, LLMEscritaLenta(), timeout_s=2.0
+    )
+    assert time.monotonic() - inicio < 2.0
+    assert r.modo == "ia"
+    assert r.status == "ok"
+    assert r.principal.explicacao
+    assert r.frase_decisao and r.principal.nome in r.frase_decisao
