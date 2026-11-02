@@ -49,7 +49,7 @@ def test_explicar_com_restricao_e_orcamento():
         prato(),
         Criterios(restricoes={Restricao.sem_lactose}, orcamento_max_centavos=4000),
     )
-    assert "sem lactose" in t and "R$ 40" in t
+    assert "sem lactose" in t and "R$\u00a040" in t
 
 
 def _proposta(pr, *mudancas):
@@ -67,7 +67,7 @@ def test_mensagem_afrouxar_dois_campos():
     )
     assert (
         m
-        == "Com tudo isso junto não achei nada, mas se subir para R$ 19 e der para esperar 15 min tem Sopa de abóbora."
+        == "Com tudo isso junto não achei nada, mas se subir para R$\u00a019 e der para esperar 15 min tem Sopa de abóbora."
     )
 
 
@@ -78,12 +78,12 @@ def test_mensagem_afrouxar_orcamento():
     )
     assert (
         m
-        == "Com tudo isso junto não achei nada, mas se subir para R$ 22 tem Sopa de abóbora."
+        == "Com tudo isso junto não achei nada, mas se subir para R$\u00a022 tem Sopa de abóbora."
     )
     m = mensagem_afrouxar(
         _proposta(pr, Mudanca(campo="orcamento", valor_atual=2000, valor_sugerido=2250))
     )
-    assert "R$ 22,50" in m
+    assert "R$\u00a022,50" in m
 
 
 def test_mensagem_afrouxar_tempo():
@@ -114,3 +114,10 @@ def test_diferenca():
     assert diferenca(rapido, prato(tempo_min=40)) == "chega mais rápido"
     assert diferenca(prato(), prato()) == "outra boa opção"
     assert len(diferenca(leve, base)) <= 40
+
+
+def test_reais_usa_espaco_nao_separavel():
+    from app.demo.textos import _reais
+
+    assert _reais(1900) == "R$ 19"
+    assert _reais(2250) == "R$ 22,50"

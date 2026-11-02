@@ -38,7 +38,8 @@ def explicar(prato: Prato, criterios: Criterios) -> str:
 
 def _reais(centavos: int) -> str:
     inteiro, resto = divmod(centavos, 100)
-    return f"R$ {inteiro}" if resto == 0 else f"R$ {inteiro},{resto:02d}"
+    valor = f"{inteiro}" if resto == 0 else f"{inteiro},{resto:02d}"
+    return f"R$\u00a0{valor}"  # espaço não separável: "R$ 19" nunca quebra linha
 
 
 def mensagem_afrouxar(proposta: PropostaAfrouxar) -> str:

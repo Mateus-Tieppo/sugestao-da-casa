@@ -39,7 +39,7 @@ def test_menos_gorduroso_e_mais_leve():
 
 def test_rotulos_e_remover_sao_inversos():
     c = Criterios(restricoes={Restricao.sem_lactose}, orcamento_max_centavos=4000)
-    assert ("orcamento", "até R$ 40") in rotulos(c)
+    assert ("orcamento", "até R$\u00a040") in rotulos(c)
     assert remover(c, "orcamento").orcamento_max_centavos is None
     assert remover(c, "restricao:sem_lactose").restricoes == set()
 
@@ -54,10 +54,10 @@ def test_pesado_positivo():
     assert interpretar("quero algo bem pesado", None).criterios.alvos[Eixo.peso] == 80
 
 
-def test_sem_pimenta_e_picancia_baixa_nao_ingrediente():
+def test_sem_pimenta_e_picancia_baixa():
     c = interpretar("sem pimenta", None).criterios
     assert c.alvos[Eixo.picancia] == 15
-    assert c.ingredientes_excluidos == set()
+    assert c.ingredientes_excluidos == {"pimenta"}
     assert interpretar("não picante", None).criterios.alvos[Eixo.picancia] == 15
 
 
@@ -161,7 +161,7 @@ def test_rotulos_ordem_deterministica():
     assert rotulos(c) == [
         ("restricao:sem_lactose", "sem lactose"),
         ("excluir:cebola", "sem cebola"),
-        ("orcamento", "até R$ 40"),
+        ("orcamento", "até R$\u00a040"),
         ("tempo", "até 30 min"),
         ("alvo:temperatura", "quentinho"),
         ("alvo:peso", "leve"),
@@ -242,3 +242,47 @@ def test_negacao_de_doce(texto):
     c = interpretar(texto, atuais).criterios
     assert c.quer_doce is False
     assert "doce" not in c.ingredientes_excluidos
+
+
+@pytest.mark.parametrize(
+    "texto",
+    [
+        "um lanche para até 2 pessoas",
+        "chocolate 70%",
+        "até 3 unidades",
+        "até 2 porções",
+        "forno a 180 graus",
+    ],
+)
+def test_numero_com_outra_unidade_nao_vira_orcamento(texto):
+    assert interpretar(texto, None).criterios.orcamento_max_centavos is None
+
+
+def test_orcamento_com_e_sem_simbolo():
+    assert interpretar("até 40", None).criterios.orcamento_max_centavos == 4000
+    assert interpretar("até R$ 40", None).criterios.orcamento_max_centavos == 4000
+    assert interpretar("até 40 reais", None).criterios.orcamento_max_centavos == 4000
+    assert interpretar("até 40 contos", None).criterios.orcamento_max_centavos == 4000
+
+
+def test_ate_30_min_so_tempo():
+    c = interpretar("até 30 min", None).criterios
+    assert c.tempo_max_min == 30 and c.orcamento_max_centavos is None
+
+
+@pytest.mark.parametrize("texto", ["sem carne", "não como carne", "nada de carne"])
+def test_sem_carne_vira_vegetariano(texto):
+    c = interpretar(texto, None).criterios
+    assert Restricao.vegetariano in c.restricoes
+    assert "carne" not in c.ingredientes_excluidos
+
+
+def test_sem_pimenta_vira_alvo_e_exclusao():
+    c = interpretar("sem pimenta", None).criterios
+    assert c.alvos[Eixo.picancia] == 15
+    assert "pimenta" in c.ingredientes_excluidos
+
+
+def test_rotulo_de_orcamento_nao_quebra_linha():
+    c = interpretar("até 40", None).criterios
+    assert ("orcamento", "até R$ 40") in rotulos(c)

@@ -28,6 +28,7 @@ _AJUSTES: list[tuple[str, Ajuste]] = [
 ]
 
 _RESTRICOES: list[tuple[str, Restricao]] = [
+    (r"sem carnes?\b|nao como carnes?\b|nada de carnes?\b", Restricao.vegetariano),
     (r"sem lactose", Restricao.sem_lactose),
     (r"sem gluten", Restricao.sem_gluten),
     (r"vegetarian[oa]", Restricao.vegetariano),
@@ -59,7 +60,12 @@ _DOCE = r"\bdoces?\b|sobremesa|chocolate|brigadeiro|acucar|docinho|sorvete|brown
 
 _TEMPO = re.compile(r"(?:(?:ate|max(?:imo)?|em) )?\b(\d+) ?min\w*")
 _ORCAMENTO = re.compile(
-    r"(?:ate|max(?:imo)?) ?(?:r ?\$|reais)? ?(\d+)(?:[.,](\d{1,2}))?"
+    r"\b(?:ate|max(?:imo)?)\b ?(?P<moeda>r ?\$|reais)? ?(?P<int>\d+)"
+    r"(?:[.,](?P<dec>\d{1,2}))?(?P<fim> ?(?:reais|real|contos?)\b)?"
+)
+# Número solto seguido de outra unidade não é dinheiro ("até 2 pessoas", "70%").
+_NAO_DINHEIRO = re.compile(
+    r" ?(?:pessoas?\b|min\w*|unidades?\b|un\b|pecas?\b|%|graus?\b|porcoes\b|porcao\b)"
 )
 _SEM_INGREDIENTE = re.compile(r"\bsem (\w+)")
 
@@ -107,15 +113,20 @@ def interpretar(texto: str, atuais: Criterios | None) -> Interpretacao:
     if m:
         tempo = int(m.group(1))
         t = _TEMPO.sub(" ", t)
-    m = _ORCAMENTO.search(t)
-    if m:
-        centavos = int(m.group(1)) * 100
-        if m.group(2):
-            centavos += int(m.group(2).ljust(2, "0"))
+    for m in _ORCAMENTO.finditer(t):
+        tem_moeda = bool(m.group("moeda") or m.group("fim"))
+        if not tem_moeda and _NAO_DINHEIRO.match(t, m.end()):
+            continue
+        centavos = int(m.group("int")) * 100
+        if m.group("dec"):
+            centavos += int(m.group("dec").ljust(2, "0"))
         orcamento = centavos
-        t = _ORCAMENTO.sub(" ", t)
+        t = t[: m.start()] + " " + t[m.end() :]
+        break
 
-    # 4. negações antes dos positivos
+    # 4. negações antes dos positivos ("sem pimenta" também tira o ingrediente)
+    if re.search(r"\bsem pimenta\b", t):
+        excluidos.add("pimenta")
     for padrao, eixo, valor in _ALVOS_NEGADOS:
         achou, t = _consumir(padrao, t)
         if achou:
@@ -181,7 +192,7 @@ def rotulos(criterios: Criterios) -> list[tuple[str, str]]:
     for ing in sorted(criterios.ingredientes_excluidos):
         saida.append((f"excluir:{ing}", f"sem {ing}"))
     if criterios.orcamento_max_centavos is not None:
-        saida.append(("orcamento", f"até R$ {criterios.orcamento_max_centavos // 100}"))
+        saida.append(("orcamento", f"até R$\u00a0{criterios.orcamento_max_centavos // 100}"))
     if criterios.tempo_max_min is not None:
         saida.append(("tempo", f"até {criterios.tempo_max_min} min"))
     for eixo in Eixo:
