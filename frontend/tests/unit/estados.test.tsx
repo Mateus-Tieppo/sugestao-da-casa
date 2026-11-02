@@ -42,13 +42,13 @@ describe("SemResultado", () => {
     const aoAceitar = renderSemResultado(semResultado([{ campo: "orcamento", valor_atual: 1500, valor_sugerido: 2200 }]));
     expect(screen.getByText("Com um pouco mais de verba aparece um prato bom.")).toBeInTheDocument();
     expect(screen.getByText("Caldo verde")).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Subir para R$ 22" }));
+    fireEvent.click(screen.getByRole("button", { name: "Subir para R$\u00a022" }));
     expect(aoAceitar).toHaveBeenCalledTimes(1);
   });
 
   it("o botão reflete todas as mudanças da proposta", () => {
     renderSemResultado(semResultado([MUDANCA_ORCAMENTO, MUDANCA_TEMPO]));
-    expect(screen.getByRole("button", { name: "Subir para R$ 19 e esperar 15 min" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Subir para R$\u00a019 e esperar 15 min" })).toBeInTheDocument();
   });
 
   it("proposta só de tempo vira 'Esperar até 15 min'", () => {
@@ -187,7 +187,7 @@ describe("Home: do resultado ao pedido simulado", () => {
     ]);
     render(<Home />);
     fireEvent.click(screen.getByRole("button", { name: /fresquinho e rápido/ }));
-    const aceitar = await screen.findByRole("button", { name: "Subir para R$ 19" });
+    const aceitar = await screen.findByRole("button", { name: "Subir para R$\u00a019" });
     fireEvent.click(aceitar);
     await screen.findByRole("article", { name: "Caldo verde" });
     const corpos = fetch.mock.calls

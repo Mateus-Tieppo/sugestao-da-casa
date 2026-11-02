@@ -60,9 +60,9 @@ test("sem resultado com proposta aceita", async ({ page }) => {
 
   await pedirExemplo(page);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("não achei");
-  await expect(page.getByText("Com R$ 24 e 30 min, o Risoto de cogumelos serve.")).toBeVisible();
+  await expect(page.getByText("Com R$\u00a024 e 30 min, o Risoto de cogumelos serve.")).toBeVisible();
 
-  await page.getByRole("button", { name: "Subir para R$ 24 e esperar 30 min" }).click();
+  await page.getByRole("button", { name: "Subir para R$\u00a024 e esperar 30 min" }).click();
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Hoje pede um Risoto de cogumelos.");
   expect(api.pedidos[1].texto).toBeNull();
   expect(api.pedidos[1].criterios).toMatchObject({ orcamento_max_centavos: 2400, tempo_max_min: 30 });

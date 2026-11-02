@@ -67,7 +67,7 @@ export const PRIMEIRA: RespostaSugestao = {
   modo: "ia",
   entendido: [
     { chave: "restricao:sem_lactose", rotulo: "sem lactose" },
-    { chave: "orcamento", rotulo: "até R$ 40" },
+    { chave: "orcamento", rotulo: "até R$\u00a040" },
     { chave: "alvo:temperatura", rotulo: "quentinho" },
     { chave: "alvo:peso", rotulo: "leve" },
   ],
@@ -117,7 +117,7 @@ export const SEM_RESULTADO: RespostaSugestao = {
   criterios: CRITERIOS_APERTADOS,
   entendido: [
     { chave: "restricao:sem_lactose", rotulo: "sem lactose" },
-    { chave: "orcamento", rotulo: "até R$ 20" },
+    { chave: "orcamento", rotulo: "até R$\u00a020" },
     { chave: "tempo", rotulo: "até 20 min" },
   ],
   frase_decisao: null,
@@ -128,7 +128,7 @@ export const SEM_RESULTADO: RespostaSugestao = {
       { campo: "orcamento", valor_atual: 2000, valor_sugerido: 2400 },
       { campo: "tempo", valor_atual: 20, valor_sugerido: 30 },
     ],
-    mensagem: "Com R$ 24 e 30 min, o Risoto de cogumelos serve.",
+    mensagem: "Com R$\u00a024 e 30 min, o Risoto de cogumelos serve.",
     prato: PRATO_DA_PROPOSTA,
   },
 };
@@ -138,7 +138,7 @@ export const DEPOIS_DA_PROPOSTA: RespostaSugestao = {
   modo: "ia",
   entendido: [
     { chave: "restricao:sem_lactose", rotulo: "sem lactose" },
-    { chave: "orcamento", rotulo: "até R$ 24" },
+    { chave: "orcamento", rotulo: "até R$\u00a024" },
     { chave: "tempo", rotulo: "até 30 min" },
   ],
   frase_decisao: "Hoje pede um Risoto de cogumelos.",
