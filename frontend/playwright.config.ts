@@ -4,7 +4,7 @@ const PORTA = 3100;
 const URL_BASE = `http://localhost:${PORTA}`;
 
 // Só o Chromium está instalado: o perfil do iPhone 13 roda nele, não no WebKit.
-const { defaultBrowserType: _navegador, ...iphone13 } = devices["iPhone 13"];
+const iphone13 = { ...devices["iPhone 13"], defaultBrowserType: "chromium" as const };
 
 export default defineConfig({
   testDir: "./tests/e2e",
