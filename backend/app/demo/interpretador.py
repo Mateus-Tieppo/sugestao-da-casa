@@ -27,15 +27,18 @@ _AJUSTES: list[tuple[str, Ajuste]] = [
     (r"mais picante", Ajuste.mais_picante),
 ]
 
+# Formas de dizer "não pode ter": "sem", "nada de", "não como", "sou alérgico a"...
+_NEGA = r"\b(?:sem|nada de|nao (?:como|posso comer|pode ter|quero)|alergic[oa] a|alergia a)"
+
 _RESTRICOES: list[tuple[str, Restricao]] = [
-    (r"sem carnes?\b|nao como carnes?\b|nada de carnes?\b", Restricao.vegetariano),
-    (r"sem lactose", Restricao.sem_lactose),
-    (r"sem gluten", Restricao.sem_gluten),
+    (rf"{_NEGA} carnes?\b", Restricao.vegetariano),
+    (rf"{_NEGA} (?:lactose|leite)\b", Restricao.sem_lactose),
+    (rf"{_NEGA} (?:gluten|trigo)\b", Restricao.sem_gluten),
     (r"vegetarian[oa]", Restricao.vegetariano),
     (r"vegan[oa]", Restricao.vegano),
-    (r"sem amendoim", Restricao.sem_amendoim),
-    (r"sem frutos do mar|sem camarao", Restricao.sem_frutos_do_mar),
-    (r"sem ovo", Restricao.sem_ovo),
+    (rf"{_NEGA} amendoim\b", Restricao.sem_amendoim),
+    (rf"{_NEGA} (?:frutos do mar|camarao)\b", Restricao.sem_frutos_do_mar),
+    (rf"{_NEGA} ovos?\b", Restricao.sem_ovo),
 ]
 
 # (padrão, eixo, valor). A ordem importa: negações antes dos positivos.

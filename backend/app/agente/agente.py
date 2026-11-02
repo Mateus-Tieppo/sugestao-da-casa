@@ -21,8 +21,13 @@ LIMITE_EXPLICACAO_GUARDA = 200
 LIMITE_DIFERENCA_GUARDA = 60
 NOME_FERRAMENTA = "buscar_pratos"
 MARGEM_ESCRITA_S = 0.5  # folga do passo 2 antes do teto total; também o prazo mínimo
-# Já cobertas por restrições: como ingrediente excluído viram etiqueta duplicada.
-_PALAVRAS_DE_RESTRICAO = {"lactose", "gluten"}
+# O modelo às vezes manda uma restrição como ingrediente excluído. "frutos do mar" como
+# ingrediente não barra um prato com camarão, então essas palavras viram a restrição.
+_PALAVRAS_DE_RESTRICAO = {
+    "lactose": Restricao.sem_lactose,
+    "gluten": Restricao.sem_gluten,
+    "frutos do mar": Restricao.sem_frutos_do_mar,
+}
 
 
 class AgenteFalhou(Exception):
@@ -104,16 +109,23 @@ def _mesclar(
     nega_doce: bool = False,
 ) -> Criterios:
     base = atuais or Criterios()
+    excluidos = (
+        base.ingredientes_excluidos
+        | args.ingredientes_excluidos
+        | palavras.ingredientes_excluidos
+    )
+    vindas_de_ingrediente = {
+        _PALAVRAS_DE_RESTRICAO[normalizar(i)]
+        for i in excluidos
+        if normalizar(i) in _PALAVRAS_DE_RESTRICAO
+    }
     return Criterios(
-        restricoes=base.restricoes | args.restricoes | palavras.restricoes,
+        restricoes=base.restricoes
+        | args.restricoes
+        | palavras.restricoes
+        | vindas_de_ingrediente,
         ingredientes_excluidos={
-            i
-            for i in (
-                base.ingredientes_excluidos
-                | args.ingredientes_excluidos
-                | palavras.ingredientes_excluidos
-            )
-            if normalizar(i) not in _PALAVRAS_DE_RESTRICAO
+            i for i in excluidos if normalizar(i) not in _PALAVRAS_DE_RESTRICAO
         },
         orcamento_max_centavos=_limite(
             palavras.orcamento_max_centavos,

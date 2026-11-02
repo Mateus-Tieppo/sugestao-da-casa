@@ -286,3 +286,22 @@ def test_sem_pimenta_vira_alvo_e_exclusao():
 def test_rotulo_de_orcamento_nao_quebra_linha():
     c = interpretar("até 40", None).criterios
     assert ("orcamento", "até R$ 40") in rotulos(c)
+
+
+@pytest.mark.parametrize(
+    ("texto", "restricao"),
+    [
+        ("nada de frutos do mar hoje, até 50 reais", Restricao.sem_frutos_do_mar),
+        ("não como frutos do mar", Restricao.sem_frutos_do_mar),
+        ("sou alérgico a camarão", Restricao.sem_frutos_do_mar),
+        ("tenho alergia a frutos do mar", Restricao.sem_frutos_do_mar),
+        ("nada de lactose", Restricao.sem_lactose),
+        ("não posso comer glúten", Restricao.sem_gluten),
+        ("sou alérgica a amendoim", Restricao.sem_amendoim),
+        ("nada de ovo", Restricao.sem_ovo),
+    ],
+)
+def test_restricao_com_outras_formas_de_negar(texto, restricao):
+    c = interpretar(texto, None).criterios
+    assert restricao in c.restricoes
+    assert c.ingredientes_excluidos == set()

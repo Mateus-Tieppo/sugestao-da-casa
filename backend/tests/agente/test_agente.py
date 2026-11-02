@@ -437,3 +437,30 @@ async def test_brigadeiro_com_llm_false_fica_true():
     llm = LLMRoteirizado([_busca(quer_doce=False), _escrita()])
     r = await rodar_agente("quero um brigadeiro", None, None, _pratos(), llm)
     assert r.criterios.quer_doce is True
+
+
+async def test_frutos_do_mar_como_ingrediente_vira_restricao():
+    # caso real da avaliação no Groq: o modelo mandou "frutos do mar" como ingrediente
+    llm = LLMRoteirizado(
+        [_busca(ingredientes_excluidos=["frutos do mar"], restricoes=[]), _escrita()]
+    )
+    r = await rodar_agente("hoje não quero nada do mar", None, None, _pratos(), llm)
+    assert Restricao.sem_frutos_do_mar in r.criterios.restricoes
+    assert "frutos do mar" not in r.criterios.ingredientes_excluidos
+
+
+@pytest.mark.parametrize(
+    ("palavra", "restricao"),
+    [
+        ("lactose", Restricao.sem_lactose),
+        ("glúten", Restricao.sem_gluten),
+        ("frutos do mar", Restricao.sem_frutos_do_mar),
+    ],
+)
+async def test_palavra_de_restricao_vinda_do_llm_vira_restricao(palavra, restricao):
+    llm = LLMRoteirizado(
+        [_busca(ingredientes_excluidos=[palavra], restricoes=[]), _escrita()]
+    )
+    r = await rodar_agente("algo gostoso", None, None, _pratos(), llm)
+    assert restricao in r.criterios.restricoes
+    assert r.criterios.ingredientes_excluidos == set()
