@@ -4,7 +4,7 @@ Você abre o app de delivery com fome, rola 107 pratos e acaba pedindo o de semp
 
 Projeto de portfólio. O cardápio é fictício (14 restaurantes, 107 pratos) e o pedido é simulado: nada é cobrado.
 
-Link público: em breve.
+Link público: https://sugestao-da-casa.vercel.app
 
 ## Telas
 
@@ -46,7 +46,9 @@ Rodei 20 frases (`backend/evals/frases.jsonl`) contra dois modelos locais via Ol
 | Ollama qwen2.5:7b | 90% | 85% | sim | 100% | 19,7 s | 25,3 s |
 | Ollama llama3.2:3b | 45% | 35% | sim | 100% | 6,2 s | 14,1 s |
 
-O modelo menor é mais rápido, mas erra o formato dos argumentos da ferramenta em mais da metade das frases, o que cai no modo demonstração. Por isso o padrão é o qwen2.5:7b. A avaliação com provedores hospedados ainda está pendente.
+O modelo menor é mais rápido, mas erra o formato dos argumentos da ferramenta em mais da metade das frases, o que cai no modo demonstração. Por isso o padrão local é o qwen2.5:7b.
+
+No site público o modelo é o `openai/gpt-oss-120b`, servido pela cota gratuita do Groq. Nas primeiras requisições a resposta completa (dois passos do agente) levou cerca de 3 s. A avaliação das 20 frases nesse provedor ainda está pendente.
 
 Para repetir:
 
@@ -99,16 +101,18 @@ Os testes de ponta a ponta (Playwright, desktop 1440x900 e iPhone 13) intercepta
 
 ## Decisões e limitações
 
-- **Latência local.** O qwen2.5:7b no Ollama leva cerca de 20 s por resposta na minha máquina. É por isso que os tempos limite locais são altos (45 s no backend, 60 s no frontend). O padrão de 8 s e 12 s existe para um provedor hospedado, que ainda não medi.
+- **Latência local.** O qwen2.5:7b no Ollama leva cerca de 20 s por resposta na minha máquina. É por isso que os tempos limite locais são altos (45 s no backend, 60 s no frontend). No site público, com o Groq, o padrão de 8 s e 12 s vale.
+- **Cota gratuita do Groq.** O `openai/gpt-oss-120b` no plano gratuito permite 8 mil tokens por minuto e 200 mil por dia. Cada sugestão usa duas chamadas ao modelo, então em picos o site cai no modo demonstração em vez de travar.
 - **Guarda no código, não no prompt.** Restrições alimentares não dependem de o modelo obedecer. A avaliação confirma a guarda em 100% das frases, mas só com os dois modelos testados.
 - **"Sem frutos do mar" exclui peixe.** Para quem tem essa restrição, peixe também fica de fora (salmão, atum, tilápia, bacalhau e afins), além de crustáceos e moluscos.
 - **Modo demonstração é mais simples.** Sem o LLM, a interpretação é por palavras-chave e os textos são prontos. O selo deixa isso claro.
-- **Migrations ainda não aplicadas num Supabase real.** O schema (com RLS e leitura pública) e o seed estão em `supabase/`, mas hoje o backend lê `supabase/cardapio.json` quando não há credenciais. O repositório do Supabase está implementado e testado com um cliente falso, não contra um projeto de verdade.
-- **Sem deploy ainda.** Por isso o link público está como "em breve" e o tempo de resposta num ambiente hospedado não foi medido.
+- **Supabase só leitura.** No site público o cardápio vem de um projeto Supabase com as três migrations e o seed aplicados, RLS ativo e apenas leitura para `anon`. Sem credenciais (desenvolvimento local), o backend lê `supabase/cardapio.json`.
 - **Cardápio fictício.** Restaurantes e pratos são inventados para a demonstração. Só 6 dos 107 pratos têm foto (Unsplash); os demais usam um prato desenhado.
 - **Pedido simulado.** Não há pagamento nem integração com restaurantes.
 
-## Antes do deploy
+## Deploy
+
+O site roda em dois projetos na Vercel ligados a este repositório: o frontend (`frontend/`, Next.js) e o backend (`backend/`, FastAPI como Vercel Function). Cada push na `main` publica os dois. Para reproduzir em outra conta:
 
 - Aplicar as três migrations de `supabase/migrations/` no projeto Supabase, em ordem.
 - Rodar `supabase/seed.sql` (gerado por `python supabase/gerar_seed.py`).
@@ -120,4 +124,4 @@ Os testes de ponta a ponta (Playwright, desktop 1440x900 e iPhone 13) intercepta
 - Pedido em grupo, conciliando as restrições de várias pessoas.
 - Pedir por voz.
 - Avaliação sistemática com provedores hospedados, usando as mesmas 20 frases e as mesmas métricas.
-- Aplicar as migrations num projeto Supabase e publicar o deploy.
+- Reduzir o tamanho do prompt para caber mais sugestões por minuto na cota gratuita.
