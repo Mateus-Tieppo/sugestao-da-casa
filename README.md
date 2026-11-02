@@ -92,7 +92,7 @@ Testes:
 
 ```bash
 cd backend && uv run pytest -q && uv run ruff check .
-cd frontend && npm test && npm run lint && npm run build && npx playwright test
+cd frontend && npm test && npm run lint && npm run build && npm run test:e2e
 ```
 
 Os testes de ponta a ponta (Playwright, desktop 1440x900 e iPhone 13) interceptam a API com respostas fixas e cobrem o fluxo principal, a proposta aceita quando não há resultado, o selo do modo demonstração, `prefers-reduced-motion` e o foco do carrinho (que é um `<dialog>` nativo). Eles sobem o frontend na porta 3100; se já houver um servidor ali, ele é reaproveitado.
@@ -101,11 +101,19 @@ Os testes de ponta a ponta (Playwright, desktop 1440x900 e iPhone 13) intercepta
 
 - **Latência local.** O qwen2.5:7b no Ollama leva cerca de 20 s por resposta na minha máquina. É por isso que os tempos limite locais são altos (45 s no backend, 60 s no frontend). O padrão de 8 s e 12 s existe para um provedor hospedado, que ainda não medi.
 - **Guarda no código, não no prompt.** Restrições alimentares não dependem de o modelo obedecer. A avaliação confirma a guarda em 100% das frases, mas só com os dois modelos testados.
+- **"Sem frutos do mar" exclui peixe.** Para quem tem essa restrição, peixe também fica de fora (salmão, atum, tilápia, bacalhau e afins), além de crustáceos e moluscos.
 - **Modo demonstração é mais simples.** Sem o LLM, a interpretação é por palavras-chave e os textos são prontos. O selo deixa isso claro.
 - **Migrations ainda não aplicadas num Supabase real.** O schema (com RLS e leitura pública) e o seed estão em `supabase/`, mas hoje o backend lê `supabase/cardapio.json` quando não há credenciais. O repositório do Supabase está implementado e testado com um cliente falso, não contra um projeto de verdade.
 - **Sem deploy ainda.** Por isso o link público está como "em breve" e o tempo de resposta num ambiente hospedado não foi medido.
 - **Cardápio fictício.** Restaurantes e pratos são inventados para a demonstração. Só 6 dos 107 pratos têm foto (Unsplash); os demais usam um prato desenhado.
 - **Pedido simulado.** Não há pagamento nem integração com restaurantes.
+
+## Antes do deploy
+
+- Aplicar as três migrations de `supabase/migrations/` no projeto Supabase, em ordem.
+- Rodar `supabase/seed.sql` (gerado por `python supabase/gerar_seed.py`).
+- Configurar no backend `LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL`, `SUPABASE_URL`, `SUPABASE_ANON_KEY` e `CORS_ORIGENS` (com a origem do frontend publicado).
+- Configurar no frontend `NEXT_PUBLIC_API_URL` com a URL pública do backend.
 
 ## Próximos passos
 
