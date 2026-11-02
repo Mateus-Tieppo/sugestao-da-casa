@@ -30,14 +30,15 @@ interface Props {
 export function FalhaAmigavel({ erro, tentarDeNovo, aoRecomecar }: Props) {
   const texto = EXPLICACAO[erro];
   return (
-    <Cozinha topo={<TituloTela titulo="A cozinha não respondeu." texto={texto.topo} />} prato={<PratoVazio talheres />}>
+    <Cozinha chaveEntrada={erro} topo={<TituloTela titulo="A cozinha não respondeu." texto={texto.topo} />} prato={<PratoVazio talheres />}>
       <section aria-labelledby="falha-titulo" className={CLASSE_CARTAO}>
-        <h2 id="falha-titulo" className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-acafrao-escuro">
-          Nada se perdeu
-        </h2>
-        <p className="mt-2 font-titulo text-[1.375rem] font-normal leading-snug tracking-[-0.01em] text-tinta text-balance sm:text-[1.625rem]">
+        <h2
+          id="falha-titulo"
+          className="font-titulo text-[1.375rem] font-normal leading-snug tracking-[-0.01em] text-tinta text-balance sm:text-[1.625rem]"
+        >
           {texto.corpo}
-        </p>
+        </h2>
+        <p className="mt-3 text-[0.9375rem] leading-relaxed text-[#4a362a]">Nada se perdeu: o seu pedido continua aqui.</p>
         <button type="button" onClick={tentarDeNovo} className={`${CLASSE_BOTAO_PRIMARIO} mt-6`}>
           Tentar de novo
         </button>

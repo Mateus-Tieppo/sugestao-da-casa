@@ -23,7 +23,7 @@ export function Alternativas({ pratos, escolhaDaCasaId, aoEscolher }: Props) {
         {pratos.map((p) => {
           const diferenca = p.diferenca ?? (p.id === escolhaDaCasaId ? "a escolha da casa" : null);
           return (
-            <li key={p.id}>
+            <li key={p.id} data-entrada="item">
               <button
                 type="button"
                 onClick={() => aoEscolher(p)}

@@ -46,10 +46,11 @@ export function Ajuste({ etiquetas, aoRemover, aoEnviar, pensando, frasePensando
           >
             <input
               id={campoId}
+              name="ajuste"
               value={texto}
               onChange={(e) => setTexto(e.target.value)}
               maxLength={LIMITES.texto}
-              placeholder="mais barato, sem cebola, algo mais leve..."
+              placeholder="mais barato, sem cebola, algo mais leve…"
               autoComplete="off"
               enterKeyHint="send"
               className="min-w-0 flex-1 bg-transparent text-[1rem] text-tinta placeholder:text-texto-suave focus:outline-none"

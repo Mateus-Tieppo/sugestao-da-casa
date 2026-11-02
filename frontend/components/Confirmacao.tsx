@@ -16,6 +16,7 @@ export function Confirmacao({ estado, aoReiniciar }: Props) {
   const primeiro = estado.itens[0]?.prato;
   return (
     <Cozinha
+      chaveEntrada={estado}
       topo={
         <TituloTela
           titulo={

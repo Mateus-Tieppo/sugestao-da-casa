@@ -35,6 +35,8 @@ export function SemResultado({ resposta, aoAceitar, aoRemover, aoEnviar, pensand
 
   return (
     <Cozinha
+      chaveEntrada={resposta}
+      ocupado={pensando}
       topo={
         <TituloTela
           titulo="Com tudo isso junto, não achei."
@@ -55,12 +57,12 @@ export function SemResultado({ resposta, aoAceitar, aoRemover, aoEnviar, pensand
       {proposta && prato ? (
         <section aria-labelledby="proposta-titulo" className={CLASSE_CARTAO}>
           <div aria-busy={pensando || undefined} className={`transition-opacity duration-300 ease-saida ${pensando ? "opacity-45" : ""}`}>
-            <h2 id="proposta-titulo" className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-acafrao-escuro">
-              Uma saída
-            </h2>
-            <p className="mt-2 font-titulo text-[1.375rem] font-normal leading-snug tracking-[-0.01em] text-tinta text-balance sm:text-[1.625rem]">
+            <h2
+              id="proposta-titulo"
+              className="font-titulo text-[1.375rem] font-normal leading-snug tracking-[-0.01em] text-tinta text-balance sm:text-[1.625rem]"
+            >
               {proposta.mensagem}
-            </p>
+            </h2>
 
             <div className="mt-5 flex items-center gap-4 rounded-xl bg-papel p-3 pr-4">
               <FotoPrato
@@ -93,12 +95,12 @@ export function SemResultado({ resposta, aoAceitar, aoRemover, aoEnviar, pensand
         </section>
       ) : (
         <section aria-labelledby="sem-proposta-titulo" className={CLASSE_CARTAO}>
-          <h2 id="sem-proposta-titulo" className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-acafrao-escuro">
-            Sem saída fácil
-          </h2>
-          <p className="mt-2 font-titulo text-[1.375rem] font-normal leading-snug tracking-[-0.01em] text-tinta text-balance sm:text-[1.625rem]">
+          <h2
+            id="sem-proposta-titulo"
+            className="font-titulo text-[1.375rem] font-normal leading-snug tracking-[-0.01em] text-tinta text-balance sm:text-[1.625rem]"
+          >
             Nenhum prato passa por todas as exigências ao mesmo tempo.
-          </p>
+          </h2>
           <p className="mt-3 max-w-[48ch] text-[0.9375rem] leading-relaxed text-[#4a362a]">
             Tire alguma exigência ou escreva de outro jeito. Com uma a menos, a casa costuma achar o que servir.
           </p>

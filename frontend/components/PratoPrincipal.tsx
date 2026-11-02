@@ -49,6 +49,7 @@ export function PratoPrincipal({ prato, aoQuerer, esmaecido = false }: Props) {
             {prato.etiquetas.map((e) => (
               <li
                 key={e}
+                data-entrada="etiqueta"
                 className={`rounded-full px-2.5 py-1 text-[0.75rem] font-semibold ${
                   TEMPO.test(e) ? "numeros bg-acafrao-claro text-acafrao-escuro" : "bg-manjericao-claro text-manjericao"
                 }`}

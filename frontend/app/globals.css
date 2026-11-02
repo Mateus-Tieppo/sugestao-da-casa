@@ -29,6 +29,15 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Toque responde na hora, sem esperar o zoom de toque duplo. */
+a,
+button,
+input,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
 body {
   background: var(--color-papel);
   color: var(--color-tinta);
@@ -245,6 +254,45 @@ body {
   }
 }
 
+/*
+ * Chegada da tela inicial. Em CSS de propósito: roda desde a primeira pintura, sem esperar
+ * o JavaScript, e o estado final é o próprio estilo do elemento (se a animação não rodar,
+ * tudo já está visível). As telas seguintes entram com GSAP (lib/movimento.ts).
+ */
+@keyframes prato-chega {
+  from {
+    opacity: 0;
+    rotate: -28deg;
+    scale: 0.94;
+  }
+}
+
+@keyframes acompanhamento-chega {
+  from {
+    opacity: 0;
+    scale: 0.82;
+  }
+}
+
+@keyframes cartao-sobe {
+  from {
+    opacity: 0;
+    translate: 0 22px;
+  }
+}
+
+.chegada-prato {
+  animation: prato-chega 0.9s var(--ease-saida) both;
+}
+
+.chegada-acompanhamento {
+  animation: acompanhamento-chega 0.6s var(--ease-saida) 0.25s both;
+}
+
+.chegada-cartao {
+  animation: cartao-sobe 0.6s var(--ease-saida) 0.08s both;
+}
+
 /* Prato que gira devagar enquanto a cozinha pensa. */
 @keyframes girar {
   to {
@@ -279,6 +327,7 @@ body {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

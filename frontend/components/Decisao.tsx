@@ -66,6 +66,9 @@ export function Decisao({ resposta, aoQuerer, aoTrocar, pensando = false, childr
 
   return (
     <Cozinha
+      chaveEntrada={resposta}
+      chaveTroca={principal.id}
+      ocupado={pensando}
       topo={
         <div className={esmaecido}>
           <h1

@@ -49,7 +49,7 @@ export function Carrinho({ estado, aoAlterarQuantidade, aoConfirmar, aoFechar }:
       onClick={(e) => {
         if (e.target === e.currentTarget) aoFechar();
       }}
-      className="painel fixed inset-x-0 bottom-0 top-auto m-0 max-h-[90dvh] w-full max-w-none overflow-hidden rounded-t-3xl bg-cartao p-0 text-tinta shadow-[0_-18px_48px_-12px_rgb(60_10_0/0.45)] backdrop:bg-[rgb(43_28_20/0.55)] open:flex open:flex-col md:inset-y-0 md:left-auto md:right-0 md:h-dvh md:max-h-none md:w-[28rem] md:rounded-l-3xl md:rounded-tr-none md:shadow-[-18px_0_48px_-12px_rgb(60_10_0/0.45)]"
+      className="painel fixed overscroll-contain inset-x-0 bottom-0 top-auto m-0 max-h-[90dvh] w-full max-w-none overflow-hidden rounded-t-3xl bg-cartao p-0 text-tinta shadow-[0_-18px_48px_-12px_rgb(60_10_0/0.45)] backdrop:bg-[rgb(43_28_20/0.55)] open:flex open:flex-col md:inset-y-0 md:left-auto md:right-0 md:h-dvh md:max-h-none md:w-[28rem] md:rounded-l-3xl md:rounded-tr-none md:shadow-[-18px_0_48px_-12px_rgb(60_10_0/0.45)]"
     >
       <div className="flex items-center justify-between gap-4 px-5 pb-3 pt-5 sm:px-7">
         <h2 id={tituloId} className="font-titulo text-[1.625rem] font-semibold tracking-[-0.01em]">
@@ -67,7 +67,7 @@ export function Carrinho({ estado, aoAlterarQuantidade, aoConfirmar, aoFechar }:
         </button>
       </div>
 
-      <ul className="flex-1 divide-y divide-borda overflow-y-auto px-5 sm:px-7">
+      <ul className="flex-1 divide-y divide-borda overflow-y-auto overscroll-contain px-5 sm:px-7">
         {estado.itens.map(({ prato, quantidade }) => (
           <li key={prato.id} className="py-4">
             <div className="flex items-center gap-4">

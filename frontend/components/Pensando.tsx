@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 export const MENSAGENS_PENSANDO = [
-  "Lendo sua vontade...",
-  "Perguntando à cozinha...",
-  "Conferindo o cardápio...",
-  "Escolhendo o prato...",
+  "Lendo sua vontade…",
+  "Perguntando à cozinha…",
+  "Conferindo o cardápio…",
+  "Escolhendo o prato…",
 ] as const;
 
 const INTERVALO_MS = 1900;

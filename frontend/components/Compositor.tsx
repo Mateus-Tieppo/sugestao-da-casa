@@ -57,12 +57,14 @@ export function Compositor({ aoEnviar, pensando, frasePensando }: Props) {
             </label>
             <textarea
               id={campoId}
+              name="pedido"
+              autoComplete="off"
               value={texto}
               onChange={(e) => setTexto(e.target.value)}
               onKeyDown={aoTeclar}
               maxLength={LIMITES.texto}
               rows={3}
-              placeholder="Conta do seu jeito: fome, bolso, pressa, o que não pode..."
+              placeholder="Conta do seu jeito: fome, bolso, pressa, o que não pode…"
               aria-describedby={texto.length >= AVISO_CONTADOR ? contadorId : undefined}
               className="mt-2 w-full flex-1 resize-none bg-transparent text-[1.0625rem] leading-relaxed text-tinta placeholder:text-texto-suave focus:outline-none"
             />

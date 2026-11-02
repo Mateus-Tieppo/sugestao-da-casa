@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -19,6 +19,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Sugestão da Casa",
   description: "Diga o que você quer comer e receba uma sugestão de prato com a explicação do porquê.",
+};
+
+// A barra do navegador no celular continua o bloco quente do topo.
+export const viewport: Viewport = {
+  themeColor: "#b42a17",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

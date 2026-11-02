@@ -32,9 +32,9 @@ function anuncio(estado: EstadoSessao, confirmado: boolean): string {
 
 const PRATOS_DA_ABERTURA = (
   <div className="relative size-full">
-    <div className="prato prato-grande prato-caldo size-full" />
-    <div className="prato prato-curry absolute -left-[22%] bottom-[-14%] hidden size-[40%] md:block" />
-    <div className="prato prato-pequeno prato-salada absolute -top-[6%] left-[-4%] hidden size-[22%] md:block" />
+    <div className="prato prato-grande prato-caldo chegada-prato size-full" />
+    <div className="prato prato-curry chegada-acompanhamento absolute -left-[22%] bottom-[-14%] hidden size-[40%] md:block" />
+    <div className="prato prato-pequeno prato-salada chegada-acompanhamento absolute -top-[6%] left-[-4%] hidden size-[22%] md:block" />
   </div>
 );
 
@@ -142,6 +142,7 @@ export default function Home() {
   } else {
     tela = (
       <Cozinha
+        ocupado={pensando}
         topo={
           <TituloTela
             titulo={
@@ -158,7 +159,9 @@ export default function Home() {
           </div>
         }
       >
-        <Compositor aoEnviar={enviar} pensando={pensando} frasePensando={frasePensando} />
+        <div className="chegada-cartao">
+          <Compositor aoEnviar={enviar} pensando={pensando} frasePensando={frasePensando} />
+        </div>
       </Cozinha>
     );
   }
