@@ -255,7 +255,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
             "sem_lactose",
             "sem_ovo"
           ],
@@ -282,8 +281,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
-            "sem_lactose",
             "sem_ovo"
           ],
           "temperatura": 10,
@@ -339,7 +336,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
             "sem_lactose",
             "sem_ovo"
           ],
@@ -1081,7 +1077,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
             "sem_gluten",
             "sem_lactose",
             "sem_ovo"
@@ -1232,7 +1227,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
             "sem_gluten",
             "sem_lactose",
             "sem_ovo"
@@ -1258,7 +1252,6 @@
             "mel"
           ],
           "atende": [
-            "sem_amendoim",
             "sem_frutos_do_mar",
             "sem_lactose",
             "sem_ovo",
@@ -1477,6 +1470,7 @@
           "tempo_preparo_min": 15,
           "ingredientes": [
             "nhoque",
+            "ovo",
             "batata",
             "manjericão",
             "castanha-de-caju",
@@ -1486,7 +1480,6 @@
           "atende": [
             "sem_amendoim",
             "sem_frutos_do_mar",
-            "sem_ovo",
             "vegetariano"
           ],
           "temperatura": 80,
@@ -2484,7 +2477,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
             "sem_gluten",
             "sem_lactose",
             "sem_ovo"
@@ -2562,7 +2554,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
             "sem_lactose"
           ],
           "temperatura": 80,
@@ -2588,7 +2579,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
             "sem_gluten",
             "sem_lactose",
             "sem_ovo"
@@ -2616,7 +2606,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
             "sem_gluten",
             "sem_lactose"
           ],
@@ -2643,7 +2632,6 @@
           ],
           "atende": [
             "sem_amendoim",
-            "sem_frutos_do_mar",
             "sem_gluten",
             "sem_lactose",
             "sem_ovo"

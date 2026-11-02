@@ -108,7 +108,27 @@ def test_ingredientes_minusculos_e_no_singular(itens):
             )
 
 
-LATICINIOS = ["queijo", "leite", "manteiga", "creme de leite", "requeijão", "iogurte"]
+LATICINIOS = [
+    "queijo", "leite", "manteiga", "creme de leite", "requeijão", "iogurte",
+    "cream cheese", "catupiry", "mussarela", "muçarela", "parmesao", "parmesão",
+    "cheddar", "gorgonzola", "provolone", "coalhada", "doce de leite",
+    "leite condensado", "chantilly", "ricota", "burrata", "nata", "leite de vaca",
+]  # fmt: skip
+GLUTEN = [
+    "trigo", "farinha de trigo", "pão", "pao", "macarrão", "macarrao", "massa",
+    "shoyu", "cerveja", "cuscuz marroquino", "tortilha de trigo", "crouton",
+    "croûton", "farinha de rosca", "empanado",
+]  # fmt: skip
+AMENDOIM = ["amendoim", "paçoca", "pacoca", "granola"]
+OVO = ["ovo", "maionese", "gema", "massa fresca", "nhoque"]
+PEIXES = [
+    "salmão", "atum", "tilápia", "bacalhau", "peixe", "anchova", "sardinha",
+    "robalo", "kani",
+]  # fmt: skip
+CRUSTACEOS_MOLUSCOS = [
+    "camarão", "lula", "polvo", "siri", "caranguejo", "mexilhão", "ostra",
+    "lagosta", "marisco",
+]  # fmt: skip
 CARNES = [
     "frango", "carne", "bacon", "linguiça", "porco", "costela", "charque", "presunto",
     "peixe", "salmão", "atum", "tilápia", "camarão", "lula", "polvo", "mexilhão",
@@ -122,8 +142,6 @@ def _tem(ingredientes, palavras):
         for pal in palavras:
             if re.search(rf"\b{pal}\b", ing):
                 return True
-        if re.search(r"\bnata\b", ing) and palavras is LATICINIOS:
-            return True
     return False
 
 
@@ -133,13 +151,13 @@ def test_restricoes_consistentes_com_ingredientes(itens):
         if "sem_lactose" in at:
             assert not _tem(ing, LATICINIOS), p["nome"]
         if "sem_ovo" in at:
-            assert not _tem(ing, ["ovo", "maionese", "gema"]), p["nome"]
+            assert not _tem(ing, OVO), p["nome"]
+        if "sem_gluten" in at:
+            assert not _tem(ing, GLUTEN), p["nome"]
         if "sem_amendoim" in at:
-            assert not _tem(ing, ["amendoim", "paçoca"]), p["nome"]
+            assert not _tem(ing, AMENDOIM), p["nome"]
         if "sem_frutos_do_mar" in at:
-            assert not _tem(
-                ing, ["camarão", "lula", "polvo", "mexilhão", "marisco", "siri"]
-            ), p["nome"]
+            assert not _tem(ing, PEIXES + CRUSTACEOS_MOLUSCOS), p["nome"]
         if "vegetariano" in at:
             assert not _tem(ing, CARNES), p["nome"]
         if "vegano" in at:
